@@ -4,6 +4,8 @@
 
 VM5 Delivery Lab is a small AI-agent-assisted development offer focused on transparent, fixed-scope engineering deliverables. This repository hosts a static service page and a structured, public GitHub issue form for inbound project inquiries. **A public website is not evidence of a paying customer, collected funds, or a business registration.**
 
+**Free OpenAPI 3.x JSON preflight:** https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/api-preflight/ — local-only static checks, no uploads; see `docs/api-preflight/` and `tests/preflight.test.mjs`.
+
 ## What is available
 
 | Service | Indicative starting quote | Scope |
