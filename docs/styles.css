@@ -167,3 +167,16 @@ h1 em{font-style:normal;color:var(--mint)}
 .free-tool-illustration small{margin-left:auto;color:#8aa7a5;font:600 9px var(--heading);letter-spacing:.05em}
 .mini-check{color:var(--mint);font-size:17px}
 @media(max-width:720px){.free-tool-inner{grid-template-columns:1fr}.free-tool-illustration{transform:none}.free-tool-section{padding-top:44px}}
+
+
+/* Paid x402 OpenAPI agent lint, separate from the free local-only preflight. */
+.paid-api-section{padding-top:60px;padding-bottom:20px}
+.paid-api-inner{border:1px solid #5b6e8a;background:radial-gradient(ellipse 70% 110% at 100% -15%,#2c375b65,transparent),linear-gradient(125deg,#1d273c,#101f2d);border-radius:20px;padding:clamp(26px,4vw,44px);display:grid;grid-template-columns:1.3fr .8fr;gap:38px;align-items:center}
+.paid-api-inner h2{font-size:clamp(28px,3.8vw,47px);margin:17px 0 22px}.paid-api-inner h2 span{color:#c2b4ff}
+.paid-api-inner p{color:#a9c1ce;font-size:14px;line-height:1.8;margin:0 0 19px}.paid-api-inner p strong{font-weight:750;color:#dedbf5}
+.paid-api-inner .btn{margin:0 10px 10px 0}
+.paid-api-terminal{border:1px solid #455e75;border-radius:14px;background:#0b1827;padding:19px;transform:rotate(1.5deg);font:11px/1.9 ui-monospace,Consolas,monospace}
+.paid-api-terminal .mini-line{border-bottom:1px solid #203c49;padding:9px 0;color:#bfd1da;word-break:break-word}
+.paid-api-terminal .mini-line:last-child{border:0}
+.paid-api-terminal .mini-line span{color:#c5b8fc;font-weight:800;margin-right:12px}
+@media(max-width:720px){.paid-api-inner{grid-template-columns:1fr}.paid-api-terminal{transform:none}.paid-api-section{padding-top:45px}}
