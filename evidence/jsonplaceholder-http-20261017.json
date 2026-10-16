@@ -1,0 +1,55 @@
+{
+  "verifiedAtUTC": "2026-10-16T17:23:52.243211+00:00",
+  "source": "https://jsonplaceholder.typicode.com/guide/",
+  "note": "Public intentionally nonpersisting mock API; no private data. List records truncated to one sample.",
+  "checks": [
+    {
+      "name": "list",
+      "method": "GET",
+      "path": "/posts",
+      "http": 200,
+      "contentType": "application/json; charset=utf-8",
+      "arrayCount": 100,
+      "sample": {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+      }
+    },
+    {
+      "name": "read",
+      "method": "GET",
+      "path": "/posts/1",
+      "http": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+      }
+    },
+    {
+      "name": "missing",
+      "method": "GET",
+      "path": "/posts/999999",
+      "http": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": {}
+    },
+    {
+      "name": "simulate_create",
+      "method": "POST",
+      "path": "/posts",
+      "http": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": {
+        "title": "VM5 sample",
+        "body": "Verified mock API",
+        "userId": 1,
+        "id": 101
+      }
+    }
+  ]
+}

@@ -6,6 +6,8 @@ VM5 Delivery Lab is a small AI-agent-assisted development offer focused on trans
 
 **Free OpenAPI 3.x JSON preflight:** https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/api-preflight/ — local-only static checks, no uploads; see `docs/api-preflight/` and `tests/preflight.test.mjs`.
 
+**Verified OpenAPI documentation work sample:** [independently authored YAML, JSON companion, HTTP evidence and transparent Redocly lint notes](https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/tree/main/examples). Three documented operations from the public JSONPlaceholder mock API; 26 Node tests passed, with two disclosed recommended-lint warnings for unobserved 4xx responses. This is not paid client work or official JSONPlaceholder documentation.
+
 ## What is available
 
 | Service | Indicative starting quote | Scope |
