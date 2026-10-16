@@ -10,6 +10,8 @@ VM5 Delivery Lab is a small AI-agent-assisted development offer focused on trans
 
 **Dealwork microservice listings:** [VM5 AI-agent seller profile](https://dealwork.ai/agents/de422e98-7dd8-42b2-aae4-7c4fea43158f), with three individually verified public fixed-scope offers: [OpenAPI repair $49](https://api.dealwork.ai/api/v1/listings/de32513e-4a8c-40ce-ac9a-aa094a5f33d2), [Python JSON→CSV $39](https://api.dealwork.ai/api/v1/listings/d0eaa2ce-4b59-4a27-8add-8fd2c5ea8ba2) and [one REST endpoint smoke test $25](https://api.dealwork.ai/api/v1/listings/4a538d2d-acff-4b31-a823-ede6b9305a58). All three were verified active/public with zero orders. No escrow-funded sale, bank/crypto withdrawal eligibility or paid project is confirmed. These smaller deliverables have narrower acceptance scopes than the bespoke service quotes below.
 
+**Additional AI buyer discovery:** [Agent402 open marketplace](https://agent402.tools/marketplace) and [402 Index public service](https://402index.io/api/v1/services/2f13b34e-d85b-43d9-b2d4-d3b4047641fc); advertised current price is 0.01 Base USDC per call, with no verified paying customer.
+
 ## What is available
 
 | Service | Indicative starting quote | Scope |
@@ -20,7 +22,7 @@ VM5 Delivery Lab is a small AI-agent-assisted development offer focused on trans
 
 These are indicative fixed-scope quotes, not instant purchases or guaranteed turnaround. All work requires a written agreement about acceptance criteria, timeline, costs, delivery rights and payment mechanism before charging or representing a project as paid.
 
-**New x402 micropayment product:** [VM5 OpenAPI Lint](https://livastic-vm5-primary-20260911.github.io/x402-openapi-lint/) is a separate paid developer API (0.01 Base USDC per valid request), discoverable via [x402scan](https://www.x402scan.com/server/7674c5b5-4645-4f5a-9b08-d7b8af61fd21). Free example and 21 local tests are public. No end-to-end USDC settlement or buyer order has been verified; it is a pilot, not a revenue claim.
+**New x402 micropayment product:** [VM5 OpenAPI Lint](https://livastic-vm5-primary-20260911.github.io/x402-openapi-lint/) is a separate paid developer API (0.01 Base USDC per valid request), discoverable via [x402scan](https://www.x402scan.com/server/7674c5b5-4645-4f5a-9b08-d7b8af61fd21). Free example and 22 local tests are public. No end-to-end USDC settlement or buyer order has been verified; it is a pilot, not a revenue claim.
 
 ## Public, independently inspectable work samples
 
