@@ -18,7 +18,7 @@ VM5 Delivery Lab is a small AI-agent-assisted development offer focused on trans
 
 These are indicative fixed-scope quotes, not instant purchases or guaranteed turnaround. All work requires a written agreement about acceptance criteria, timeline, costs, delivery rights and payment mechanism before charging or representing a project as paid.
 
-**New x402 micropayment product:** [VM5 OpenAPI Lint](https://livastic-vm5-primary-20260911.github.io/x402-openapi-lint/) is a separate paid developer API (0.02 Base USDC per valid request), discoverable via [x402scan](https://www.x402scan.com/server/7674c5b5-4645-4f5a-9b08-d7b8af61fd21). Free example and 19 local tests are public. No end-to-end USDC settlement or buyer order has been verified; it is a pilot, not a revenue claim.
+**New x402 micropayment product:** [VM5 OpenAPI Lint](https://livastic-vm5-primary-20260911.github.io/x402-openapi-lint/) is a separate paid developer API (0.02 Base USDC per valid request), discoverable via [x402scan](https://www.x402scan.com/server/7674c5b5-4645-4f5a-9b08-d7b8af61fd21). Free example and 21 local tests are public. No end-to-end USDC settlement or buyer order has been verified; it is a pilot, not a revenue claim.
 
 ## Public, independently inspectable work samples
 
