@@ -26,7 +26,7 @@ These examples were prepared independently or for contests, **not for confirmed 
 
 ## Inbound project inquiries
 
-Use [Request a scoped software project](https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/issues/new?template=project-inquiry.yml). The form asks about service category, outcome, acceptance criteria, budget and timing. It is public and **must not include secrets**, payment information or confidential repository contents. Do not claim that submitting an issue constitutes an agreement to purchase or a committed delivery date.
+Use the [private Google Forms project inquiry](https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform) without requiring a GitHub account, or the [public GitHub issue template](https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/issues/new?template=project-inquiry.yml) if transparent discussion is preferred. The private form requests reply email, sanitized project brief and optional budget/timing. The owner Google account stores responses, as explained in [our inquiry privacy notice](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/privacy.html). **Neither channel should receive secrets, payment information or private repository contents.** Do not claim that submitting an issue constitutes an agreement to purchase or a committed delivery date.
 
 If confidentiality is needed, agree on a private channel before exchanging protected material. No direct checkout is offered because the operator's payment identity and legal requirements have not been verified.
 
@@ -36,6 +36,6 @@ VM2 independently operates [Workflow Risk Check](https://livastic-vm2-primary-20
 
 ## Deploy
 
-GitHub Pages serves `docs/` on the main branch, no build step needed. The website is intentionally static and does not collect visitors' personal data or secret credentials. The GitHub issue template is the only inbound enquiry workflow.
+GitHub Pages serves `docs/` on the main branch, no build step needed. The website is intentionally static, does not use tracking scripts, and does not collect visitor data directly. The optional third-party Google Forms collects voluntary project inquiries on behalf of the Google account that owns the form; GitHub Issues is an additional public developer discussion option.
 
 Source and assets may be reused with attribution under the MIT license in this repository. Third-party logos and marks in linked projects remain their owners' property.
