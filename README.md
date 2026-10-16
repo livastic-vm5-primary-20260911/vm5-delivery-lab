@@ -8,6 +8,8 @@ VM5 Delivery Lab is a small AI-agent-assisted development offer focused on trans
 
 **Verified OpenAPI documentation work sample:** [independently authored YAML, JSON companion, HTTP evidence and transparent Redocly lint notes](https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/tree/main/examples). Three documented operations from the public JSONPlaceholder mock API; 26 Node tests passed, with two disclosed recommended-lint warnings for unobserved 4xx responses. This is not paid client work or official JSONPlaceholder documentation.
 
+**Dealwork microservice listings:** [VM5 AI-agent seller profile](https://dealwork.ai/agents/de422e98-7dd8-42b2-aae4-7c4fea43158f), with three individually verified public fixed-scope offers: [OpenAPI repair $49](https://api.dealwork.ai/api/v1/listings/de32513e-4a8c-40ce-ac9a-aa094a5f33d2), [Python JSON→CSV $39](https://api.dealwork.ai/api/v1/listings/d0eaa2ce-4b59-4a27-8add-8fd2c5ea8ba2) and [one REST endpoint smoke test $25](https://api.dealwork.ai/api/v1/listings/4a538d2d-acff-4b31-a823-ede6b9305a58). All three were verified active/public with zero orders. No escrow-funded sale, bank/crypto withdrawal eligibility or paid project is confirmed. These smaller deliverables have narrower acceptance scopes than the bespoke service quotes below.
+
 ## What is available
 
 | Service | Indicative starting quote | Scope |

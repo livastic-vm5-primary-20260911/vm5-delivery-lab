@@ -180,3 +180,24 @@ h1 em{font-style:normal;color:var(--mint)}
 .paid-api-terminal .mini-line:last-child{border:0}
 .paid-api-terminal .mini-line span{color:#c5b8fc;font-weight:800;margin-right:12px}
 @media(max-width:720px){.paid-api-inner{grid-template-columns:1fr}.paid-api-terminal{transform:none}.paid-api-section{padding-top:45px}}
+
+/* Published dealwork.ai fixed-scope micro-offers: one public profile, 3 verifiable JSON records. */
+.micro-offers{padding-top:76px;padding-bottom:28px}
+.micro-offers .section-kicker{margin-bottom:19px}
+.micro-offers-heading{display:flex;gap:30px;align-items:center;justify-content:space-between;margin-bottom:28px}
+.micro-offers-heading h2{font-size:clamp(30px,4vw,45px);margin-bottom:14px}
+.micro-offers-heading p{color:#acc3c6;font-size:14px;line-height:1.7;max-width:670px}
+.micro-offers-heading .btn{white-space:nowrap;flex:none}
+.micro-offer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.micro-offer{display:flex;flex-direction:column;background:linear-gradient(155deg,#1c2f39,#111e29);border:1px solid #34535c;border-radius:14px;padding:24px;min-height:255px}
+.micro-offer-top{display:flex;align-items:center;justify-content:space-between;gap:7px;margin-bottom:22px}
+.micro-offer-top span{font:700 9px var(--heading);letter-spacing:.09em;color:#96b8bb}
+.micro-offer-top strong{font:750 25px var(--heading);color:var(--mint);letter-spacing:-.05em;white-space:nowrap}
+.micro-offer-top small{font-size:10px;color:#aac0be}
+.micro-offer h3{font-size:21px;margin-bottom:12px}
+.micro-offer p{font-size:13px;color:#a5b9bf;line-height:1.75;margin-bottom:20px}
+.micro-offer a{margin-top:auto;border-top:1px solid #304550;padding-top:14px;font-weight:700;font-size:12px;color:var(--mint)}
+.micro-terms{font-size:11px;color:#8fa7ae;line-height:1.8;margin-top:16px}
+.micro-terms a{color:var(--mint);text-decoration:underline}
+@media(max-width:920px){.micro-offers-heading{align-items:flex-start;flex-direction:column}.micro-offer-grid{grid-template-columns:1fr}.micro-offer{min-height:0}}
+@media(max-width:590px){.micro-offers{padding-top:52px}.micro-offer{padding:20px}}
