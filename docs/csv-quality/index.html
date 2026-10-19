@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="CSV structural quality checks for AI agents: free synthetic sample, $0.005 USDC x402 report or caller-provided CSV preflight on Base. Exact API, limitations and verifiable proof.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CSV Quality Preflight | VM5 Delivery Lab">
+  <meta property="og:description" content="Preview a CSV anomaly report for free; pay $0.005 USDC per x402 v2 API call only when you need the full machine-readable result.">
+  <meta property="og:url" content="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/csv-quality/">
+  <link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/csv-quality/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <title>CSV Quality Preflight — 0.005 Base USDC per API call | VM5 Delivery Lab</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1220;--card:#131f30;--elev:#19283a;--text:#edf7fa;--muted:#b4c8d6;--line:#34475b;--accent:#76e1c6;--blue:#94c7ff;--max:1030px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:var(--blue)}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}header{border-bottom:1px solid var(--line);background:#0c1727}
+    .shell{width:min(var(--max),calc(100% - 40px));margin-inline:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 0}
+    .logo{color:#fff;text-decoration:none;font-weight:800;letter-spacing:-.03em}.logo span{color:var(--accent)}nav{display:flex;gap:20px;flex-wrap:wrap}nav a{color:var(--muted);font-size:.9rem;text-decoration:none}
+    main{padding-bottom:55px}.hero{padding:70px 0 54px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:32px;align-items:start}.eyebrow{color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-weight:750;font-size:.75rem}
+    h1{font-size:clamp(2.35rem,5.5vw,4.15rem);line-height:1.08;letter-spacing:-.045em;margin:15px 0 21px}h2{font-size:clamp(1.65rem,3vw,2.2rem);line-height:1.2;letter-spacing:-.025em;margin:0 0 14px}h3{font-size:1.14rem;margin:0 0 10px}p{margin:0 0 16px}.lead{color:#d4e4ef;font-size:1.14rem;max-width:58ch}.small{font-size:.86rem;color:var(--muted)}
+    .btns{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 18px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:10px;padding:10px 16px;font-weight:750;text-decoration:none;border:1px solid var(--line);background:var(--elev);color:#fff}
+    .btn.primary{background:var(--accent);color:#0c2525;border-color:var(--accent)}.btn:hover{text-decoration:none;filter:brightness(1.09)}
+    .score{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:26px}.number{font-size:2.55rem;line-height:1.1;letter-spacing:-.045em;font-weight:850;color:var(--accent)}.detail{margin-top:15px;padding-top:15px;border-top:1px solid var(--line)}
+    .tag{display:inline-block;color:#9ff6dc;font-size:.78rem;font-weight:750;border:1px solid #397665;background:#12352e;border-radius:6px;padding:3px 8px;margin-bottom:13px}
+    section.block{padding:40px 0;border-top:1px solid var(--line)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}.card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:24px;display:flex;flex-direction:column;align-items:start}
+    .card p{color:var(--muted)}.card .btn{margin-top:auto}.price{color:var(--accent);font-weight:800}.mono,pre,code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.mono{font-size:.93em;color:#d0f8ed;overflow-wrap:anywhere}
+    pre{background:#06101b;border:1px solid var(--line);border-radius:11px;padding:17px;overflow:auto;color:#d9edfc;font-size:.8rem;line-height:1.7;white-space:pre;max-width:100%}
+    .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}.step{border-left:3px solid var(--accent);padding-left:15px}.step p{color:var(--muted);font-size:.95rem}
+    .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.facts>div{padding:20px;border:1px solid var(--line);border-radius:11px}.facts p{color:var(--muted)}
+    .notice{padding:20px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:24px}.notice strong{color:#e7faff}
+    footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.85rem}footer a{color:var(--muted)}.footer{display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap}
+    @media(max-width:760px){.hero,.cards,.facts,.steps{grid-template-columns:1fr}.hero{padding:42px 0}.score{padding:22px}section.block{padding:32px 0}.shell{width:min(var(--max),calc(100% - 30px))}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+<header><div class="shell top">
+  <a class="logo" href="../">VM5 <span>Delivery Lab</span></a>
+  <nav aria-label="Page navigation"><a href="#products">Paid endpoints</a><a href="#integration">Integration</a><a href="#proof">Payment evidence</a><a href="#limits">Limits</a></nav>
+</div></header>
+<main>
+  <section class="shell hero">
+    <div>
+      <div class="eyebrow">Real x402 v2 API · Native Circle USDC on Base</div>
+      <h1>Know what's wrong with your CSV.</h1>
+      <p class="lead">Catch inconsistent row widths, duplicates, blank values, suspicious formula-like cells and basic amount, date and email-format anomalies. Start with a free synthetic example; call the paid API only when you need the machine-readable report.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://vm5-openapi-x402.onrender.com/v1/csv-sample" rel="noopener">Open free sample JSON ↗</a>
+        <a class="btn" href="#products">Compare paid calls ↓</a>
+      </div>
+      <p class="small">This is an AI-assisted independent developer tool, not a data-quality certification. It does not make financial, legal or compliance decisions.</p>
+    </div>
+    <aside class="score" aria-label="Payment terms">
+      <span class="tag">NO SUBSCRIPTION</span>
+      <div class="number">0.005 USDC</div>
+      <p>per successful, valid paid x402 call</p>
+      <div class="detail"><b>Network</b><div class="mono">Base / eip155:8453</div></div>
+      <div class="detail"><b>Token</b><div class="small">Native Circle USDC · 6 decimals</div></div>
+      <div class="detail"><b>Quote</b><div class="mono">5,000 atomic token units</div></div>
+      <div class="detail small">A compatible buyer wallet signs and pays over x402 v2. An unsigned request shows HTTP 402 and PAYMENT-REQUIRED without transferring tokens. No browser credit-card checkout is offered here.</div>
+    </aside>
+  </section>
+  <section class="shell block" id="products">
+    <div class="eyebrow">Choose the useful result</div>
+    <h2>Two paid routes. One free preview.</h2>
+    <p class="small">The synthetic report is openly reproducible from public code. The buyer-owned CSV route processes your own permitted non-secret input.</p>
+    <div class="cards">
+      <article class="card">
+        <span class="tag">GET · NO INPUT</span><h3>Full synthetic CSV quality report</h3>
+        <p>Returns the full structured report for a clearly disclosed example CSV. Useful for automated integration and validating downstream parsers; the source fixture is public.</p>
+        <p class="mono">GET /v1/csv-report</p><p class="price">0.005 USDC per paid call</p>
+        <a class="btn" href="https://vm5-openapi-x402.onrender.com/v1/csv-report" rel="noopener">Inspect 402 quote ↗</a>
+      </article>
+      <article class="card">
+        <span class="tag">POST · BUYER-SUPPLIED CSV</span><h3>Check your own CSV structure</h3>
+        <p>Submit up to 32 KiB of allowed UTF-8 CSV and optional expected column names. Invalid inputs are rejected before payment; reports locate issues without echoing raw row cells.</p>
+        <p class="mono">POST /v1/csv-preflight</p><p class="price">0.005 USDC per paid call</p>
+        <a class="btn" href="https://vm5-openapi-x402.onrender.com/v1/docs" rel="noopener">View API contract ↗</a>
+      </article>
+    </div>
+  </section>
+  <section class="shell block" id="integration">
+    <div class="eyebrow">Machine-to-machine first</div><h2>Start with an unsigned request.</h2>
+    <div class="steps">
+      <div class="step"><h3>1 · Preview</h3><p>GET the free sample without a wallet. Check fields and limits before committing funds.</p></div>
+      <div class="step"><h3>2 · Quote</h3><p>GET the report or POST a valid JSON CSV envelope. The unsigned call returns an x402 v2 Base-USDC quote.</p></div>
+      <div class="step"><h3>3 · Pay if suitable</h3><p>Your own x402 v2-compatible wallet chooses whether to authorize the exact payment. Never paste keys or recovery phrases into the request.</p></div>
+    </div>
+    <h3>Unpaid quote: static report</h3>
+    <pre><code>curl -i 'https://vm5-openapi-x402.onrender.com/v1/csv-report'
+# Expect: 402 + PAYMENT-REQUIRED (no funds sent)</code></pre>
+    <h3>Unpaid quote: buyer-owned CSV</h3>
+    <pre><code>curl -i -X POST 'https://vm5-openapi-x402.onrender.com/v1/csv-preflight' \
+  -H 'Content-Type: application/json' \
+  --data '{"csvText":"name,amount\nalpha,2\nbeta,bad\n","expectedColumns":["name","amount"]}'
+# Expect: 402 + PAYMENT-REQUIRED on valid CSV input.
+# Signed x402 payment, if elected, is completed by YOUR client.</code></pre>
+    <p class="small">Merchant reference: <a href="https://vm5-openapi-x402.onrender.com/openapi.json">live OpenAPI schema</a> · <a href="https://github.com/livastic-vm5-primary-20260911/x402-openapi-lint">public implementation and tests</a> · <a href="https://vm5-openapi-x402.onrender.com/health">service health</a>. Free hosting may sleep or be temporarily unavailable; availability is not guaranteed.</p>
+  </section>
+  <section class="shell block" id="proof">
+    <div class="eyebrow">Evidence before marketing claims</div>
+    <h2>Real transfers, carefully classified.</h2>
+    <div class="facts">
+      <div><h3>Verified paid and delivered</h3>
+        <p><b>0.005 USDC</b> for a synthetic CSV report, verified by an independent outside NoHumans automated test buyer. <a href="https://basescan.org/tx/0xc0c69aa8709b848ab3c0d521ac6540e019738f0804565dfe19652bcb3c290838">View on-chain receipt</a> and <a href="https://nohumans.directory/l/816d6709-3d0">third-party listing</a>.</p>
+        <p>The same outside automated buyer also purchased our separate 0.01-USDC OpenAPI template. These are not two independent recurring human customers.</p>
+      </div>
+      <div><h3>Additional on-chain receipt</h3>
+        <p>Another distinct <b>0.005 USDC</b> arrived at the merchant address on October 20, 2026 KST. <a href="https://basescan.org/tx/0x31c05f6ee783aea8a73733b49c406c69d24cc712503926a840ebb424f0e2ecca">View transaction</a>. Its precise buyer, API URL and delivered HTTP 200 response have not been independently linked.</p>
+        <p>This new wallet transfer is not a verified repeat order or proof of net profit. No organic repeat customers or net profit claimed.</p>
+      </div>
+    </div>
+    <div class="notice"><strong>What has not been proven:</strong> organic customer retention, number of human buyers, recurring subscriptions, profitability after costs, a fiat cash-out or any guaranteed future settlement. Test calls without an actual signature and on-chain payment are not sales.</div>
+  </section>
+  <section class="shell block" id="limits">
+    <div class="eyebrow">Tradeoffs stated plainly</div><h2>Small structural checks, not a universal validator.</h2>
+    <p>CSV validation checks shape, missing values, duplicate rows, suspected spreadsheet formulas, and common type-format anomalies. It cannot prove that statements are factually correct, scan for malware, determine financial accuracy or certify privacy compliance.</p>
+    <p>Never submit passwords, patient data, private customer records or confidential material. The application avoids persisting CSV cells or returning raw rows, but network providers, hosting and external payment facilitators have their own logging and privacy practices. Free examples are synthetic.</p>
+    <p>Need a reviewed deliverable or a real production data repair rather than a one-call QA report? <a href="https://api.dealwork.ai/api/v1/listings/d0eaa2ce-4b59-4a27-8add-8fd2c5ea8ba2">See the separate $39 scoped JSON-to-CSV CLI offer</a> (independent buyer acceptance required) or <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform">request a private project quote</a> without sending any secrets.</p>
+  </section>
+</main>
+<footer><div class="shell footer"><span>VM5 Delivery Lab · AI-assisted, publicly tested software · Last reviewed 20 October 2026</span><span><a href="../">Home</a> · <a href="../privacy.html">Privacy notice</a> · <a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab">Page source</a></span></div></footer>
+</body>
+</html>
