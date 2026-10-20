@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free read-only Base native Circle USDC ERC-20 receipt checker: compare an actual transaction hash, recipient, USDC amount, and optional log index with public RPC receipt logs. No wallet, keys, signatures or payment.">
+<meta property="og:title" content="Base USDC receipt check — read-only real onchain events">
+<meta property="og:description" content="Verify an expected Base Circle USDC recipient, amount and Transfer log using Base public RPC. Explicit RPC trust and finality caveats.">
+<meta name="referrer" content="no-referrer">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-receipt-check/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../usdc-payout-csv/style.css">
+<link rel="stylesheet" href="./style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'none'; connect-src https://mainnet.base.org; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Check actual Base Circle USDC transfer receipt | VM5 Delivery Lab</title>
+<script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="../">VM5 <span>Delivery Lab</span></a><nav aria-label="Site navigation"><a href="../usdc-invoice-bridge/">Invoice matcher</a><a href="#verify">Check transfer</a><a href="#limitations">Safety and limits</a><a href="#pilot">Custom pilot</a></nav></div></header>
+<main>
+<section class="wrap hero">
+<div><div class="eyebrow">Free · read-only · Base mainnet · canonical Circle USDC</div>
+<h1>Did this Base USDC <em>Transfer log</em> actually match?</h1>
+<p class="lead">Check an expected recipient, six-decimal USDC amount and optional <code>logIndex</code> against a transaction receipt obtained from the public Base RPC. Unlike comparing two self-reported CSV files, this inspects a blockchain node's current event data.</p>
+<div class="pills"><span>One explicit public RPC</span><span>No wallet connection</span><span>No signing or transfer</span><span>Exact integer comparison</span><span>Finalized-tag caveat</span></div>
+<p><a class="btn primary" href="#verify">Try a public receipt hash ↓</a></p>
+</div>
+<aside class="panel">
+<div class="eyebrow">What this costs you</div><div class="price">$0</div>
+<dl>
+<div><dt>Chain</dt><dd>Base mainnet (8453)</dd></div>
+<div><dt>Asset</dt><dd>Circle's native USDC, not bridged tokens</dd></div>
+<div><dt>Read calls</dt><dd>3 JSON-RPC calls, when you click Verify</dd></div>
+<div><dt>Sends to RPC</dt><dd>Public transaction hash, plus normal connection metadata</dd></div>
+<div><dt>Never requested</dt><dd>Seed phrase, wallet session, approval, money</dd></div>
+<div><dt>Proof confidence</dt><dd>One public RPC, not independent node consensus/audit</dd></div>
+</dl>
+</aside>
+</section>
+<section class="block" id="verify"><div class="wrap">
+<div class="eyebrow">Live public RPC receipt lookup — explicit opt-in</div>
+<h2>Match a particular ERC-20 event, not just an amount</h2>
+<p>Use only a public Base mainnet transaction hash that you are authorized to examine. Nothing is sent until you click Verify. Browser inputs remain in this tab; the public RPC sees the hash. No CSV or invoice/customer names are sent.</p>
+<form id="checker" class="panel proof-form">
+<label for="tx-hash">Base mainnet transaction hash (required)</label>
+<input id="tx-hash" autocomplete="off" inputmode="text" maxlength="66" spellcheck="false" placeholder="0x followed by 64 hexadecimal characters" required>
+<label for="recipient">Expected receiving wallet address (required)</label>
+<input id="recipient" autocomplete="off" maxlength="42" spellcheck="false" placeholder="0x followed by 40 hexadecimal characters" required>
+<label for="amount">Expected USDC amount (required, exact 6 decimals max)</label>
+<input id="amount" autocomplete="off" spellcheck="false" placeholder="e.g. 0.25" required>
+<label for="log-index">Expected event log index (optional; recommended for multi-transfer tx)</label>
+<input id="log-index" autocomplete="off" inputmode="numeric" spellcheck="false" placeholder="e.g. 12">
+<p class="small">Only <a href="https://mainnet.base.org" target="_blank" rel="noopener noreferrer">https://mainnet.base.org</a> receives a transaction hash via your browser's direct, read-only JSON-RPC request. No wallet extension interaction. No proprietary API key. Public RPC is best-effort and rate-limited.</p>
+<button class="btn primary" type="submit" id="verify-button">Verify against Base RPC</button>
+</form>
+<div id="status" role="status" aria-live="polite" data-kind="info">Not checked. No RPC requests have been sent by this page.</div>
+<section class="panel" id="result" hidden aria-label="Verification result">
+<h3 id="verdict"></h3>
+<p id="reason"></p>
+<p id="finality"></p>
+<p id="count"></p>
+<div class="scroll"><table class="proof-table"><thead><tr><th>Log index</th><th>Receiver (public)</th><th>USDC</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p class="small">A match is not proof the invoice belongs to a business, was economically due or satisfies accounting obligations. The RPC can be stale, rate-limited or incorrect. The finalized-block label is the provider's report, not an independent L1 settlement audit.</p>
+</section>
+</div></section>
+<section class="block" id="limitations"><div class="wrap">
+<div class="eyebrow">Boundaries that protect users</div>
+<h2>What this tool does and does not verify</h2>
+<p>This checker accepts only Base chain ID 8453, a successful mined transaction receipt, the native Circle USDC token contract, a well-formed ERC-20 Transfer event, and an exact recipient/atomic amount match. It uses <code>tx_hash:log_index</code> to distinguish events in the same transaction. A match against an RPC-designated finalized block is labeled as such, not presented as legal or accounting proof.</p>
+<p>It does <strong>not</strong> check who owns a wallet, map transfers automatically to real invoices, catch sanctions, validate exchange deposits, handle fiat off-ramps, value tokens for taxes, or protect against fraudulent invoices. It does not require MetaMask, authenticate an account or hold/send funds. Only one public RPC is queried; no fallback when access is restricted or unavailable.</p>
+<p>If you want to compare your own invoice and self-reported export CSVs with <em>zero</em> external network calls, use the separate <a href="../usdc-invoice-bridge/">free offline CSV candidate matcher</a>. Its synthetic transactions are deliberately fake; never use them here as real onchain examples.</p>
+</div></section>
+<section class="block" id="pilot"><div class="wrap">
+<div class="eyebrow">Optional B2B engineering — not a checkout</div>
+<h2>Need batch checks mapped to your invoice CSV schema?</h2>
+<p>We can discuss a conditional <strong>49 Base USDC fixed-scope first milestone</strong>: a deterministic local CSV-format adapter and small acceptance test harness against up to 50 invented/authorized rows, with one revision. Onchain node hosting, live treasury monitoring, custody, compliance and financial certification are <strong>not included</strong>. Price and contract are proposals only, not an order or proof of demand.</p>
+<p>The Korea-based human owner and buyer must first agree scope, authorized synthetic data, identity and payout details, AI-assisted development, ownership, acceptance tests and refund/cancellation terms. No funds required to use the tools.</p>
+<p><a class="btn primary" href="mailto:onecursora1@gmail.com?subject=Base%20USDC%20receipt%20validation%20pilot%20inquiry&amp;body=I%20can%20share%20a%20synthetic%20CSV%20schema%20and%20would%20like%20to%20agree%20scope%20before%20any%20payment.">Ask about a nonconfidential pilot</a></p>
+</div></section>
+</main>
+<footer><div class="wrap"><p>VM5 Delivery Lab · AI-assisted original tooling · one human economic owner. <a href="../privacy.html">Privacy</a> · <a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab" target="_blank" rel="noopener noreferrer">Source code</a></p></div></footer>
+</body></html>

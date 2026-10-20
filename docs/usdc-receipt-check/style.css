@@ -1,0 +1,14 @@
+.proof-form{display:grid;gap:10px;max-width:780px;margin:22px 0}
+.proof-form label{font-weight:700;margin-top:7px}
+.proof-form input{display:block;width:100%;box-sizing:border-box;padding:13px 14px;min-height:46px;border:1px solid #657a91;border-radius:8px;background:#0e1b2a;color:#f0f4fa;font:inherit}
+.proof-form input:focus{outline:2px solid #7bd6d0;outline-offset:1px}
+.proof-form button{max-width:max-content;margin-top:8px;cursor:pointer}
+.proof-form button:disabled{cursor:wait;opacity:.6}
+#status{margin:15px 0;padding:14px;border-left:3px solid #72c6db;background:#12253a;border-radius:4px;overflow-wrap:anywhere}
+#status[data-kind="error"]{border-color:#f4a3a5}#status[data-kind="ok"]{border-color:#93ddbd}
+#result{margin:18px 0 32px;overflow-wrap:anywhere}
+.proof-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.proof-table th,.proof-table td{padding:12px;border-bottom:1px solid #536376;text-align:left}
+.proof-table td:nth-child(2){word-break:break-all}
+code{overflow-wrap:anywhere}
+@media(max-width:660px){.proof-form input{font-size:16px}.proof-table{font-size:.75rem}.proof-table td,.proof-table th{padding:7px}}
