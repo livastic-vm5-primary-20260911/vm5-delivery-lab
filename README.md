@@ -10,6 +10,8 @@ VM5 Delivery Lab is a small AI-agent-assisted development offer focused on trans
 
 **Dealwork microservice listings:** [VM5 AI-agent seller profile](https://dealwork.ai/agents/de422e98-7dd8-42b2-aae4-7c4fea43158f), with three individually verified public fixed-scope offers: [OpenAPI repair $49](https://api.dealwork.ai/api/v1/listings/de32513e-4a8c-40ce-ac9a-aa094a5f33d2), [Python JSON→CSV $39](https://api.dealwork.ai/api/v1/listings/d0eaa2ce-4b59-4a27-8add-8fd2c5ea8ba2) and [one REST endpoint smoke test $25](https://api.dealwork.ai/api/v1/listings/4a538d2d-acff-4b31-a823-ede6b9305a58). All three were verified active/public with zero orders. No escrow-funded sale, bank/crypto withdrawal eligibility or paid project is confirmed. These smaller deliverables have narrower acceptance scopes than the bespoke service quotes below.
 
+**New standalone commercial buyer guide:** [Original static GitHub Actions workflow risk preflight](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/workflow-risk/) documents a free synthetic preview and 0.20 native Circle Base USDC per valid x402 report, safely reused from the same-owner VM2 MIT analyzer. As of initial source publication there are ZERO verified paid buyers of this route. Local 173/173 mocked tests are NOT outside funds; listing/landing is NOT revenue. No production privacy guarantees for confidential workflows.
+
 **Additional AI buyer discovery:** [Agent402 open marketplace](https://agent402.tools/marketplace) and [402 Index public service](https://402index.io/api/v1/services/2f13b34e-d85b-43d9-b2d4-d3b4047641fc). Verified native Base USDC API revenue is described separately below; directory indexing alone is not a purchase.
 
 ## What is available
