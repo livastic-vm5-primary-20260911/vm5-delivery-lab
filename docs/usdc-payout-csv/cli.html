@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08121f">
+<meta name="description" content="Run a free privacy-preserving Base USDC payout CSV preflight from your terminal or CI. Detect duplicate EVM wallet entries, bad USDC amounts, chain mismatches and spreadsheet-injection prefixes. Offline Node CLI, no wallet.">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; connect-src 'none'; script-src 'none'; img-src 'self'; form-action 'none'; frame-src 'none'; base-uri 'none'">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Base USDC payout CSV CLI — offline and safe by default">
+<meta property="og:description" content="Use an offline Node CLI and deterministic test exit codes to review contractor/bounty recipient CSVs before you approve transfers.">
+<meta property="og:url" content="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/cli.html">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/cli.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{
+"@context":"https://schema.org",
+"@type":"SoftwareApplication",
+"name":"Base USDC payout CSV CLI",
+"applicationCategory":"DeveloperApplication",
+"operatingSystem":"Linux, macOS, Windows with Node.js",
+"isAccessibleForFree":true,
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"url":"https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/cli.html",
+"codeRepository":"https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab",
+"description":"Local-only USDC payout CSV structural preflight, no chain verification or signing."
+}</script>
+<title>Offline Base USDC Payout CSV CLI — Free Local Developer Preflight | VM5 Delivery Lab</title>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="../">VM5 <span>Delivery Lab</span></a><nav aria-label="Navigation"><a href="./">Browser CSV check</a><a href="#install">Install</a><a href="#privacy">Privacy</a><a href="../csv-quality/">Paid API</a></nav></div></header>
+<main>
+<section class="wrap hero">
+<div>
+<div class="eyebrow">Free CLI · No npm login · No API keys · No wallet signing</div>
+<h1>Catch Base USDC payout CSV mistakes in your terminal.</h1>
+<p class="lead">For recurring contributor bounties, payroll exports and engineering pipelines: verify basic address formatting, duplicates, exactly six-decimal token amounts, Base chain and USDC token syntax before giving a payout list to a real sender.</p>
+<p><a class="btn primary" href="#install">Get the local CLI ↓</a> <a class="btn" href="./">Use the free browser version ↗</a></p>
+<p class="small">This is an original free, AI-assisted source project, not a custodial payout API or human-audited on-chain compliance service. No private keys, raw wallet data, payments, telemetry or API credentials are transmitted by the CLI.</p>
+</div>
+<aside class="panel">
+<div class="eyebrow">Engineering checklist</div>
+<div class="price">$0</div>
+<dl>
+<div><dt>Runtime</dt><dd>Node.js 18+</dd></div>
+<div><dt>Dependencies</dt><dd>Node built-ins only</dd></div>
+<div><dt>File limit</dt><dd>64 KiB · 500 rows</dd></div>
+<div><dt>Input</dt><dd>File, stdin or synthetic demo</dd></div>
+<div><dt>Output</dt><dd>Text or safe JSON</dd></div>
+<div><dt>Exit codes</dt><dd>0 / 1 / 2</dd></div>
+</dl>
+</aside>
+</section>
+<section class="block" id="install"><div class="wrap">
+<div class="eyebrow">Real original public repository</div>
+<h2>Install by cloning the source.</h2>
+<p>You don't need an npm account. Clone the owner-controlled repository once. It contains the same <code>checker.mjs</code> logic as the public browser tool plus a small offline CLI wrapper.</p>
+<pre><code>git clone https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab.git
+cd vm5-delivery-lab
+node tools/base-usdc-payout-csv-cli.mjs --help
+node tools/base-usdc-payout-csv-cli.mjs --version</code></pre>
+<p><a class="btn primary" href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/releases/tag/v1.0.0-base-usdc-csv-cli" rel="noopener noreferrer">CLI v1.0.0 GitHub release ↗</a> <a class="btn" href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/blob/main/tools/base-usdc-payout-csv-cli.mjs" rel="noopener noreferrer">Review exact CLI source ↗</a></p>
+<p class="small">If you use a release asset, verify the published SHA-256 on the GitHub release page. The full source is MIT-licensed. No credentials, external installs or npm registry publication are needed.</p>
+<h3>One valid local file</h3>
+<pre><code>node tools/base-usdc-payout-csv-cli.mjs --file ./authorized-payees.csv</code></pre>
+<h3>JSON result for an existing automated workflow</h3>
+<pre><code>cat ./authorized-payees.csv \
+  | node tools/base-usdc-payout-csv-cli.mjs --stdin --json --strict \
+  > private-row-check-results.json
+
+# Exit 0 = no syntax problems under requested strictness.
+# Exit 1 = data errors (or warnings under --strict).
+# Exit 2 = usage, parsing or I/O failure.
+# Not a blockchain ownership/transaction verification.</code></pre>
+<h3>Test without private recipient files</h3>
+<pre><code>node tools/base-usdc-payout-csv-cli.mjs --demo --json</code></pre>
+<p class="small">The sample is deliberately broken: this command returns exit 1 and shows 3 errors and 1 warning. That is a correct result. The printed synthetic 6.7 USDC partial total is not money owned, paid or received by anybody.</p>
+</div></section>
+<section class="block" id="privacy"><div class="wrap">
+<div class="eyebrow">Explicit safety limits</div><h2>It reports data issues. It never approves a payment.</h2>
+<div class="cards">
+<article class="card"><h3>What it really checks</h3>
+<p>Strict quoted CSV parsing; field count; nonzero 40-character hexadecimal EVM address shapes; case-insensitive duplicate recipients; positive, fixed-point Base USDC amounts in exact atomic units; explicit chain and canonical token column; formula-like data-cell prefixes.</p>
+<p><strong>Maximum 64 KiB, 500 rows, 8 columns.</strong></p></article>
+<article class="card"><h3>What it never claims</h3>
+<p>Ownership or EIP-55 checksums; recipient verification, sanctions, chain state, allowances, token balances, fraud screening, gas simulation, legal compliance, contracts, actual transactions, payment finality or customer safety guarantees.</p>
+<p><strong>Never send cryptocurrency based only on a zero-error report.</strong></p></article>
+</div>
+<p style="margin-top:22px">This CLI accepts files from local disk or stdin and reports <strong>issue codes and row/column positions</strong>; it does not print source addresses, recipient notes or raw data cells. For private payroll, never commit the CSV or generated client information to a public GitHub repository. A cloud CI runner may still process files on that third-party provider; the CLI itself makes no network requests.</p>
+<p>Before any crypto payment, check the real person's recipient address, correct chain (Base, 8453), canonical Circle USDC token (<code>0x833589fCD6eDb6E08f4C7C32D4f71b54bdA02913</code>), appropriate EIP-55 checksum verification, sanctions/KYC obligations where applicable, amounts and actual sender-wallet simulation using separately authorized tools.</p>
+</div></section>
+<section class="block" id="paid"><div class="wrap">
+<div class="eyebrow">Optional integration for external automated clients</div><h2>Need machine-to-machine CSV structural reports instead?</h2>
+<p>The owner also operates a separate x402 v2 **generic CSV quality API** for automatic agents at <strong>0.005 native Base Circle USDC per valid call</strong>. This paid service checks ordinary CSV structure and is NOT an EVM payee ownership, crypto transaction or compliance validator. The public free CLI never charges anything or activates the paid service.</p>
+<p><a class="btn primary" href="../csv-quality/">Read paid API contract and actual historic transfer proofs ↗</a></p>
+<p class="small">Base USDC tips are voluntary and distinct from API purchases. An API quote, release download, developer article, demo run, GitHub star or page view is not evidence of a new paying customer.</p>
+</div></section>
+</main>
+<footer><div class="wrap footer"><span>VM5 Delivery Lab · AI-assisted original engineering · October 2026</span><span><a href="./">Free browser checker</a> · <a href="../">Home</a> · <a href="../privacy.html">Privacy</a></span></div></footer>
+</body>
+</html>

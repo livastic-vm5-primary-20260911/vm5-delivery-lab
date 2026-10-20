@@ -10,7 +10,7 @@ test("homepage promotes actual free preview via relevant distinct path",async()=
 });
 test("XML sitemap has exactly one correct canonical service route",async()=>{
  const s=await at("../docs/sitemap.xml"), canonical="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/";
- assert.equal(s.split(canonical).length-1,1);
+ assert.equal(s.split("<loc>"+canonical+"</loc>").length-1,1);
  assert.match(s,/2026-10-20/);
 });
 test("browser checker is privacy-preserving and explicitly no financial settlement",async()=>{
