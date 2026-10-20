@@ -1,0 +1,7 @@
+payout_id,invoice_id,batch_id,sent_amount,sent_currency,received_amount,received_currency,status
+P-001,INV-001,B-OCT,100,USD,100,USDC,paid
+P-002,INV-002,B-OCT,200,USDC,200,USDC,paid
+P-003,INV-003,B-OCT,125,EUR,132,USDT,pending
+P-004,INV-004,B-OCT,80,USDT,80,USDT,returned
+P-005,INV-005,B-NOV,75,EUR,75,EUR,paid
+P-006,INV-UNKNOWN,B-OCT,30,USD,30,USDC,paid

@@ -1,0 +1,3 @@
+batch_id,amount,currency,status
+B-OCT,5000,EUR,funded
+B-NOV,1200,EUR,pending
