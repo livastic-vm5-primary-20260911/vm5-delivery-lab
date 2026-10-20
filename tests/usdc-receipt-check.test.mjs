@@ -115,6 +115,8 @@ test("Public page has explicit RPC opt-in and cross-links standalone local CSV m
  assert.match(html,/No wallet connection/);
  assert.ok(html.includes("usdc-invoice-bridge"));
  assert.match(html,/Verify against Base RPC/);
+ assert.ok(html.includes("1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g"));
+ assert.match(html,/unpaid, candid feedback/);
  assert.match(app,/addEventListener\("submit"/);
  assert.doesNotMatch(app,/localStorage|sessionStorage|ethereum\.request|eth_sendTransaction/);
 });
