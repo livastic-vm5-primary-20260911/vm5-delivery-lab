@@ -16,7 +16,7 @@ test("free demo links exactly one same-owner fixed 49-USDC seller offer",()=>{
 test("paid fixed offer is distinct from Base-only invoice mini and not custodial",()=>{
  assert.match(readme,/distinct from existing VM5 19USDC/);
  assert.match(page,/No private real contractor data/);
- assert.match(page,/marketplace order\/funding flow has not been independently end-to-end verified/);
+ assert.match(page,/FIXED-order payment\/escrow flow has NOT been independently tested/);
  assert.match(page,/Discuss scope before a purchase/);
 });
 test("client-only no uploads or wallet interactions continue with marketplace link",()=>{

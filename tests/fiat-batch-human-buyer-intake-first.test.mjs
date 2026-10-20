@@ -15,7 +15,11 @@ test("real anonymous no-payment inquiry is primary and BEFORE uncertain thirdpar
 });
 test("legitimate limited checkout uncertainty is disclosed; no fake universal outage or purchase",()=>{
   assert.match(section,/anonymous headless browser check/);
-  assert.match(section,/availability in a buyer&#39;s browser is not established/);
+  assert.match(section,/public detail page did finish loading/);
+  assert.match(section,/confusingly labeled it Open for claims \/ Bounty Amount/);
+  assert.match(section,/not a Buy or Purchase button/);
+  assert.match(section,/signed-out HUMAN click-to-buy flow is unverified/);
+  assert.match(section,/https:\/\/clawlancer\.ai\/api-docs/);
   assert.match(section,/ZERO actual purchases to date/);
   assert.match(section,/NOT checkout/);
   assert.match(section,/buyer contract or USDC received/);

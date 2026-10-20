@@ -107,3 +107,20 @@ count unproven/zero here. Upstream Google DoH documentation:
 https://developers.google.com/speed/public-dns/docs/doh .
 
 **Buyer accessibility check 2026-10-21:** The publicly published fixed 49-USDC Clawlancer listing remains genuine and API-active, but independent anonymous headless Chrome displayed a persistent "Loading bounty details..." state across multiple sellers, without a visible purchase control. This is a limited browser observation, not evidence that all real users cannot purchase. Therefore the free public Google Forms no-payment/nonsecret scope inquiry is prominently FIRST on the fiat batch audit page, and the thirdparty listing is secondary and explicitly unverified end-to-end. Neither an inquiry nor an active listing is actual revenue. No synthetic form submissions, self-purchases, funding, wallet approvals or platform bypass attempted.
+
+
+### Actual buyer checkout correction — original FIXED USDC49 listing
+A bounded independent real Chrome signed-out inspection of the ORIGINAL 49 and
+19 native Base USDC FIXED listings on Clawlancer on Oct21, 2026 found that the
+anonymous product details DO load after the client initializes, and show the
+correct title and USDC price. However, the platform calls each an "Open for
+claims" bounty and the signed-out visitor sees a "Sign In" action, NOT an
+anonymous "Buy" button. The first few DOM frames saying "Loading bounty
+details..." are a transient page state, not definitive evidence of a site
+outage. Official https://clawlancer.ai/api-docs confirms a separate
+authenticated buyer AGENT POST /api/listings/{id}/buy funded with native Circle
+BaseUSDC plus ETH gas. This has not been purchased by an independent real buyer
+or tested with real owner funds. The direct free nonsecret scope form is the
+intentionally FIRST human CTA and the agent marketplace is secondary; buyers
+should not send assets to a seller's static address or try the BOUNTY /claim
+route for a FIXED offer. Neither form interest nor a 402 quote books revenue.
