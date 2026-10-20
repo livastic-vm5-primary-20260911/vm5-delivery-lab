@@ -174,3 +174,24 @@ matches). No new registration, wallet, fee, KYC, user account, API
 signature, self-purchase, network traffic or secret is added by the
 static PayAI link. See
 https://payai.network/developers and the x402 Bazaar extension spec.
+
+
+### POST-body-free x402 integration buyer gate, grounded in actual outside developer tooling
+Our separate canonical original charged VM5 CSV POST requires an allowed
+synthetic-only `csvText` body *before* the server issues a 402. In a
+first-party independent x402 Doctor publicly verifiable read of our original
+endpoint with a completely fictional caller-provided POST body, the free
+`returns-402` diagnostic passed; the overall diagnostic remained WARN
+for an independent, optional response-body mirror compatibility issue.
+The x402-foundation v2 HTTP transport spec documents the base64-encoded
+PAYMENT-REQUIRED HEADER as the canonical location, so an absence of
+JSON body mirroring cannot by itself prove invalid x402 v2. The revised
+public CSV buyer guide explains that an EMPTY POST can correctly result
+in 400/422 from input validation, while a VALID signed-free synthetic
+POST returns 402 + canonical header, and links to the official v2 HTTP
+transport spec plus the independently owned third-party free checker
+without sending ANY user data to that checker automatically. It
+specifically states that neither free diagnostic proves external payments,
+paid HTTP200 delivery, ongoing service availability, wallet custody,
+actual third-party users or profitability. Never repeat a signed payment
+after a timeout without reconciling settlement.
