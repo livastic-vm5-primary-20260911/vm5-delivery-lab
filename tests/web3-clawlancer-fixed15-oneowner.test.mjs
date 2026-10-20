@@ -31,8 +31,8 @@ test("Existing x402 merchant and other Dealwork products preserved",()=>{
  for(const id of ['de32513e-4a8c-40ce-ac9a-aa094a5f33d2','d0eaa2ce-4b59-4a27-8add-8fd2c5ea8ba2','4a538d2d-acff-4b31-a823-ede6b9305a58']) assert.ok(html.includes(id));
 });
 test("Dealwork API JSON not misrepresented as a browser checkout",()=>{
- assert.match(html,/API listing JSON links are.*not human browser checkout URLs/);
- assert.match(html,/funded contract are confirmed/);
+ assert.match(html,/Dealwork JSON listing links are informational records, NOT human checkout pages/);
+ assert.match(html,/legally supported payment\/escrow arrangement/);
 });
 test("Responsive styles for paid pilot card are present",()=>{
  assert.match(css,/\.web3-paid-review-inner\{display:grid/);

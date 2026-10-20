@@ -197,6 +197,11 @@ h1 em{font-style:normal;color:var(--mint)}
 .micro-offer h3{font-size:21px;margin-bottom:12px}
 .micro-offer p{font-size:13px;color:#a5b9bf;line-height:1.75;margin-bottom:20px}
 .micro-offer a{margin-top:auto;border-top:1px solid #304550;padding-top:14px;font-weight:700;font-size:12px;color:var(--mint)}
+.micro-offer-actions{display:flex;flex-direction:column;gap:11px;margin-top:auto}
+.micro-offer-actions a{display:block;margin:0;font-size:12px;text-decoration:none}
+.micro-offer-actions .micro-inquire{border:1px solid rgba(150,245,208,.5);border-radius:9px;background:#19423b;padding:11px 13px;color:#dcfff2;text-align:center;font-weight:750}
+.micro-offer-actions .micro-inquire:hover,.micro-offer-actions .micro-inquire:focus-visible{background:#245c52;outline-offset:3px}
+.micro-offer-actions .micro-evidence{border-top:1px solid #304550;padding-top:11px;font-size:11px;color:#9cb8b8}
 .micro-terms{font-size:11px;color:#8fa7ae;line-height:1.8;margin-top:16px}
 .micro-terms a{color:var(--mint);text-decoration:underline}
 @media(max-width:920px){.micro-offers-heading{align-items:flex-start;flex-direction:column}.micro-offer-grid{grid-template-columns:1fr}.micro-offer{min-height:0}}
