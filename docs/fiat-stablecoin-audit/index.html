@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1324">
+<meta name="description" content="Reconcile fiat-funded contractor payout batches against stablecoin payout status and invoices locally. Flag missing payout IDs, duplicate references, returned payments, FX gaps and exceptions without uploading bank or contractor data.">
+<meta property="og:title" content="Stablecoin Contractor Payout Audit | Free Private Batch-to-Invoice CSV Check">
+<meta property="og:description" content="Three CSVs. One local exception report. Never mistake bank batch funding for a contractor's final crypto payout.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/fiat-stablecoin-audit/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'none'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+<script type="module" src="./app.mjs"></script>
+<title>Fiat-to-Stablecoin Contractor Payout Audit — Offline CSV Exception Finder</title>
+</head>
+<body>
+<header class="header"><div class="container header-inner"><a class="logo" href="../">VM5 <b>Delivery Lab</b></a><nav><a href="#tool">Run sample</a><a href="#why">What it checks</a><a href="#adapt">Custom mapping</a></nav></div></header>
+<main>
+<section class="hero container">
+<div class="eyebrow">FREE LOCAL TOOL / FIAT → CRYPTO PAYOUT OPERATIONS</div>
+<h1>You funded the batch. <span>Did each contractor actually get paid?</span></h1>
+<p class="lede">A single bank transfer to a payout processor does not prove that 40 individual USDC or USDT contractor payouts completed. Match your <strong>bank batch, invoices and processor payout rows</strong> before month-end. Find exceptions without sending client records to a website.</p>
+<div class="features"><span>Duplicate payout IDs</span><span>Pending / returned payouts</span><span>Invoice & amount mismatches</span><span>Unproven FX conversion</span></div>
+<a class="primary" href="#tool">Try the invented 5-contractor example ↓</a>
+<p class="small">Independent open-source software sample. No partnership with INXY or any payout provider. Not an accounting opinion, transfer proof, KYB/KYC tool or chain verifier.</p>
+</section>
+<section id="tool" class="tool-band"><div class="container">
+<div class="eyebrow">ONE FINANCE-OPS RECONCILIATION PREVIEW</div><h2>Bring three exports. Keep all three on your device.</h2>
+<p>This browser only reads the text you paste or select locally. Once loaded, the core tool makes <strong>zero network requests</strong>. Start with completely fabricated data below; for real business files, obtain authorization and review your company policy before loading them locally.</p>
+<div class="card-grid">
+<article class="card"><div class="card-head"><span class="step">1</span><div><h3>Bank funding</h3><p>One row per funded batch, not per person.</p></div></div><label for="funding-file">Choose local bank batch CSV</label><input type="file" id="funding-file" accept=".csv,text/csv"><label for="funding">Or edit sample CSV</label><textarea id="funding" spellcheck="false" rows="8" aria-label="Bank funding CSV"></textarea><code>batch_id,amount,currency,status</code></article>
+<article class="card"><div class="card-head"><span class="step">2</span><div><h3>Invoices</h3><p>Invoice → expected payout reference.</p></div></div><label for="invoices-file">Choose local invoice CSV</label><input type="file" id="invoices-file" accept=".csv,text/csv"><label for="invoices">Or edit sample CSV</label><textarea id="invoices" spellcheck="false" rows="8" aria-label="Invoice CSV"></textarea><code>invoice_id,payout_id,amount,currency</code></article>
+<article class="card"><div class="card-head"><span class="step">3</span><div><h3>Processor payouts</h3><p>One row per payee's reported outcome.</p></div></div><label for="payouts-file">Choose local processor payout CSV</label><input type="file" id="payouts-file" accept=".csv,text/csv"><label for="payouts">Or edit sample CSV</label><textarea id="payouts" spellcheck="false" rows="8" aria-label="Processor payout CSV"></textarea><code>payout_id,invoice_id,batch_id,sent_amount,sent_currency,received_amount,received_currency,status</code></article>
+</div>
+<p class="hint">Fields are illustrative, not an assertion about any specific provider's export schema. The invoice's amount/currency is compared to the processor's <strong>sent</strong> amount/currency only; recipient conversion and fees require separate documentation. Exact IDs are needed to avoid guessing by address or amount.</p>
+<div class="buttons"><button id="run" class="primary" type="button">Find reported exceptions</button><button id="sample" class="secondary" type="button">Restore fictional example</button><button id="download" class="secondary" type="button" disabled>Download ID-free exception CSV</button></div>
+<div id="status" class="status" role="status" aria-live="polite">Loading fictional sample…</div>
+<div id="results" hidden>
+<div class="metrics"><div><span>Invoice rows</span><strong id="invoice-count">0</strong></div><div><span>Reported matches*</span><strong id="matched-count">0</strong></div><div><span>Review findings</span><strong id="issue-count">0</strong></div><div><span>Batch rows</span><strong id="batch-count">0</strong></div></div>
+<p class="small">*“Reported match” means CSV references, status and amount aligned. It does NOT prove payment settlement, chain finality, bank reconciliation or acceptance by your accountant.</p>
+<h3>Exception queue</h3><div class="table-scroll"><table><thead><tr><th>Which input</th><th>CSV row</th><th>Exception</th><th>Reason</th></tr></thead><tbody id="exceptions"></tbody></table></div>
+<h3>Batch-level currency caveats</h3><div class="table-scroll"><table><thead><tr><th>Funding row</th><th>Reported payout rows</th><th>Fiat-to-crypto FX gap</th><th>Amount comparison</th></tr></thead><tbody id="batches"></tbody></table></div>
+</div>
+</div></section>
+<section id="why" class="section container"><div class="eyebrow">OPERATIONS, NOT ACCOUNTING AUTOMATION</div><h2>What this checker refuses to assume.</h2><div class="two">
+<div><h3>Funding is not fulfillment.</h3><p>A processor can hold fiat while beneficiary payments remain pending, rejected or returned. Payout ID and final reported status need to be matched separately from the initial bank debit.</p><h3>Amounts need their currencies.</h3><p>An EUR funding amount is not numerically comparable to USDC/USDT received. Missing rate, fee, currency and timestamp evidence stays an explicit review item.</p></div>
+<div><h3>A row is not a transaction.</h3><p>These CSVs are <em>operator-reported</em> and can be wrong, incomplete or manipulated. A reported “paid” record is not automatically verified on-chain. Keep original bank, invoice, provider and reviewer evidence.</p><h3>Export safely.</h3><p>The downloaded exception CSV intentionally contains <strong>only input type, row number and exception code</strong>. It does not include bank amounts, invoice IDs, wallets, names or recipient details.</p></div>
+</div></section>
+<section id="adapt" class="section dark"><div class="container two">
+<div><div class="eyebrow">OPTIONAL CUSTOM WORK / NOT AN AUTOMATIC CHECKOUT</div><h2>Have different CSV column names?</h2><p>The free checker uses one published example schema. If a company has an explicitly authorized nonconfidential sample export with different columns, I can propose a fixed-scope <strong>read-only offline adapter</strong> with tests, an exception report and clear handoff. The indicative project quote is <strong>49 USDC</strong>, subject to written scope, jurisdiction, contractual acceptance, refund and mutually agreed lawful payment rails. No records, deposits or wallet secrets are requested on this page.</p><a class="primary" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform" target="_blank" rel="noopener noreferrer">Ask about an authorized CSV adapter ↗</a><p class="small">Not a claim of past customers, affiliation, legal/accounting certification, or a live escrow offer. AI-assisted implementation with human review required for financial treatment.</p></div>
+<aside class="card pricing"><div class="eyebrow">FIXED PILOT SCOPE / QUOTE ONLY</div><h3>Batch payout mapping adapter</h3><div class="price">49 <small>USDC indicative</small></div><ul><li>One company-approved synthetic schema</li><li>Two input mapping variations</li><li>Deterministic local-only exception CSV</li><li>Automated test cases and README</li><li>One correction for agreed acceptance criteria</li></ul><p>Requires written acceptance and lawful payment arrangement before work begins. Never send live contractor details or wallet keys for a quote.</p></aside>
+</div></section>
+</main><footer><div class="container footer"><a href="../">VM5 Delivery Lab</a><span>2026 · Independent AI-assisted source · Open source on <a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab">GitHub</a></span><a href="../privacy.html">Privacy</a></div></footer>
+</body></html>
