@@ -146,3 +146,31 @@ need to sign into their own mail provider, not this site. The original
 USDC49 native Base Circle fixed-price marketplace agent-only secondary link
 and free Google form remain unchanged; no payment/order exists until explicit
 separate written terms and independent settled outside transfer.
+
+
+## Genuine buyer discoverability already verified in original PayAI Bazaar (NOT a new sale)
+
+The existing actual original PayAI x402 facilitator public catalog offers a
+read-only filter on a seller's receive address:
+
+    GET https://facilitator.payai.network/discovery/resources?payTo=0x6b01efA0705E91a7aca54271510bf9e594717f34&limit=100
+
+A first-party unauthenticated HTTP 200 query on October 21, 2026 returned
+**one** matching existing VM5 resource, exactly
+`https://vm5-openapi-x402.onrender.com/v1/csv-report`, x402 v2
+`eip155:8453` native canonical Circle USDC `5000` atomic units =
+`0.005` USDC, lastUpdated `2026-10-19T20:18:22.438Z`. This is a
+legitimate independent public indexed resource, NOT a new customer, sale,
+updated paid verification, guaranteed fresh quote, or whole 11-route
+listing. PayAI explicitly warns that stale entries may persist. A buyer
+must always fetch a fresh unsigned HTTP402 directly from the merchant,
+verify current exact resource/scheme/network/token/amount/payTo, and
+explicitly authorize its own wallet before paying. The original CSV POST
+and DNS preflight routes were NOT among that one recipient-filtered
+catalog result; they remain independently exposed and require their own
+fresh quote/authorization. This is a different discovery provider from
+Circle's public index (where an earlier simple search returned no VM5
+matches). No new registration, wallet, fee, KYC, user account, API
+signature, self-purchase, network traffic or secret is added by the
+static PayAI link. See
+https://payai.network/developers and the x402 Bazaar extension spec.

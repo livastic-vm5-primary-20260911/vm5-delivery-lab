@@ -101,6 +101,15 @@
 # Expect: 402 + PAYMENT-REQUIRED on valid CSV input.
 # Signed x402 payment, if elected, is completed by YOUR client.</code></pre>
     <p class="small">Merchant reference: <a href="https://vm5-openapi-x402.onrender.com/openapi.json">live OpenAPI schema</a> · <a href="https://github.com/livastic-vm5-primary-20260911/x402-openapi-lint">public implementation and tests</a> · <a href="https://vm5-openapi-x402.onrender.com/health">service health</a>. Free hosting may sleep or be temporarily unavailable; availability is not guaranteed.</p>
+    <div class="notice" id="agent-discovery" aria-label="Authentic original VM5 merchant entry in the public PayAI Bazaar catalog">
+      <h3>Agents: locate the existing priced endpoint without paying to search.</h3>
+      <p>On 21 October 2026, the <strong>original PayAI facilitator's public Bazaar</strong> returned <strong>one indexed VM5 resource</strong> for the already existing payment recipient. It was exactly <code>GET /v1/csv-report</code>, with a cached 5,000-atomic-unit (0.005-USDC) Circle USDC quote on Base (<code>eip155:8453</code>). This was a read-only independent facilitator lookup. It is <strong>not</strong> a new purchase, paid user, checkout, or proof of future settlement. Other VM5 endpoints were <strong>not</strong> indexed in that recipient-filtered response at the time of the check.</p>
+      <p><a class="btn" href="https://facilitator.payai.network/discovery/resources?payTo=0x6b01efA0705E91a7aca54271510bf9e594717f34&amp;limit=100">Inspect the live filtered PayAI Bazaar JSON ↗</a></p>
+      <pre><code>curl --fail-with-body -sS 'https://facilitator.payai.network/discovery/resources?payTo=0x6b01efA0705E91a7aca54271510bf9e594717f34&amp;limit=100'
+# Read-only machine discovery; no wallet or payment signature.</code></pre>
+      <p class="small">Catalog entries can be cached or stale. Before spending anything, independently request a <strong>fresh unsigned</strong> HTTP 402 quote from the actual VM5 resource URL. Check the exact URL, method, current payee, original canonical Circle USDC token, Base network, price, x402 scheme, payload permissions, expected API result and retry/settlement terms. Do not blindly pay any catalog link. No private CSVs or funds are required to inspect this listing.</p>
+    </div>
+
   </section>
   <section class="shell block" id="proof">
     <div class="eyebrow">Evidence before marketing claims</div>
