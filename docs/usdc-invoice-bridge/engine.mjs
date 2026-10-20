@@ -138,6 +138,70 @@ export function reconcile(invoicesCSV,transfersCSV){
   safety:"DATA ARE SELF-REPORTED CSV INPUTS. No RPC, no verified settlement/finality, no wallet, no approval, no accounting/tax opinion. A reported_exact match is NOT proof an invoice was paid.",
   summary,invoices:result,manualReview:manual.slice(0,100),noncustodial:true,networkCalls:0};
 }
+/**
+ * Downloadable, explicitly user-requested LOCAL evidence index.
+ * All rows remain unverified CSV claims, not a ledger, payment record,
+ * recipient authorization, KYC, accounting entry or chain proof.
+ * Caller can choose not to export public wallet/transaction references.
+ */
+export function evidenceIndexCsv(invoicesCSV,transfersCSV){
+ const outcome=reconcile(invoicesCSV,transfersCSV);
+ const invRows=parseTable(invoicesCSV,requiredInv);
+ const transferRows=parseTable(transfersCSV,requiredPay);
+ const byInvoice=new Map();
+ const payeeInvoiceCounts=new Map();
+ for(const inv of invRows){
+  const id=safeID(inv.invoice_id,false);
+  const normalized=validateInfo(inv);
+  byInvoice.set(id,normalized.address);
+  payeeInvoiceCounts.set(normalized.address,(payeeInvoiceCounts.get(normalized.address)||0)+1);
+ }
+ const invoiceReviews=new Map(outcome.invoices.map(x=>[x.invoice_id,x.status]));
+ const events=transferRows.map(row=>{
+  const invoiceId=safeID(row.invoice_id,true);
+  const info=validateInfo(row);
+  const txHash=normHash(row.tx_hash,row.__row);
+  const logIndex=normLogIndex(row.log_index,row.__row);
+  if(!["reported_finalized","pending"].includes(row.status))throw Error("Unsupported input event status.");
+  return {
+   invoice_id:invoiceId,
+   claimed_status:row.status,
+   chain:ALLOWED_CHAIN,token:USDC,tx_hash:txHash,
+   log_index:logIndex,recipient:info.address,
+   reported_amount_usdc:formatAtomic(info.amount),
+   source_csv_row:String(row.__row),
+   key:ALLOWED_CHAIN+":"+txHash+":"+logIndex,
+  };
+ });
+ const counts=new Map();
+ for(const event of events)counts.set(event.key,(counts.get(event.key)||0)+1);
+ const headers=[
+  "invoice_id","review_flag","candidate_invoice_status","input_event_status_not_verified",
+  "chain","token_contract","tx_hash","log_index","recipient","reported_amount_usdc",
+  "source_csv_row","proof_level"
+ ];
+ const lines=[headers.join(",")];
+ for(const e of events){
+  let flag;
+  if(counts.get(e.key)>1)flag="duplicate_event_identity_manual";
+  else if(!e.invoice_id)flag=payeeInvoiceCounts.get(e.recipient)>1?"shared_address_ambiguous_manual":"unreferenced_event_manual";
+  else if(!byInvoice.has(e.invoice_id))flag="unknown_invoice_id_manual";
+  else if(byInvoice.get(e.invoice_id)!==e.recipient)flag="recipient_mismatch_manual";
+  else if(e.claimed_status==="pending")flag="pending_not_verified";
+  else flag="csv_reference_only_unverified";
+  const values=[
+   e.invoice_id,flag,invoiceReviews.get(e.invoice_id)||"not_allocated",
+   e.claimed_status,e.chain,e.token,e.tx_hash,e.log_index,e.recipient,
+   e.reported_amount_usdc,e.source_csv_row,"self_reported_csv_only_unverified"
+  ];
+  // A stricter safe alphabet prohibits formula injection, row breaks
+  // and accidental expansion of customer metadata on spreadsheet open.
+  if(values.some(v=>!/^[A-Za-z0-9_.:-]*$/.test(String(v))))throw Error("Unsafe export field.");
+  lines.push(values.join(","));
+ }
+ return lines.join("\r\n")+"\r\n";
+}
+
 export function reportCsv(out){
  if(!out||!Array.isArray(out.invoices))throw Error("Run comparison first.");
  const headers=["invoice_id","status","expected_usdc","reported_finalized_usdc","reported_difference_usdc","receipt_events","pending_events"];

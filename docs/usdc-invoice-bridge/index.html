@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#08121f">
-<meta name="description" content="Free, browser-only Base USDC invoice-to-transfer CSV candidate matcher. Flag duplicate ERC20 event IDs, partial payments, pending status and reused payee-address ambiguity. No uploads, wallet or blockchain assumptions.">
+<meta name="description" content="Free, browser-only Base USDC invoice-to-transfer CSV candidate matcher. Flag duplicate ERC20 events, partial payments and shared-address ambiguity; optionally download a local unverified event review CSV with tx hash and log index. No uploads, wallet or blockchain assumptions.">
 <meta property="og:title" content="Free Base USDC invoice-to-transfer matching preview — VM5 Delivery Lab">
 <meta property="og:description" content="Review local invoice CSV and reported USDC ERC20 receipt CSV side by side. Never mistake user-supplied rows for verified blockchain receipts.">
 <link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-invoice-bridge/">
@@ -64,7 +64,9 @@
 <button id="example" type="button">Load invented example</button>
 <button id="compare" class="btn primary" type="button">Compare locally (no upload)</button>
 <button id="export" type="button" disabled>Download status-only CSV</button>
+<button id="evidence-export" type="button" disabled>Download local event review index (includes public wallet + tx references)</button>
 </div>
+<p class="small"><strong>Optional evidence-index download:</strong> use the separate button to export the input event keys (chain, token, tx hash, log index), recipient and reported amount for manual follow-up. This file contains supplied public wallet/transaction references and invoice IDs; keep it private if they identify clients. Every row is clearly tagged <code>self_reported_csv_only_unverified</code>. No financial ledger, tax records, verified payment evidence, upload, blockchain RPC call, or automated bookkeeping is generated.</p>
 <div id="status" role="status" data-kind="info" aria-live="polite">Loading the invented example locally.</div>
 <div id="report" hidden>
 <h2>Reported candidate matches — not confirmed onchain payments</h2>
