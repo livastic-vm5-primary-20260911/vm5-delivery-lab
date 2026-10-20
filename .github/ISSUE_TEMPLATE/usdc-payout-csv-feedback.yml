@@ -1,0 +1,86 @@
+name: "Feedback: free Base USDC payout CSV checker"
+description: "Help us improve a real free local-only Base USDC payout CSV reviewer. No account or payment required beyond GitHub's issue login."
+title: "[Base USDC CSV feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing the free [local browser checker](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/) or the [offline CLI](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/cli.html).
+
+        **This is a PUBLIC GitHub issue, not a transaction or support for already-signed payments.** Please don't include actual wallet addresses, real payroll rows or amounts, names, client data, private CSVs, API keys, seed phrases, signatures, identity documents or confidential repositories. Use invented examples only.
+
+        The free tool checks **format and duplicates, not recipient ownership, EIP-55 checksum, compliance, on-chain balances or transaction outcomes.** No cryptocurrency payment is required to provide feedback.
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Which part did you try?
+      options:
+        - Free browser-based payout CSV preview
+        - Offline Node.js CLI / local automation
+        - Both browser preview and CLI
+        - Just exploring — haven't used it yet
+    validations:
+      required: true
+  - type: dropdown
+    id: payout-type
+    attributes:
+      label: Intended use (not a claim of actual spending)
+      options:
+        - Contributor or developer bounty distribution
+        - Contractor payee list review
+        - DAO or grant recipient list QA
+        - Test fixtures and agent-generated CSV pipelines
+        - Other / prefer not to disclose
+    validations:
+      required: true
+  - type: textarea
+    id: csv-headers
+    attributes:
+      label: Which generic CSV column names does your workflow use?
+      description: "Examples only, e.g. wallet, amount, chain. Never paste actual payout rows or wallet addresses."
+      placeholder: "wallet_address,amount_usdc,chain_id,reference"
+    validations:
+      required: false
+  - type: textarea
+    id: observed
+    attributes:
+      label: What worked or failed? Include a tiny synthetic reproduction if helpful.
+      description: "Specific public feedback is more useful than likes or vague praise. Report only harmless invented data."
+      placeholder: "In the synthetic example I expected X but got Y, using Chrome/Firefox/Node version Z."
+    validations:
+      required: true
+  - type: dropdown
+    id: improvement
+    attributes:
+      label: Which single improvement would create the most value?
+      options:
+        - More import header aliases or CSV formats
+        - More understandable explanations of errors
+        - GitHub Action / CI review with no real recipient CSV upload
+        - Safer checksum review (with clear limitations)
+        - Downloadable local JSON diagnostic reports
+        - No additional features needed
+        - Other — describe above
+    validations:
+      required: true
+  - type: dropdown
+    id: paid-intent
+    attributes:
+      label: Would a distinct paid, automated general CSV analysis API be useful?
+      description: "Optional anonymous preference research. Choosing Yes is NOT an order, agreement or promise to pay."
+      options:
+        - Maybe: $0.005 USDC per independent general CSV structure report
+        - Only if a concrete authorized business problem is solved
+        - No, the free browser/CLI is sufficient
+        - Not sure or not answering
+    validations:
+      required: false
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Public issue and scope
+      options:
+        - label: "I understand this is a public issue and will not paste real wallet addresses, secrets or private payroll/client data."
+          required: true
+        - label: "I understand this is feedback only, not a financial audit, transaction authorization or paid service order."
+          required: true
