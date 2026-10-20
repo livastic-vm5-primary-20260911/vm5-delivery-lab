@@ -105,3 +105,5 @@ buyer-token expenditure for the free preview. The existing priced native Base
 Circle USDC 0.005 per-call merchant remains optional, with actual paying buyer
 count unproven/zero here. Upstream Google DoH documentation:
 https://developers.google.com/speed/public-dns/docs/doh .
+
+**Buyer accessibility check 2026-10-21:** The publicly published fixed 49-USDC Clawlancer listing remains genuine and API-active, but independent anonymous headless Chrome displayed a persistent "Loading bounty details..." state across multiple sellers, without a visible purchase control. This is a limited browser observation, not evidence that all real users cannot purchase. Therefore the free public Google Forms no-payment/nonsecret scope inquiry is prominently FIRST on the fiat batch audit page, and the thirdparty listing is secondary and explicitly unverified end-to-end. Neither an inquiry nor an active listing is actual revenue. No synthetic form submissions, self-purchases, funding, wallet approvals or platform bypass attempted.
