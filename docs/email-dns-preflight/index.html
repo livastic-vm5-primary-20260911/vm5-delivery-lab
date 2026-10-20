@@ -25,10 +25,11 @@
   <h1>Before you email a domain,<br><em>check its DNS.</em></h1>
   <p class="lead">A missing mail exchanger or a misconfigured policy can be worth flagging before an agent tries to contact a company. Review <strong>public MX, SPF and DMARC configuration</strong> on demand. This is an inexpensive <em>configuration hint</em>, not a promise that any email will arrive.</p>
   <div class="actions">
-   <a class="button primary" href="https://vm5-openapi-x402.onrender.com/v1/email-dns-sample" rel="noopener noreferrer">View free invented JSON sample ↗</a>
+   <a class="button primary" href="#api">Run FREE REAL public MX/SPF/DMARC preview ↓</a>
+   <a class="button secondary" href="https://vm5-openapi-x402.onrender.com/v1/email-dns-sample" rel="noopener noreferrer">View free invented JSON sample ↗</a>
    <a class="button secondary" href="#api">See optional paid API →</a>
   </div>
-  <p class="fine">No signup or wallet for the invented sample. No email address or message body is collected on this page. Never send account credentials, mailbox tokens, password-reset links, or DKIM private keys.</p>
+  <p class="fine">A real free DNS overview is now available at the linked separate buyer page: it contacts independent Google Public DNS only after an explicit click, sending the visitor-selected public domain and normal browser metadata to Google, not to VM5. It checks configuration only, NOT mail arrival, individual mailbox existence, Google Group posting rights or DKIM. It makes no wallet or USDC call. No signup or wallet for the invented sample. No email address or message body is collected on this page. Never send account credentials, mailbox tokens, password-reset links, or DKIM private keys.</p>
  </div>
  <aside class="price-card" aria-label="Real publicly quoted API price">
   <p class="eyebrow">OPTIONAL · LIVE 402 PRICE QUOTE</p>
@@ -74,6 +75,7 @@
 <section id="api" class="container section" aria-labelledby="api-title">
  <p class="eyebrow">MACHINE-READABLE, OPTIONAL PURCHASE</p>
  <h2 id="api-title">Agent buyers can request a real quote first</h2>
+ <p>First try the live FREE public DNS summary (zero USDC) linked in the buyer button below to see the actual domain MX/SPF/DMARC configuration before deciding whether a structured API report adds value. Free mode sends the selected public domain to Google Public DNS, not the merchant; no mailbox or deliverability guarantee. The paid operation is separately buyer-selected.</p>
  <p>The original VM5 merchant hosts <code>GET /v1/email-dns-preflight</code>. An ordinary unsigned HTTP request responds with an x402 payment requirement: <strong>0.005 native Circle Base USDC</strong> (5,000 six-decimal token units). An HTTP 402 is a quote, <strong>not proof of a customer payment</strong>, not a 200 report, and not permission to send funds.</p>
  <div class="code-block">
   <p>Preview the quote without approving any wallet payment:</p>

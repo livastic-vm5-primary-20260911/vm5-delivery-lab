@@ -86,3 +86,19 @@ Our [original domain-only agent quickstart](https://livastic-vm5-primary-2026091
 ### Original separate buyer checkout now actually public (not a verified sale)
 
 The same original human owner deployed a separate STATIC, voluntary human checkout at https://livastic-vm5-primary-20260911.github.io/base-usdc-csv-checkout/email-dns.html . The existing VM5 merchant GET domain-report path, native Base Circle USDC payee/price and free invented sample are unchanged. It starts with a local fictional report, validates the real unsigned HTTP402 response against exact URL/chain/token/5000 atomic USDC/payTo/EIP3009 fields, and only when an independent buyer expressly confirms does their OWN EIP-1193 wallet sign ONE expiring authorization. It does not possess any merchant owner's seed, does not force payments or retry signed requests. Simulated browser-wallet/merchant payment tests passed, but NO actual outside mainnet paid human settlement + successful delivery was independently tested. Zero new attributed customers or earnings; past USDC receipts belong to older products. Source/tests: https://github.com/livastic-vm5-primary-20260911/base-usdc-csv-checkout/tree/main/tests .
+
+
+### New genuine free first-party user value (Google DNS is an outside source)
+The existing VM5 parent DNS guide and homepage now explicitly lead visitors
+to the same-owner browser's FREE actual public MX/SPF/DMARC preview before any
+optional x402 USDC quote. The original separate buyer static checkout, not the
+parent guide itself, makes exactly three Google Public DNS-over-HTTPS calls
+ONLY when a visitor explicitly clicks the free real DNS button. Google
+receives the selected public domain and routine request metadata; the free
+result reports limited public configuration and warnings, not a live mailbox,
+SMTP acceptance, Google Group permission or security certification.
+There is NO customer data/wallet/key/cookie capture and NO owner API cost or
+buyer-token expenditure for the free preview. The existing priced native Base
+Circle USDC 0.005 per-call merchant remains optional, with actual paying buyer
+count unproven/zero here. Upstream Google DoH documentation:
+https://developers.google.com/speed/public-dns/docs/doh .
