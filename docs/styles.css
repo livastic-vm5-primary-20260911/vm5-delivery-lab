@@ -241,3 +241,6 @@ h1 em{font-style:normal;color:var(--mint)}
 .invoice-mini-paid-aside .invoice-mini-price small{font-size:16px}
 .invoice-mini-paid-aside p{font-size:12px;margin:10px 0}
 @media(max-width:760px){.invoice-mini-paid-inner{grid-template-columns:1fr;padding:23px 18px;gap:16px}.invoice-mini-paid-links{flex-direction:column;align-items:stretch}.invoice-mini-paid-links .btn{justify-content:center}}
+
+/* Separate original DNS buyer education entry, no online trackers or click handlers */
+.dns-agent-promo{margin-block:22px 38px}

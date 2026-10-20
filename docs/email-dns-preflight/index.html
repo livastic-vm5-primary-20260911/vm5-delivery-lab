@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08121f">
+<meta name="description" content="Check what a domain's public MX, SPF and DMARC DNS records can and cannot tell you before agent-driven email. Free invented JSON sample and optional 0.005 native Base USDC x402 API quote. No mailbox access.">
+<meta property="og:title" content="Email DNS Preflight for Agents — Free Sample + Optional Base USDC API">
+<meta property="og:description" content="Domain-level MX/SPF/DMARC preflight only. No inbox verification, DKIM-selector verification, private data, or deliverability guarantee.">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/email-dns-preflight/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Email DNS Preflight for Agents | VM5 Delivery Lab</title>
+</head>
+<body>
+<header class="header"><div class="container nav">
+  <a class="brand" href="../">VM5 <strong>Delivery Lab</strong></a>
+  <nav aria-label="Product navigation"><a href="#value">What it checks</a><a href="#example">Free sample</a><a href="#api">API &amp; price</a><a href="#limitations">Safety limits</a><a href="../">All tools</a></nav>
+</div></header>
+<main>
+<section class="hero container">
+ <div>
+  <p class="eyebrow">PUBLIC DNS ONLY · AGENT-FRIENDLY · BUYER-CONTROLLED X402</p>
+  <h1>Before you email a domain,<br><em>check its DNS.</em></h1>
+  <p class="lead">A missing mail exchanger or a misconfigured policy can be worth flagging before an agent tries to contact a company. Review <strong>public MX, SPF and DMARC configuration</strong> on demand. This is an inexpensive <em>configuration hint</em>, not a promise that any email will arrive.</p>
+  <div class="actions">
+   <a class="button primary" href="https://vm5-openapi-x402.onrender.com/v1/email-dns-sample" rel="noopener noreferrer">View free invented JSON sample ↗</a>
+   <a class="button secondary" href="#api">See optional paid API →</a>
+  </div>
+  <p class="fine">No signup or wallet for the invented sample. No email address or message body is collected on this page. Never send account credentials, mailbox tokens, password-reset links, or DKIM private keys.</p>
+ </div>
+ <aside class="price-card" aria-label="Real publicly quoted API price">
+  <p class="eyebrow">OPTIONAL · LIVE 402 PRICE QUOTE</p>
+  <strong>0.005 <span>USDC</span></strong>
+  <p>per authorized API call, not per subscription</p>
+  <dl>
+   <div><dt>Network</dt><dd>Base (eip155:8453)</dd></div>
+   <div><dt>Token</dt><dd>Native Circle USDC</dd></div>
+   <div><dt>Unsigned request</dt><dd>HTTP 402 — no payment</dd></div>
+   <div><dt>Confirmed buyers of this SKU</dt><dd>0 verified at publication</dd></div>
+  </dl>
+  <p class="fine">The payment quote is not a checkout button. A compatible independent buyer wallet must explicitly approve a payment. Price and recipient must be checked from the live quote.</p>
+ </aside>
+</section>
+<section id="value" class="container section" aria-labelledby="value-title">
+ <p class="eyebrow">USEFUL SIGNALS, NOT CLAIMS OF DELIVERY</p>
+ <h2 id="value-title">Three public DNS questions an operator can review</h2>
+ <div class="grid">
+  <article class="card"><h3>MX — Where could mail go?</h3><p>List advertised mail exchangers. A listed MX does <strong>not</strong> establish that a mailbox exists or that mail will be accepted. No MX record alone is not universal proof of failure; SMTP has specific fallback behavior.</p></article>
+  <article class="card"><h3>SPF — Is an authorization policy published?</h3><p>Identify the existence of a <code>v=spf1</code> TXT policy. A string existing is not enough to prove correct syntax or alignment. Multiple SPF policies and too many DNS lookups merit a separate standards-aware review.</p></article>
+  <article class="card"><h3>DMARC — What policy is requested?</h3><p>Inspect published <code>_dmarc</code> policy values such as <code>p=none</code>, <code>quarantine</code> or <code>reject</code>. A requested DNS policy is not evidence that a specific sent message passes SPF/DKIM alignment.</p></article>
+ </div>
+</section>
+<section id="example" class="container section" aria-labelledby="example-title">
+ <div class="split">
+  <div>
+   <p class="eyebrow">START WITHOUT SPENDING</p>
+   <h2 id="example-title">Free fixture: see the response shape</h2>
+   <p>Our public free JSON sample is <strong>fictional</strong>. It shows the machine-readable fields without querying any real domain or charging a wallet. The values below are illustrative and not DNS observations about example.org.</p>
+   <p><a class="text-link" href="https://vm5-openapi-x402.onrender.com/v1/email-dns-sample">Read the entire public sample ↗</a></p>
+  </div>
+  <pre aria-label="Illustrative domain report JSON"><code>{
+  "kind": "public_email_dns_preflight",
+  "domain": "example.org",
+  "mxCount": 1,
+  "spfPresent": true,
+  "dmarcPresent": true,
+  "dmarcPolicy": "reject",
+  "inspectedAtUTC": "FIXTURE_ONLY_NOT_LIVE_DNS"
+}</code></pre>
+ </div>
+</section>
+<section id="api" class="container section" aria-labelledby="api-title">
+ <p class="eyebrow">MACHINE-READABLE, OPTIONAL PURCHASE</p>
+ <h2 id="api-title">Agent buyers can request a real quote first</h2>
+ <p>The original VM5 merchant hosts <code>GET /v1/email-dns-preflight</code>. An ordinary unsigned HTTP request responds with an x402 payment requirement: <strong>0.005 native Circle Base USDC</strong> (5,000 six-decimal token units). An HTTP 402 is a quote, <strong>not proof of a customer payment</strong>, not a 200 report, and not permission to send funds.</p>
+ <div class="code-block">
+  <p>Preview the quote without approving any wallet payment:</p>
+  <pre><code>curl -i --max-time 35 \
+  'https://vm5-openapi-x402.onrender.com/v1/email-dns-preflight?domain=example.com'</code></pre>
+ </div>
+ <p>Read the <a class="text-link" href="https://vm5-openapi-x402.onrender.com/openapi.json">free machine-readable OpenAPI specification ↗</a> before integration. A buyer must independently check the live network, exact canonical USDC contract, amount, payee, URL, x402 authorization and settlement/response handling before signing. The service does not require giving us a buyer's private key or seed phrase. If settlement or a response is uncertain, <strong>do not blindly resend a paid request</strong> without checking whether the charge already went through.</p>
+ <div class="actions">
+  <a class="button primary" href="https://vm5-openapi-x402.onrender.com/v1/email-dns-preflight?domain=example.com" rel="noopener noreferrer">Inspect unsigned 402 API quote ↗</a>
+  <a class="button secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform" rel="noopener noreferrer">Request a nonconfidential integration discussion ↗</a>
+ </div>
+ <p class="fine">Opening the bare 402 URL in a normal browser may show a technical error or payment challenge; it is <strong>not</strong> a working human checkout. Payment requires a compatible x402 client and explicit buyer action. No buyer payment, repeat purchase, or recurring revenue is implied by this page.</p>
+</section>
+<section id="limitations" class="container section" aria-labelledby="limitations-title">
+ <p class="eyebrow">WHAT WE WILL NOT PRETEND</p>
+ <h2 id="limitations-title">Published DNS is not inbox deliverability</h2>
+ <div class="grid">
+  <article class="card"><h3>Not checked</h3><p>Mailbox existence, SMTP handshake, DKIM selector validation, SPF/DKIM pass for a particular message, actual spam-folder placement, user consent, or whether a person will reply.</p></article>
+  <article class="card"><h3>Operational caveats</h3><p>DNS may be cached, change after inspection, or use split-horizon/private resolvers. This is a bounded public-data preflight, not a continuous monitor or security/compliance certification.</p></article>
+  <article class="card"><h3>Privacy and consent</h3><p>Only pass a public domain you may inspect. The sample page runs as static HTML with no JavaScript, tracking or input collection. An independently chosen paid request sends the public domain to the API for DNS lookup; don't send personal emails or private account details.</p></article>
+ </div>
+ <p class="fine">This project is openly AI-assisted and owned by one human economic beneficiary across VM development environments. The existing original API can answer public DNS questions, but zero independently confirmed buyers have purchased this specific DNS product as of publication. No paid transaction is simulated here.</p>
+</section>
+</main>
+<footer class="container footer">© 2026 VM5 Delivery Lab · <a href="../privacy.html">Privacy</a> · <a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab">Source &amp; tests</a> · <a href="../">All products</a></footer>
+</body>
+</html>
