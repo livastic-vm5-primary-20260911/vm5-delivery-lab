@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08121f">
+<meta name="description" content="Free, browser-only Base USDC invoice-to-transfer CSV candidate matcher. Flag duplicate ERC20 event IDs, partial payments, pending status and reused payee-address ambiguity. No uploads, wallet or blockchain assumptions.">
+<meta property="og:title" content="Free Base USDC invoice-to-transfer matching preview — VM5 Delivery Lab">
+<meta property="og:description" content="Review local invoice CSV and reported USDC ERC20 receipt CSV side by side. Never mistake user-supplied rows for verified blockchain receipts.">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-invoice-bridge/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../usdc-payout-csv/style.css">
+<link rel="stylesheet" href="./style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Free Base USDC invoice-to-transfer CSV candidate matcher | VM5 Delivery Lab</title>
+
+<script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="../">VM5 <span>Delivery Lab</span></a>
+<nav aria-label="Site navigation"><a href="../usdc-payout-csv/">Payout CSV checker</a><a href="#tool">Try locally</a><a href="#limits">Limits</a><a href="#pilot">Paid custom pilot</a></nav>
+</div></header>
+<main>
+<section class="wrap hero">
+<div>
+<div class="eyebrow">Free · browser-local · Base native Circle USDC</div>
+<h1>Connect an invoice to its <em>reported</em> USDC transfer — not a guess.</h1>
+<p class="lead">Stablecoin payroll and vendor payments leave two separate stories: a business invoice and an ERC-20 event. Match the <strong>CSV records you already have</strong> and identify exceptions without uploading either file. Built for review before month-end, not to certify that a transfer ever occurred.</p>
+<div class="pills"><span>Unique txHash + logIndex</span><span>Reported partial payments</span><span>Duplicate event rows</span><span>Unreferenced transfers</span><span>Shared wallet ambiguity</span></div>
+<p><a href="#tool" class="btn primary">Run the sample locally ↓</a></p>
+</div>
+<aside class="panel" aria-label="Scope">
+<div class="eyebrow">What is actually verified?</div><div class="price">Free</div>
+<dl>
+<div><dt>Required asset</dt><dd>Canonical Circle USDC on Base</dd></div>
+<div><dt>Source</dt><dd>Two CSV extracts you supply</dd></div>
+<div><dt>Network requests</dt><dd>Zero</dd></div>
+<div><dt>Wallet / key access</dt><dd>None</dd></div>
+<div><dt>Blockchain finality</dt><dd>NOT independently verified</dd></div>
+<div><dt>Maximum input</dt><dd>64 KiB / 500 rows per CSV</dd></div>
+</dl>
+</aside>
+</section>
+<section id="tool" class="block"><div class="wrap">
+<div class="eyebrow">One useful, reproducible free test</div>
+<h2>Compare invoice records to a *self-reported* receipt export</h2>
+<p>Click <strong>Load invented example</strong> for a 4-invoice / 4-event demonstration with exact, partial, ambiguous reused-address and pending cases. You can replace the example with two CSVs you have authority to examine. No actual customer records are needed.</p>
+<div class="recon-grid">
+<div class="panel">
+<label for="invoices"><strong>Invoice CSV</strong></label>
+<p class="small"><code>invoice_id,recipient,amount_usdc,chain,token</code>. One unique invoice ID per row. Chain <code>eip155:8453</code>, token contract must be canonical Base USDC.</p>
+<label for="invoice-file">Optional local invoice CSV file</label><input id="invoice-file" type="file" accept=".csv,text/csv">
+<textarea id="invoices" spellcheck="false" aria-label="Invoice CSV" rows="11"></textarea>
+</div>
+<div class="panel">
+<label for="events"><strong>ERC-20 event export CSV</strong></label>
+<p class="small"><code>invoice_id,tx_hash,log_index,recipient,amount_usdc,chain,token,status</code>. Invoice ID may be empty. Status must explicitly say <code>reported_finalized</code> or <code>pending</code>.</p>
+<label for="event-file">Optional local reported transfer CSV file</label><input id="event-file" type="file" accept=".csv,text/csv">
+<textarea id="events" spellcheck="false" aria-label="USDC transfer CSV" rows="11"></textarea>
+</div>
+</div>
+<div class="notice"><strong>Never include:</strong> real vendor names, customer identifiers, secrets, wallet seed phrases, signing approvals, bank statements, private invoice PDFs or unapproved business data. The tool runs offline in your browser after its static code loads. The site does not call a blockchain explorer and cannot establish actual payment or accounting status.</div>
+<div class="recon-actions">
+<button id="example" type="button">Load invented example</button>
+<button id="compare" class="btn primary" type="button">Compare locally (no upload)</button>
+<button id="export" type="button" disabled>Download status-only CSV</button>
+</div>
+<div id="status" role="status" data-kind="info" aria-live="polite">Loading the invented example locally.</div>
+<div id="report" hidden>
+<h2>Reported candidate matches — not confirmed onchain payments</h2>
+<p id="summary"></p>
+<div class="scroll"><table class="recon-table"><thead><tr><th>Invoice ID</th><th>Review state</th><th>Expected USDC</th><th>Reported USDC</th><th>Reported difference</th></tr></thead><tbody id="rows"></tbody></table></div>
+<h3>Events requiring manual review</h3>
+<ul id="manual"></ul>
+<p class="small">An <code>exact</code> result means only that the two provided files align syntactically. It is NOT a settled onchain payment or cleared invoice. Manual review is necessary when a transfer is unreferenced or one payee address is shared across invoices.</p>
+</div>
+</div></section>
+<section id="limits" class="block"><div class="wrap">
+<div class="eyebrow">Avoid false confidence</div><h2>Why we refuse to auto-match by address alone</h2>
+<p>Two vendor invoices can intentionally share one wallet, and a transaction hash can contain more than one ERC-20 transfer. We use <code>chain_id:tx_hash:log_index</code> as an event identity. Duplicate event rows are NOT counted twice. Without an explicit invoice ID in the source export, we emit candidates for human review rather than claiming to know which invoice was settled.</p>
+<p>This tool <strong>does not call an RPC, query balance, validate contract events, identify a wallet owner, value FX at a historical rate, process bookkeeping, handle taxes, prevent real withdrawals, or reconcile merchant accounting</strong>. Those require independent verification and appropriately qualified operators. It is a local data-quality aid only. A malicious or inaccurate input CSV can produce a correspondingly misleading candidate report.</p>
+<p>For exchange-to-wallet transfer pairing instead of vendor invoice matching, try the same human owner's separate <a href="https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/crypto-transfer-csv-pair-auditor.html" target="_blank" rel="noopener noreferrer">free VM3 candidate transfer-pair checker</a>; it also does not assert final settlement.</p>
+</div></section>
+<section class="block" id="pilot"><div class="wrap">
+<div class="eyebrow">Optional contract · fixed scope · only after buyer agreement</div><h2>Need this adapted to your actual workflow?</h2>
+<p>We can discuss a <strong>conditional 49 USDC fixed-price first technical milestone</strong>: one anonymized/synthetic invoice CSV + one synthetic receipt CSV schema, a local-only format adapter, deterministic exception report and a short documented review checklist for up to 50 example invoice rows and one revision. This is an indicative proposal, NOT an active x402 automatic checkout, a paid order, legal advice or a promise to handle private live vendor data.</p>
+<p>Before any work or funds, the one Korea-based human-owned studio and the buyer must agree in writing on exact input schema, acceptance tests, permitted AI tooling, licensed data, ownership of code, lawful Base-USDC payee, settlement terms, refund/cancellation and what neither party is certifying. <strong>No funds are required to use this free page.</strong></p>
+<p><a class="btn primary" href="mailto:onecursora1@gmail.com?subject=Base%20USDC%20invoice%20reconciliation%20pilot%20inquiry&amp;body=I%20have%20a%20nonconfidential%20synthetic%20example%20and%20would%20like%20to%20discuss%20scope%20before%20any%20payment." rel="nofollow">Discuss one paid pilot scope by email ↗</a></p>
+<p class="small">Alternative: <a href="../usdc-payout-csv/custom-adapter.html">29 USDC conditional standalone payout-list CSV adapter</a> (a different simpler schema-conversion service), or <a href="../usdc-payout-csv/">free payout-list preflight</a>. No past clients, sales or retention from these offers are implied.</p>
+</div></section>
+</main>
+<footer><div class="wrap"><p>VM5 Delivery Lab · original AI-assisted prototype · one ultimate human economic owner. No payment was automatically made by this page. <a href="../privacy.html">Privacy principles</a> · <a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab" target="_blank" rel="noopener noreferrer">Open source</a></p></div></footer>
+</body>
+</html>
