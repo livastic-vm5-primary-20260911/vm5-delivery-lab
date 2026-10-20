@@ -1,0 +1,20 @@
+{
+  "x402Version": 2,
+  "error": "FICTIONAL DEMO ONLY, NOT A REAL PAYMENT",
+  "resource": {
+    "url": "https://api.example.invalid/fictional-example",
+    "description": "FICTIONAL DEMO. No such merchant exists.",
+    "mimeType": "application/json"
+  },
+  "accepts": [
+    {
+      "scheme": "exact",
+      "network": "eip155:8453",
+      "amount": "5000",
+      "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "payTo": "0x1111111111111111111111111111111111111111",
+      "maxTimeoutSeconds": 300,
+      "extra": {"name": "USD Coin", "version": "2"}
+    }
+  ]
+}
