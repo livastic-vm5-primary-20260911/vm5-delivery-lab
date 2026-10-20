@@ -92,6 +92,12 @@ node tools/base-usdc-payout-csv-cli.mjs --version</code></pre>
 <p style="margin-top:22px">This CLI accepts files from local disk or stdin and reports <strong>issue codes and row/column positions</strong>; it does not print source addresses, recipient notes or raw data cells. For private payroll, never commit the CSV or generated client information to a public GitHub repository. A cloud CI runner may still process files on that third-party provider; the CLI itself makes no network requests.</p>
 <p>Before any crypto payment, check the real person's recipient address, correct chain (Base, 8453), canonical Circle USDC token (<code>0x833589fCD6eDb6E08f4C7C32D4f71b54bdA02913</code>), appropriate EIP-55 checksum verification, sanctions/KYC obligations where applicable, amounts and actual sender-wallet simulation using separately authorized tools.</p>
 </div></section>
+<section class="block" id="receipt"><div class="wrap">
+  <div class="eyebrow">After payout: separate evidence review</div>
+  <h2>CSV input was clean. Was the transfer actually completed?</h2>
+  <p>Our same-owner VM3 project provides an independent <strong>free, browser-local candidate receipt CSV reviewer</strong> for supplied Base USDC txHash/logIndex and partial-payment fields. It can flag inconsistent copied records, but does NOT fetch chain data, prove receipt or turn a candidate CSV into settled money. Never mark an invoice paid without independently verified chain receipts and valid business records.</p>
+  <p><a class="btn" href="https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html" rel="noopener noreferrer">Free VM3 candidate Base USDC receipt review ↗</a></p>
+</div></section>
 <section class="block" id="paid"><div class="wrap">
 <div class="eyebrow">Optional integration for external automated clients</div><h2>Need machine-to-machine CSV structural reports instead?</h2>
 <p>The owner also operates a separate x402 v2 **generic CSV quality API** for automatic agents at <strong>0.005 native Base Circle USDC per valid call</strong>. This paid service checks ordinary CSV structure and is NOT an EVM payee ownership, crypto transaction or compliance validator. The public free CLI never charges anything or activates the paid service.</p>

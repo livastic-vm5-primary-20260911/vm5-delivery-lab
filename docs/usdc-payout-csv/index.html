@@ -151,6 +151,13 @@
 # An x402 v2 compatible wallet can choose whether to authorize.</code></pre>
   <p class="small">The merchant and x402 facilitator handle actual paid requests. We do not provide browser one-click payments or ask for any private signing keys. Historical outside paid API calls have occurred, but there are no proven repeat human subscriptions or guaranteed availability.</p>
 </div></section>
+<section class="block" id="after-payout"><div class="wrap">
+  <div class="eyebrow">Another real crypto-ops problem: after payment</div>
+  <h2>Inspect the transaction record after an authorized payout.</h2>
+  <p>This VM5 payout-list checker can detect a repeated payee before funds move. It cannot tell whether tokens actually arrived. If a payment has already been sent, a separate <strong>free, browser-local Base USDC CSV receipt review</strong> by our same-owner VM3 project can help compare user-supplied candidate transfer-log records, tx hashes, log indices, matching payees, chain/token metadata and partial-payment states.</p>
+  <p><a class="btn" href="https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html" rel="noopener noreferrer">Review candidate Base USDC receipt CSV records — free ↗</a></p>
+  <p class="small"><strong>Separate stage, not an independent chain proof.</strong> That VM3 tool checks <em>your supplied CSV only</em> without RPC, wallet access or transfers. It marks evidence <code>candidate_unverified</code>; it does <strong>not</strong> prove actual on-chain settlement, tax compliance, recipient ownership or payment finality. For real money, independently match chain receipts against the genuine transaction hash, token, network, beneficiary, invoice and authorization records before marking an invoice paid.</p>
+</div></section>
 <section class="block" id="support"><div class="wrap">
   <div class="eyebrow">Voluntary support · No obligation</div>
   <h2>Find the free checker useful?</h2>
