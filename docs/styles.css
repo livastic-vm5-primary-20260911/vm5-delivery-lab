@@ -201,3 +201,22 @@ h1 em{font-style:normal;color:var(--mint)}
 .micro-terms a{color:var(--mint);text-decoration:underline}
 @media(max-width:920px){.micro-offers-heading{align-items:flex-start;flex-direction:column}.micro-offer-grid{grid-template-columns:1fr}.micro-offer{min-height:0}}
 @media(max-width:590px){.micro-offers{padding-top:52px}.micro-offer{padding:20px}}
+
+/* Original same-beneficial-owner web3 paid pilot: distinct active Clawlancer listing; no fake sold count. */
+.web3-paid-review{padding-top:56px;padding-bottom:22px}
+.web3-paid-review-inner{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(245px,.7fr);gap:28px;padding:34px;border:1px solid rgba(109,228,196,.26);border-radius:18px;background:linear-gradient(125deg,#11282b,#0c1d23 74%)}
+.web3-paid-review h2{font-size:clamp(25px,3.5vw,39px);margin:10px 0 19px;line-height:1.18}
+.web3-paid-review h2 span{color:#9be3cf}
+.web3-paid-review p{color:#b7d0d1;font-size:14px;line-height:1.7}
+.web3-paid-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;margin-bottom:13px}
+.web3-paid-actions .btn{white-space:normal;max-width:100%}
+.web3-paid-review .web3-paid-limits{font-size:12px;max-width:800px}
+.web3-paid-aside{border:1px solid rgba(148,183,178,.28);border-radius:16px;background:rgba(2,22,26,.6);padding:20px}
+.web3-paid-review .web3-paid-aside-label{font-size:10px;color:#afd9d2;letter-spacing:.1em}
+.web3-paid-review .web3-paid-aside-price{font-size:44px;font-weight:700;color:#b2ffe9;line-height:1.15;margin:10px 0}
+.web3-paid-aside-price small{font-size:16px}
+.web3-paid-aside dl div{display:flex;gap:12px;justify-content:space-between;border-top:1px solid rgba(197,219,216,.15);padding:10px 0;font-size:12px}
+.web3-paid-aside dt{color:#91b5b6}
+.web3-paid-aside dd{text-align:right;margin:0;color:#e3f8f0;max-width:56%}
+.web3-paid-review .web3-paid-aside>p:last-child{font-size:11px;margin-top:15px}
+@media(max-width:760px){.web3-paid-review-inner{grid-template-columns:1fr;padding:24px 18px;gap:15px}.web3-paid-review{padding-top:42px}.web3-paid-actions{flex-direction:column;align-items:stretch}.web3-paid-actions .btn{justify-content:center}.web3-paid-aside{padding:17px}}

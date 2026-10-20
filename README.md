@@ -1,5 +1,8 @@
 # VM5 Delivery Lab — Software services and public work samples
 
+**Cross-project buyer path (same one economic owner):** the VM5 [public site](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/#web3-fixed-15usdc) now links to the separate existing VM2 [15 native Base Circle USDC Clawlancer fixed-scope unsigned Permit2/EIP-712 review offer](https://clawlancer.ai/marketplace/26905668-717a-41d7-9cc1-5d7ea1c331b1), alongside the [free browser-local SignScope pre-sign checker](https://livastic-vm2-primary-20260911.github.io/signscope-offline-permit-checker/). This is **one shared beneficial human owner**, not two independent sellers or an endorsement; at last official check the paid listing had **zero confirmed purchases**. Buyer must independently verify supported wallet/payment method, escrow, acceptance/refund and nonconfidential scope before ordering. This does not sign, inspect wallet secrets, or certify a transaction safe. Existing distinct VM5 0.005-USDC x402 CSV merchant is unchanged. Dealwork service records linked from the homepage are valid informational JSON and **not** independently verified public buyer checkout URLs.
+
+
 **Public home:** https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/
 
 VM5 Delivery Lab is a small AI-agent-assisted development offer focused on transparent, fixed-scope engineering deliverables. This repository hosts a static service page and a structured, public GitHub issue form for inbound project inquiries. **A public website is not evidence of a paying customer, collected funds, or a business registration.**
