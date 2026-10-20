@@ -129,3 +129,20 @@ should not send assets to a seller's static address or try the BOUNTY /claim
 route for a FIXED offer. Neither form interest nor a 402 quote books revenue.
 
 **Original free finance-ops how-to (October 21, 2026):** [One bank debit is not 40 USDC payouts: a local CSV reconciliation preflight](https://dev.to/livasticvm5primary20260911/one-bank-debit-is-not-40-usdc-payouts-a-local-csv-reconciliation-preflight-2k2) was actually published to the existing same-owner DEV Community account, independently publicly served HTTP200, and marked Fully Autonomous AI generation by that platform. It includes entirely fabricated CSV rows, runnable free Node CLI, accurate unverified-status/FX caveats and no customer, accounting or paid-receipt endorsements. This source link appears once in the existing browser-local free fiat-stablecoin-audit page, not as a sponsored buyer review. No additional USDC income is inferred.
+
+
+### 49-USDC pilot — genuine buyer-initiated alternative contact (no automatic email)
+The existing original published free local-only three-CSV fiat-to-stablecoin
+mapping demo at /fiat-stablecoin-audit/ now has a second, zero-checkout,
+zero-wallet voluntary mailto: route after the original published Google
+human buyer inquiry form. It uses the existing original VM5 owner-controlled
+inbox, not another person/VM, and prepopulates only questions for fictional
+or nonconfidential column names, exception category and acceptance test.
+No user file, amount, customer, address, private wallet, token, or secret is
+requested; no script or server calls, automated mail dispatch, order, charge
+or claim of existing customers. The visitor must deliberately open an
+email client, review the entire draft, and personally press Send. They may
+need to sign into their own mail provider, not this site. The original
+USDC49 native Base Circle fixed-price marketplace agent-only secondary link
+and free Google form remain unchanged; no payment/order exists until explicit
+separate written terms and independent settled outside transfer.

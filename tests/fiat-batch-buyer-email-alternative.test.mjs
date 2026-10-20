@@ -1,0 +1,53 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {readFile} from "node:fs/promises";
+
+const form="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform";
+const source="docs/fiat-stablecoin-audit/index.html";
+test("original buyer email alternative remains SECOND to no-obligation Google form",async()=>{
+ const html=await readFile(source,"utf8");
+ const start=html.indexOf("OPTIONAL CUSTOM WORK / EXISTING FIRST-PARTY USDC SELLER LISTING");
+ assert(start>0);
+ const section=html.slice(start,html.indexOf("</section>",start));
+ const formAt=section.indexOf(form),mailAt=section.indexOf('href="mailto:');
+ assert(formAt>0&&mailAt>formAt);
+ assert(section.indexOf("49 USDC")<formAt);
+ assert(section.includes("View 49 USDC FIXED marketplace offer"));
+ assert(section.indexOf('href="https://clawlancer.ai/marketplace/')>mailAt);
+ assert.match(section,/does not send anything automatically/);
+ assert.match(section,/your own email app/);
+ assert.match(section,/your email provider/);
+ assert.match(section,/No price, contract, confidentiality agreement or refund is accepted/);
+});
+test("prefilled email is editable synthetic-only questions, not a payment link",async()=>{
+ const html=await readFile(source,"utf8");
+ const m=html.match(/href="(mailto:[^"]+)"/);
+ assert(m);
+ assert.equal((html.match(/href="mailto:/g)||[]).length,1);
+ const u=new URL(m[1].replaceAll("&amp;","&"));
+ assert.equal(u.protocol,"mailto:");
+ assert.equal(u.pathname,"onecursor1@gmail.com");
+ const subject=u.searchParams.get("subject"),body=u.searchParams.get("body");
+ assert.match(subject,/VM5/);
+ assert.match(subject,/49 USDC/);
+ assert.match(subject,/scope question/);
+ assert.match(body,/asking about a possible paid scope, NOT placing an order/);
+ assert.match(body,/Fiat funding CSV column NAMES only/);
+ assert.match(body,/Invoice CSV column NAMES only/);
+ assert.match(body,/Processor payout CSV column NAMES only/);
+ assert.match(body,/Expected synthetic-only result/);
+ assert.match(body,/not include real transactions/);
+ assert.match(body,/separate written agreement/);
+ assert.equal(u.searchParams.has("cc"),false);
+ assert.equal(u.searchParams.has("bcc"),false);
+ assert(!/^https?:\/\//.test(u.href));
+ assert(!/<script[^>]+src=["']https?:/i.test(html));
+});
+test("existing marketplace is not falsely booked as purchase or receipt",async()=>{
+ const html=await readFile(source,"utf8");
+ const readme=await readFile("README.md","utf8");
+ assert(html.includes("ZERO actual purchases to date"));
+ assert(html.includes("The free inquiry form is a separate voluntary contact path and is NOT checkout."));
+ assert(readme.includes("zero-checkout"));
+ assert(readme.includes("no script or server calls, automated mail dispatch"));
+});
