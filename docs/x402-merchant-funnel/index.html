@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1522">
+<meta name="description" content="Free 100% local x402 merchant funnel inspector. Separate free requests, 402 quotes, signed retries, operator-reported settlements and paid result delivery from fictional or sanitized event CSVs. No wallet or upload.">
+<meta name="referrer" content="no-referrer">
+<meta property="og:title" content="x402 Merchant Funnel — probe vs. payment event audit">
+<meta property="og:description" content="A free privacy-first, local-only, honest x402 stage funnel audit. It does not verify blockchain payments.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/x402-merchant-funnel/">
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.mjs"></script>
+<title>Local x402 Merchant Funnel Inspector | VM5 Delivery Lab</title>
+</head>
+<body>
+<header><div class="wrap bar"><a class="logo" href="../">VM5 Delivery Lab</a><nav><a href="#tool">Local analyzer</a><a href="#interpret">How to read</a><a href="#pilot">Optional pilot</a></nav></div></header>
+<main>
+<section class="wrap hero">
+<p class="kicker">FREE • no signup • no wallet • no network requests • fictional sample included</p>
+<h1>1,500 x402 probes <em>do not mean</em> 1,500 paying agents.</h1>
+<p class="lead">Separate the events a seller can actually observe: free preview, invalid input, valid HTTP 402 quote, signed retry, <em>operator-reported</em> settlement and <em>operator-reported</em> successful delivery. Find where requests stop without pretending to know an agent's spending budget.</p>
+<div class="tags"><span>Works offline after static load</span><span>Exact 5-column CSV schema</span><span>Per-resource counts</span><span>Aggregate-only report</span><span>Never verifies finality</span></div>
+<a class="action primary" href="#tool">Analyze invented requests →</a>
+</section>
+<section class="band" id="tool"><div class="wrap">
+<p class="kicker">01 / LOCAL-ONLY EVENT AUDIT</p>
+<h2>Paste only invented or irreversibly pseudonymized event rows</h2>
+<p><strong>Do not paste real wallet addresses, transaction hashes, secrets, email addresses, cookies, raw IP addresses, client names, API keys or production logs.</strong> An opaque <code>payment_ref</code> is a fictional or locally pseudonymized reference, never a chain receipt. The tool makes no requests to our server after loading this static page.</p>
+<div class="grid">
+<div class="panel">
+<label for="events">Five columns, exact order: <code>attempt_id,resource,event,payment_ref,timestamp</code></label>
+<textarea id="events" spellcheck="false" rows="15" aria-describedby="schema-help" placeholder="Click Load invented example, or paste an authorized synthetic CSV."></textarea>
+<p class="note" id="schema-help">Allowed stages: <code>sample</code>, <code>invalid_before_quote</code>, <code>quote</code>, <code>signed_retry</code>, <code>settled</code>, <code>delivered</code>. One synthetic attempt ID per request; resources start with <code>/</code>. A settled/delivered pair shares one opaque payment reference. Order stages by ISO timestamp. Maximum 64 KiB / 500 data rows / 25 resource paths.</p>
+<div class="actions"><button id="load-example" type="button" class="action">Load invented example</button><button id="analyze" type="button" class="action primary">Analyze locally</button><button id="download" type="button" class="action" disabled>Download aggregate JSON</button></div>
+</div>
+<div>
+<div id="status" class="status" role="status" aria-live="polite">No data analyzed. Nothing has been uploaded.</div>
+<section class="panel results" id="results" hidden aria-label="Aggregate self-reported x402 funnel results">
+<h3>Operator-reported funnel</h3>
+<div class="metrics">
+<div><strong id="total-attempts">0</strong><span>Distinct requests</span></div>
+<div><strong id="quoted">0</strong><span>Valid 402 quotes</span></div>
+<div><strong id="retried">0</strong><span>Signed retries</span></div>
+<div><strong id="settled">0</strong><span>Claimed settlements</span></div>
+<div><strong id="delivered">0</strong><span>Claimed paid deliveries</span></div>
+<div><strong id="ratio">—</strong><span>Quoted → claimed delivery</span></div>
+</div>
+<h3>Unfinished request exceptions</h3>
+<div class="metrics exceptions"><div><strong id="invalid">0</strong><span>Rejected before quote</span></div><div><strong id="quote-only">0</strong><span>Quoted without retry</span></div><div><strong id="retry-no-pay">0</strong><span>Retried without settlement</span></div><div><strong id="pay-no-delivery">0</strong><span>Settled, not delivered</span></div><div><strong id="reused-ref">0</strong><span>Duplicate payment references</span></div></div>
+<div class="scroll"><table><thead><tr><th>Public route</th><th>Quoted</th><th>Signed retries</th><th>Claimed delivery</th></tr></thead><tbody id="resource-rows"></tbody></table></div>
+<p class="note">Metrics are computed only from CSV event claims. They are not verified chain revenue, buyer accounts, human visitors or an estimated wallet budget.</p>
+</section>
+</div>
+</div>
+</div></section>
+<section class="wrap block" id="interpret">
+<p class="kicker">02 / WHAT NUMBERS MEAN</p>
+<h2>Do not collapse the payment state machine</h2>
+<div class="three">
+<article><h3>Request discovery</h3><p><code>sample</code> and <code>quote</code> requests may be bots and crawlers. A quoted HTTP 402 alone is not a sale. Rate limits or bad schemas can stop a request before a paid challenge.</p></article>
+<article><h3>Willing to attempt payment</h3><p><code>signed_retry</code> in a merchant's own log is a stronger signal, but without facilitator acceptance, correct chain/token/recipient, distinct onchain Transfer and delivery it is not proof of purchase.</p></article>
+<article><h3>Possible paid outcome</h3><p><code>settled</code> + <code>delivered</code> rows are still self-reported. Confirm a unique <code>chain:txHash:logIndex</code> independently, then reconcile with the verified paid response, order and legitimate buyer before recording revenue.</p></article>
+</div>
+<p>A genuine example from this single human-owned team: two previously confirmed external automated-scout x402 deliveries totalled 0.015 native Base USDC. A separate older 0.005 USDC receipt could not be reliably mapped to a successful paid delivery, so it is <strong>not</strong> counted as a proven delivered purchase. This site earns nothing by itself; independent paid merchant customers are not established.</p>
+<p>Already have HTTP 402 browser CORS or response-header issues? Other products from the <strong>same one human economic owner</strong> cover those separately: <a href="https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/">VM3 free browser compatibility CLI</a>, <a href="https://livastic-vm1-primary.github.io/paperpilot-tools/x402-inspector.html">VM1 free x402 header-size inspector</a> and <a href="../">VM5 currently live x402 seller offerings</a>. This tool does not duplicate those utilities.</p>
+</section>
+<section class="band" id="pilot"><div class="wrap">
+<p class="kicker">03 / CONDITIONAL PAID ENGINEERING — NOT CHECKOUT</p>
+<h2>Have event columns this demo cannot read?</h2>
+<p>Proposed <strong>49 native Circle Base USDC</strong> fixed-scope adapter: map up to ten explicitly authorized <em>synthetic</em> events in one sanitized merchant log schema to this offline five-stage funnel, produce deterministic tests and an exception memo, with one revision. This is an indicative offer, not an existing order or an automatic transfer. No actual x402 payer budget prediction, real logs, money movement, financial certification, legal or security audit, server access, live secret or blockchain-verification service is included.</p>
+<p>Before starting work or payment, buyer and the one Korea-based human owner must mutually agree in writing to the input/output schema, permitted AI assistance, ownership/licensing, scope, acceptance tests, cancellation and refund terms, lawful payment destination and timing. We currently have <strong>zero independent paid customers for this funnel tool</strong>.</p>
+<a class="action primary" href="mailto:onecursora1@gmail.com?subject=x402%20merchant%20event%20funnel%20synthetic%20CSV%20pilot%20inquiry&amp;body=I%20want%20to%20discuss%20a%20synthetic%2Fnonconfidential%20event%20schema%20before%20any%20payment." rel="nofollow">Discuss a paid synthetic-schema pilot →</a>
+<p class="note">Prefer free feedback? Tell us what event name, payment correlation field or public sample schema is missing via <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform" target="_blank" rel="noopener noreferrer">the existing optional project inquiry form</a>. It is a third-party Google form; review its privacy settings. Never send sensitive customer or transaction data.</p>
+</div></section>
+</main>
+<footer class="wrap"><p>VM5 Delivery Lab · AI-assisted, one human economic owner · local-only noncustodial developer tooling · <a href="../privacy.html">Privacy</a> · <a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/tree/main/docs/x402-merchant-funnel" target="_blank" rel="noopener noreferrer">Source</a></p></footer>
+</body></html>
