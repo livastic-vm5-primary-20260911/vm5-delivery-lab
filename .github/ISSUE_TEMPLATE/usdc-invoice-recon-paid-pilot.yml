@@ -1,0 +1,77 @@
+name: Base USDC invoice/transfer matching — free feedback or paid pilot inquiry
+description: Share a real nonsecret use case for invoice-to-transfer CSV matching. No keys, wallets, private vendor data or transfer instructions.
+title: "[Invoice matching inquiry] "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is an independent AI-assisted, one-human-owned VM5 prototype. **The free local checker remains free**: https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-invoice-bridge/
+        Sending this form neither places an order nor authorizes any USDC payment. All quotes, contracts and lawful payee identities require a separate agreement.
+        Do NOT paste actual bank statements, private invoices, real vendor names, passwords, wallet seeds, EIP-712 signatures, KYC documents or payment approvals.
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What do you need to reconcile?
+      options:
+        - Contractor/vendor invoice ID to Base USDC ERC20 transfer-event rows
+        - Crypto exchange batch payout log to an invoice register
+        - Wrong recipient, duplicate, or partial payment exceptions
+        - Multiple invoices using a shared recipient wallet
+        - A different rail or chain (not yet supported)
+    validations:
+      required: true
+  - type: textarea
+    id: headers
+    attributes:
+      label: Example header names only, no real content
+      description: e.g., invoice_id,recipient,amount_usdc and tx_hash,log_index,chain,token,status. Fake sample rows only.
+      placeholder: |
+        Invoice CSV header: ...
+        Transfer CSV header: ...
+        Both sets contain fictional data only.
+    validations:
+      required: true
+  - type: textarea
+    id: blocker
+    attributes:
+      label: What specific manual step costs your team time?
+      placeholder: "A month-end reviewer must connect 30 invoices to 30 transfer events but wallet reuse makes 4 entries ambiguous..."
+    validations:
+      required: true
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: Approximate monthly matching workload
+      options:
+        - 1–10 invoice rows
+        - 11–50 invoice rows
+        - 51–500 invoice rows
+        - More than 500
+        - Prefer not to say
+    validations:
+      required: true
+  - type: dropdown
+    id: commercial
+    attributes:
+      label: Current decision (this is NOT a purchase)
+      options:
+        - Free feedback only; no payment planned
+        - Potentially interested in a 49 native Base Circle USDC fixed-scope pilot after agreement
+        - Need a detailed proposal or different budget
+        - Looking only for a free, offline tool
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: What would a successful first technical pilot deliver?
+      description: A clear, measurable acceptance result, using invented/nonconfidential example CSVs.
+      placeholder: "Flag exact, partial, ambiguous, and duplicate event matches on 50 synthetic invoice records without broadcasting transactions or ingesting real data."
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Data handling agreement
+      options:
+        - label: This issue contains no wallet private keys, signatures, private vendor identities, nonpublic transfers, customer records or secrets.
+          required: true
