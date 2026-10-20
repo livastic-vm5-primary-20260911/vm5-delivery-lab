@@ -15,6 +15,12 @@ const requiredPay=["invoice_id","tx_hash","log_index","recipient","amount_usdc",
 function parseTable(text,need){
  if(typeof text!=="string"||new TextEncoder().encode(text).length>LIMITS.maxBytes)throw Error("Each CSV must be text under 64 KiB.");
  const rows=parseCsv(text); // tested original bounded escaped-quote parser
+ // CSV exporters can append empty physical lines after their last record.
+ // Ignore ONLY completely empty, single-cell trailing records; preserve
+ // internal blank lines, extra columns and all other malformed rows.
+ while(rows.length>1 && rows.at(-1).length===1 && rows.at(-1)[0].trim()===""){
+   rows.pop();
+ }
  if(rows.length<=1)throw Error("CSV must contain a header and at least one row.");
  const header=rows[0].map(c=>c.trim().toLowerCase());
  if(header.some(x=>!x)||new Set(header).size!==header.length||header.length>LIMITS.maxColumns)throw Error("Column headers must be unique, nonempty and at most 8.");
