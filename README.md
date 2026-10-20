@@ -1,5 +1,8 @@
 # VM5 Delivery Lab — Software services and public work samples
 
+**External free-directory review application (2026-10-21):** We placed one voluntary, visible non-tracking text link to the independent [Twelve Tools](https://twelve.tools/) directory in the public fiat-stablecoin audit tool footer because its real public free listing requires a reciprocal link. This link does not claim the directory approved the product, referral revenue, paying users or outside endorsement. We paid nothing, provided no wallet or private finance records, and will only report acceptance if independently confirmed. The exact listed product URL is the existing real [free browser-local fiat-to-USDC/USDT batch reconciliation checker](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/fiat-stablecoin-audit/).
+
+
 **Offline fiat-batch-to-USDC/USDT payouts Node CLI (new v1 release):** [Free no-dependency CLI instructions](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/fiat-stablecoin-audit/cli.html) are based on the existing original browser-only [fiat-stablecoin audit](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/fiat-stablecoin-audit/). Users can download and run three completely invented tiny CSVs with **no upload, API key or wallet**, generate ID-free JSON/CSV finding codes, or use --strict for CI. This remains a *reported-export* structural preflight, not a bank/processor/chain verifier, accounting advice, AML screening or proven client service. The separate existing original 49USDC Clawlancer human buyer listing is unchanged. Repo tests and independently reproducible release artifacts document behavior; no new USDC revenue is asserted.
 
 
