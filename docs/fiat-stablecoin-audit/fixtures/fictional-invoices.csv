@@ -1,0 +1,6 @@
+invoice_id,payout_id,amount,currency
+INV-001,P-001,100,USD
+INV-002,P-002,220,USDC
+INV-003,P-003,125,EUR
+INV-004,P-004,80,USDT
+INV-005,P-005,75,EUR

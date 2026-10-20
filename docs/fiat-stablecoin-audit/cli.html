@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Download a free offline Node.js CLI for fiat-to-USDC/USDT contractor payout exception checks. No API keys, uploads, bank or wallet connections. Try 3 fictional CSV files.">
+<meta name="theme-color" content="#0b1324">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/fiat-stablecoin-audit/cli.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Free Offline CLI | Fiat-to-Stablecoin Contractor Payout Audit</title>
+</head>
+<body>
+<header class="header"><div class="container header-inner"><a class="logo" href="../">VM5 <b>Delivery Lab</b></a><nav><a href="./">Free browser tool</a><a href="#example">CLI example</a><a href="#limits">Limitations</a></nav></div></header>
+<main>
+<section class="hero container">
+<div class="eyebrow">OPEN SOURCE · NODE.JS 18+ · ZERO NETWORK CALLS</div>
+<h1>Audit a fiat-funded payout batch <span>on your own machine.</span></h1>
+<p class="lede">Free local command-line version of our contractor payout exception finder. Compare bank batch funding, invoice references and operator-reported USDC/USDT payouts. Inspect source, edit fictional test rows and export ID-free exception codes without uploading confidential records or connecting a wallet.</p>
+<p><a class="primary" href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/releases/tag/v1.0.0-fiat-stablecoin-batch-cli" target="_blank" rel="noopener noreferrer">Get the free, versioned CLI + fictional sample files ↗</a></p>
+<p class="small">No subscription, account, API key, wallet, transaction signing, blockchain RPC, KYC or npm install. Independent original AI-assisted software; not affiliated with payout processors.</p>
+</section>
+<section class="tool-band" id="example"><div class="container">
+<div class="eyebrow">FIVE FICTIONAL CONTRACTORS / SIX REPORTED PAYOUTS</div>
+<h2>Three sample CSVs. One reproducible exception report.</h2>
+<p>Download the GitHub ZIP and extract it locally. From inside the extracted folder, run:</p>
+<div class="card"><pre style="white-space:pre-wrap;overflow-wrap:anywhere;color:#e6f3ff;line-height:1.7"><code>node cli.mjs --funding fictional-bank-batches.csv --invoices fictional-invoices.csv --payouts fictional-processor-payouts.csv --format json
+
+# Optional pipeline-safe CSV exception output (row indices, no actual IDs):
+node cli.mjs --funding fictional-bank-batches.csv --invoices fictional-invoices.csv --payouts fictional-processor-payouts.csv --format csv &gt; exceptions.csv
+
+# CI mode: 1 = findings, 2 = invalid input, 0 = no findings:
+node cli.mjs --funding fictional-bank-batches.csv --invoices fictional-invoices.csv --payouts fictional-processor-payouts.csv --strict</code></pre></div>
+<p>The invented sample has 2 bank funding batches, 5 invoices, 6 reported processor payout rows and <strong>6 exception findings</strong>. Only 1 invoice is syntactically consistent with the operator's export; that is NOT evidence of a real paid contractor. The CLI returns row numbers, exception codes and counts, never full invoice IDs, wallet addresses or personal details.</p>
+<div class="card-grid">
+<article class="card"><h3>Batch CSV</h3><p>Required: <code>batch_id, amount, currency, status</code>. Bank funding status is distinct from individual payout status.</p></article>
+<article class="card"><h3>Invoice CSV</h3><p>Required: <code>invoice_id, payout_id, amount, currency</code>. A stable invoice-to-payout reference avoids speculative amount/address matching.</p></article>
+<article class="card"><h3>Processor CSV</h3><p>Required: <code>payout_id, invoice_id, batch_id, sent_amount, sent_currency, received_amount, received_currency, status</code>. The recipient currency may differ from the bank-funded currency.</p></article>
+</div>
+<p>Exact six-decimal math is used for reported amounts. The tool flags duplicate reference IDs, unmatched invoice/payout IDs, nonfinal payout states, unfunded batch references, mismatched sent amount/currency, and the need for separate FX/fees reconciliation.</p>
+</div></section>
+<section id="limits" class="section container">
+<div class="eyebrow">CRITICAL BOUNDARIES</div><h2>What is not verified</h2>
+<div class="two"><div><h3>CSV status is not payment evidence.</h3><p>A row marked “paid” is untrusted input. The CLI does not read any bank statement authority, inspect a provider API, check onchain events or prove finality. Confirm actual beneficiary payout and contractual status through your authorized processor and bank.</p></div><div><h3>FX is not guessed.</h3><p>A 5,000 EUR bank debit cannot directly reconcile to 5,000 USDC/USDT transfers without rate, timestamp, conversion fee and settlement-currency evidence. Obtain documentation and a qualified accountant's review.</p></div></div>
+<p><a class="secondary" href="./">Use browser-only version instead ↗</a></p>
+</section>
+</main>
+<footer><div class="container footer"><a href="../">VM5 Delivery Lab</a><span>Free local source · AI-assisted · 2026</span><a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab" target="_blank" rel="noopener noreferrer">GitHub source ↗</a></div></footer>
+</body></html>
