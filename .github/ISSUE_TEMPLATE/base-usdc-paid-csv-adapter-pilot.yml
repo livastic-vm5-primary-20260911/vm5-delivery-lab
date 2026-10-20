@@ -1,0 +1,80 @@
+name: "Request a paid Base USDC CSV import adapter pilot"
+description: "Fixed-scope customized local CSV import mapping/QA; indicative 29 native Base USDC after written agreement. PUBLIC inquiry only."
+title: "[Paid CSV adapter pilot inquiry] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a **public, no-cost inquiry, NOT a purchase, payment link, escrow or contract**. We are a one-owner South Korea-based AI-assisted independent software workflow. A pilot may cost an **indicative 29 native Circle USDC on Base (chain ID 8453)** *only after* we mutually agree on written scope, rights, cancellation/payment terms, lawful Korean-contractor payout and AI-assisted delivery.
+
+        The proposed deliverable is a narrowly scoped offline Node.js mapping tool to convert **one** generic payout-list CSV header/layout (using *synthetic fictional* examples only) to the local checker schema `address,amount,chain,token,memo`, with **at least 10 reproducible local tests**, a short README and **one consolidated in-scope correction**. No live wallet integration, treasury access, payment execution, on-chain checksum or ownership verification, tax/legal compliance or audit opinion. Production client data, customer credentials and real wallet addresses are prohibited.
+
+        Buyer requests may be rejected if the input is confidential, regulated, requires financial/custodial work, KYC or automated wallet signing, or cannot be lawfully fulfilled from South Korea. No upfront developer work or invoice is guaranteed. If you need only standard CSV structural checks, the [existing FREE original checker](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/) is sufficient.
+  - type: dropdown
+    id: role
+    attributes:
+      label: Your use case
+      options:
+        - Contributor or bounty payout CSV import
+        - Contractor payroll CSV import
+        - DAO/grant recipient list QA
+        - Developer or CI synthetic CSV fixtures
+        - Other, please explain
+    validations:
+      required: true
+  - type: textarea
+    id: synthetic-input-headers
+    attributes:
+      label: Source column names and one fake row (SYNTHETIC example only)
+      description: "Fictional headers, fictional address/placeholders and fictional amounts ONLY. Never paste real payroll, personal, private-wallet, seed, API or business client data."
+      placeholder: |
+        wallet_address,usdc_amount,network,reference
+        0x1111111111111111111111111111111111111111,2.50,8453,FAKE-001
+    validations:
+      required: true
+  - type: textarea
+    id: expected-canonical-output
+    attributes:
+      label: Exact expected mapped target columns and synthetic output
+      description: "Which source columns should produce address,amount,chain,token,memo? Do not disclose private addresses or commercial secrets."
+      placeholder: |
+        address,amount,chain,token,memo
+        0x1111111111111111111111111111111111111111,2.50,Base,USDC,FAKE-001
+    validations:
+      required: true
+  - type: dropdown
+    id: local-runtime
+    attributes:
+      label: Runtime and delivery preference
+      options:
+        - Node.js local CLI and 10+ synthetic unit tests
+        - Static browser-only HTML/JavaScript prototype with tests
+        - Not sure — please scope this before quoting
+    validations:
+      required: true
+  - type: dropdown
+    id: indicative-budget
+    attributes:
+      label: Does indicative 29 Base USDC fit if scope is accepted?
+      options:
+        - Potentially yes, subject to the written quote and lawful payment conditions
+        - Need a smaller/larger fixed quote
+        - Just exploring; no purchasing commitment
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: One deterministic acceptance criterion
+      placeholder: "Given my fake two-row CSV, the mapped target has these exact rows; duplicate or wrong-chain entries are flagged."
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Safety and payment
+      options:
+        - label: "I understand this PUBLIC GitHub issue cannot contain actual wallet addresses, private client/financial data or any secrets."
+          required: true
+        - label: "I understand this is a FREE INQUIRY, not an accepted contract or a request to send USDC. No money should be sent until written scope and payment terms are confirmed."
+          required: true
