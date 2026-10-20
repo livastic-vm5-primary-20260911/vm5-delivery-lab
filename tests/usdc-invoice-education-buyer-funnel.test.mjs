@@ -25,4 +25,7 @@ test("Education never confuses buyer proposal with actual paywall or sale",async
  assert.match(html,/NOT an active x402 automatic checkout/);
  assert.match(html,/no customer testimonial or paid order is implied/);
  assert.match(html,/sample above/);
+ assert.match(html,/existing voluntary project inquiry form/);
+ assert.ok(html.includes("1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g"));
+ assert.match(html,/Sending feedback does not order or purchase anything/);
 });
