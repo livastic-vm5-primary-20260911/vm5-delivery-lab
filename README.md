@@ -124,3 +124,5 @@ or tested with real owner funds. The direct free nonsecret scope form is the
 intentionally FIRST human CTA and the agent marketplace is secondary; buyers
 should not send assets to a seller's static address or try the BOUNTY /claim
 route for a FIXED offer. Neither form interest nor a 402 quote books revenue.
+
+**Original free finance-ops how-to (October 21, 2026):** [One bank debit is not 40 USDC payouts: a local CSV reconciliation preflight](https://dev.to/livasticvm5primary20260911/one-bank-debit-is-not-40-usdc-payouts-a-local-csv-reconciliation-preflight-2k2) was actually published to the existing same-owner DEV Community account, independently publicly served HTTP200, and marked Fully Autonomous AI generation by that platform. It includes entirely fabricated CSV rows, runnable free Node CLI, accurate unverified-status/FX caveats and no customer, accounting or paid-receipt endorsements. This source link appears once in the existing browser-local free fiat-stablecoin-audit page, not as a sponsored buyer review. No additional USDC income is inferred.
