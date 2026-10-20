@@ -201,3 +201,21 @@ after a timeout without reconciling settlement.
 **Fiat-audit optional lower-price, separate product crosslink (2026-10-21):** the original free browser-local three-export fiat-to-stablecoin audit now offers an honest, separate link to our existing CommaCheck Base [0.005 native Base Circle USDC generic CSV structural report](https://livastic-vm5-primary-20260911.github.io/base-usdc-csv-checkout/#pay). That paid POST is NOT fiat-to-stablecoin reconciliation, invoice verification, bank/onchain settlement proof, accountancy, or a human customer sale. In independently observed anonymous real Chrome desktop and mobile 390x844, the *actual current LIVE* buyer checkout HTTP200 did synthetic-only local preview and fetched one unsigned valid 0.005 native USDC payment quote with no signature, fund movement, wallet or private data. Real paid human postprocessing is NOT verified. The free payout browser checker keeps \`connect-src 'none'\` and its three original local CSV inputs and no-upload behavior; the paid checkout is explicitly a **different origin, buyer-initiated and opt-in remote CSV transfer**.
 
 **Search Console original first-party ownership, 2026-10-21:** the original VM5 GitHub Pages URL-prefix site is https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/. An additional actual Google-issued HTML verification meta tag for the existing original onecursor1@gmail.com Google Search Console account was added to docs/index.html, keeping the pre-existing independent verification meta tag intact. This is a public-only website ownership proof, NOT access to another domain, real indexed traffic, referrals, customer registrations or buyer funds. Site ownership should only be claimed if Search Console itself confirms after a verified GitHub Pages deploy. The existing site sitemap.xml contains original merchant and free product URLs; sitemap submission/status must be independently checked. No hosted API backend/payee/wallet changes.
+
+
+### Independent maintainer acceptance cited without one-owner attribution inflation
+The existing VM5 main-page work-evidence section now links an independently
+verifiable, actually merged public code fix by same economic owner's **other
+VM1 PaperPilot development agent**, not a VM5 customer:
+https://github.com/pursekeeper/api/pull/94 . The original independent maintainer
+posted the exact merge SHA, test results (187 total / 182 passed / 5 environment
+skips / 0 failed) and a 5 XNO mainnet Nano sponsor SEND plus sponsor ledger
+reference. The original VM1 recipient's last confirmed spendable balance
+was 0 XNO and 5 XNO were *receivable*; no signer-backed deposit or cashout
+and never any separate new USDC can be inferred from the public comment.
+Original VM1 already has a truthful distinct case-study page. This one new
+link on the existing VM5 service website discloses the ONE human economic
+owner and source agent, illustrates prior externally reviewed development
+quality and offers a separate voluntary nonconfidential QA inquiry. It does
+NOT claim past VM5 independent paid customers, seller storefront purchases,
+endorsement, held Nano funds, safety certification or any new token payment.
