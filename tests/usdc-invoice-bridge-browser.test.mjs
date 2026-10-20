@@ -45,6 +45,12 @@ test("real local browser desktop/mobile synthetic invoice pairing; no internet o
    await page.locator("#export").click();
    const download=await downloadPromise;
    assert.equal(download.suggestedFilename(),"reported-invoice-candidate-statuses.csv");
+   const reviewPromise=page.waitForEvent("download",{timeout:8000});
+   await page.locator("#evidence-export").click();
+   const review=await reviewPromise;
+   assert.equal(review.suggestedFilename(),"unverified-usdc-event-review-index.csv");
+   assert.match(await page.locator("#status").innerText(),/UNVERIFIED CSV input/);
+
    assert.deepEqual(errors,[]);
    assert.deepEqual(network,[]);
    console.log("INVOICE_BROWSER_LOCAL_ONLY_PASS",JSON.stringify({width:viewport.width,invoices:4,reportedExact:1,partial:1,manualReusedPayee:true,realUploads:0,realWalletCalls:0,pageJSExceptions:0}));

@@ -225,3 +225,22 @@ h1 em{font-style:normal;color:var(--mint)}
 .web3-paid-aside dd{text-align:right;margin:0;color:#e3f8f0;max-width:56%}
 .web3-paid-review .web3-paid-aside>p:last-child{font-size:11px;margin-top:15px}
 @media(max-width:760px){.web3-paid-review-inner{grid-template-columns:1fr;padding:24px 18px;gap:15px}.web3-paid-review{padding-top:42px}.web3-paid-actions{flex-direction:column;align-items:stretch}.web3-paid-actions .btn{justify-content:center}.web3-paid-aside{padding:17px}}
+
+/* Existing ORIGINAL VM5 19 native Base USDC synthetic invoice mini-review, zero paying clients shown. */
+.invoice-mini-paid{padding-top:20px;padding-bottom:27px}
+.invoice-mini-paid-inner{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(225px,.65fr);gap:24px;border:1px solid rgba(148,224,196,.27);border-radius:17px;padding:28px;background:linear-gradient(120deg,#14282b,#0e1924)}
+.invoice-mini-paid h2{font-size:clamp(24px,3.2vw,34px);line-height:1.22;margin:12px 0 16px}
+.invoice-mini-paid h2 span{color:#a5ecda}
+.invoice-mini-paid p{font-size:13px;line-height:1.76;color:#c6d9d8}
+.invoice-mini-paid-links{display:flex;flex-wrap:wrap;gap:11px;margin:20px 0 15px}
+.invoice-mini-paid-links a{max-width:100%;white-space:normal}
+.invoice-mini-paid .invoice-mini-terms{font-size:11.5px;margin-top:6px}
+.invoice-mini-paid-aside{border-radius:13px;border:1px solid rgba(148,224,196,.23);background:rgba(7,24,29,.7);padding:19px}
+.invoice-mini-paid-aside .invoice-mini-badge{font-size:10px;letter-spacing:.09em;color:#b1eee1}
+.invoice-mini-paid-aside .invoice-mini-price{font-size:41px;line-height:1.14;font-weight:700;margin:9px 0 18px;color:#bdffe8}
+.invoice-mini-paid-aside .invoice-mini-price small{font-size:16px}
+.invoice-mini-paid-aside p{font-size:12px;margin:10px 0}
+@media(max-width:760px){.invoice-mini-paid-inner{grid-template-columns:1fr;padding:23px 18px;gap:16px}.invoice-mini-paid-links{flex-direction:column;align-items:stretch}.invoice-mini-paid-links .btn{justify-content:center}}
+
+/* Separate original DNS buyer education entry, no online trackers or click handlers */
+.dns-agent-promo{margin-block:22px 38px}
