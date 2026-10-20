@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08121f">
+<meta name="description" content="Free private browser-only Base USDC payout CSV checker. Find duplicate payee wallets, zero/invalid amounts, wrong chain or token and spreadsheet formula risks before importing recipients. No wallet required.">
+<meta name="robots" content="index,follow,max-snippet:-1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'none'; img-src 'self'; font-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Base USDC Payout CSV Checker — Free, Local-Only">
+<meta property="og:description" content="Preview EVM address formatting, duplicated payout wallets and amounts with zero uploads, signers or approvals.">
+<meta property="og:url" content="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.mjs"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Base USDC Payout CSV Checker — Local Only",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any modern browser",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "url": "https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/",
+  "description": "Independent original browser-only Base USDC recipient payout CSV syntax checker with no uploads, wallets, signing or transfer capability. Detects duplicate addresses, invalid decimal amounts, chain/token mismatches, CSV structural errors and spreadsheet formula-like cells. Not a blockchain verifier.",
+  "featureList": [
+    "Local CSV reader without upload",
+    "Base ERC20 address format",
+    "Duplicate payee detection",
+    "Exact six-decimal USDC integer math",
+    "No wallet or transfers",
+    "Only safe report metadata"
+  ],
+  "codeRepository": "https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab"
+}
+</script>
+<title>Free Base USDC Payout CSV Checker — Private Address & Amount Preflight | VM5 Delivery Lab</title>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="../">VM5 <span>Delivery Lab</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#tool">Check CSV</a>
+      <a href="#automatic">Automation / API</a>
+      <a href="#support">Optional Base USDC support</a>
+      <a href="#limitations">Safety limits</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="wrap hero">
+  <div>
+    <div class="eyebrow">Free tool · Base mainnet · Local browser only</div>
+    <h1>Check your USDC payout list <em>before you sign.</em></h1>
+    <p class="lead">A duplicate wallet, a wrong-chain row or a 7-decimal amount can derail a contractor payout or bounty distribution. Inspect recipient CSVs without uploading them or connecting a wallet.</p>
+    <div class="pills"><span>Duplicate addresses</span><span>Exact six-decimal USDC</span><span>Chain / token flags</span><span>Spreadsheet formulas</span></div>
+    <p class="small" style="margin-top:17px">Designed for indie teams, contributor programs and developers paying contractors in Base USDC. Not a blockchain verifier, a sanctions screen, a wallet, a multisender or a replacement for a real transaction simulation.</p>
+    <p><a href="#tool" class="btn primary">Review a CSV locally ↓</a></p>
+  </div>
+  <aside class="panel" aria-label="Product facts">
+    <div class="eyebrow">Personal-use preview</div>
+    <div class="price">Free</div>
+    <p>No account, API key or wallet connection.</p>
+    <dl>
+      <div><dt>Chain</dt><dd>Base · 8453</dd></div>
+      <div><dt>Asset</dt><dd>Native Circle USDC</dd></div>
+      <div><dt>File limit</dt><dd>64 KiB · 500 rows</dd></div>
+      <div><dt>Privacy</dt><dd>Local only · 0 uploads</dd></div>
+      <div><dt>Signing / transfers</dt><dd>None</dd></div>
+    </dl>
+  </aside>
+</section>
+<section class="block" id="tool">
+  <div class="wrap">
+    <div class="eyebrow">Live original tool</div>
+    <h2>Paste CSV or open a local file.</h2>
+    <p>Required columns are <code>address,amount</code>; optionally include <code>chain,token,memo</code>. Column names are case-insensitive. Amount is decimal USDC (not atomic units). Any file you choose is read <strong>on your own device</strong> and never uploaded by this page.</p>
+    <div class="local-grid">
+      <div class="input-panel">
+        <label for="csv-input">Recipient payout CSV</label>
+        <textarea id="csv-input" autocomplete="off" spellcheck="false" aria-describedby="csv-hint" placeholder="address,amount,chain,token,memo&#10;0x...,1.250000,Base,USDC,contractor A"></textarea>
+        <p id="csv-hint" class="small">Maximum 64 KiB UTF-8, 500 data rows, 8 columns. No seed phrases, private keys, confidential client records or passwords. Only review recipient data you are authorized to handle.</p>
+        <div class="file-row">
+          <label for="csv-file">Or choose a CSV file — local read only</label>
+          <input id="csv-file" type="file" accept=".csv,text/csv" aria-describedby="csv-hint">
+        </div>
+        <div class="actions">
+          <button id="check" class="btn primary" type="button">Review CSV locally</button>
+          <button id="sample" class="btn" type="button">Try synthetic example</button>
+          <button id="clear" class="btn" type="button">Clear input</button>
+        </div>
+        <div id="status" role="status" aria-live="polite"></div>
+      </div>
+      <aside class="result-panel">
+        <h3>What this catches</h3>
+        <p>Invalid or zero EVM addresses, duplicate payees ignoring address case, invalid/zero/negative amounts, more than six fractional digits, wrong chain or token, ragged CSV rows and formula-like cells.</p>
+        <p><strong>Exact math:</strong> totals use integer USDC atomic units — not floating point — and count only independently valid unique rows. A partial total is <strong>not</strong> the amount to pay.</p>
+        <p><strong>No sensitive output:</strong> downloaded findings list diagnostic codes and row/column numbers, not payee addresses or raw spreadsheet content.</p>
+        <p class="small">We intentionally do NOT generate unsigned transfers, ERC-20 approvals, transaction data, EIP-3009 signatures or wallet deep links.</p>
+        <p><a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/tree/main/docs/usdc-payout-csv" rel="noopener noreferrer">Inspect the original source and tests ↗</a></p>
+      </aside>
+    </div>
+    <section id="results" class="result-panel" aria-label="Local CSV review findings" hidden>
+      <h3>Local check results — not a payout authorization</h3>
+      <div id="summary" class="stats"></div>
+      <h3 style="margin-top:22px">Row-level findings</h3>
+      <ol id="issues" class="issue-list"></ol>
+      <button class="btn" type="button" id="download-report" disabled>Download private-data-free JSON summary</button>
+    </section>
+  </div>
+</section>
+<section class="block" id="automatic"><div class="wrap">
+  <div class="eyebrow">Optional machine-to-machine automation</div>
+  <h2>Building a recurring CSV QA workflow?</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>Free human preview</h3>
+      <p>This page reviews a payout CSV locally. Its on-device checks are specifically for basic Base USDC payout-list syntax. It does not sign, distribute, or certify a recipient.</p>
+      <p><strong>$0 · no wallet</strong></p>
+    </article>
+    <article class="card">
+      <h3>Paid structured CSV quality API</h3>
+      <p>Our <em>separate</em> original x402 v2 API inspects ordinary caller-supplied CSV structure and returns machine-readable row/column findings. It is <strong>not</strong> an on-chain payout-address verifier or a transfer executor.</p>
+      <p><strong>0.005 USDC / valid API call · Base</strong></p>
+      <p><a class="btn primary" href="../csv-quality/">View verified API contract &amp; pricing ↗</a></p>
+    </article>
+  </div>
+  <p style="margin-top:22px">Unpaid developer test — this returns only an HTTP 402 quote; it does <strong>not</strong> charge your wallet:</p>
+  <pre><code>curl -i 'https://vm5-openapi-x402.onrender.com/v1/csv-report'
+# Expected: HTTP 402 + PAYMENT-REQUIRED
+# An x402 v2 compatible wallet can choose whether to authorize.</code></pre>
+  <p class="small">The merchant and x402 facilitator handle actual paid requests. We do not provide browser one-click payments or ask for any private signing keys. Historical outside paid API calls have occurred, but there are no proven repeat human subscriptions or guaranteed availability.</p>
+</div></section>
+<section class="block" id="support"><div class="wrap">
+  <div class="eyebrow">Voluntary support · No obligation</div>
+  <h2>Find the free checker useful?</h2>
+  <p>The tool is free. You may optionally send native Circle USDC on <strong>Base mainnet (chain ID 8453)</strong> to the VM5 Delivery Lab <strong>public receive-only address</strong> below as voluntary support. Verify the recipient and chain independently in your wallet.</p>
+  <p class="wallet" id="receiver">0x6b01efA0705E91a7aca54271510bf9e594717f34</p>
+  <p>Canonical Base USDC contract: <code id="contract">0x833589fcd6edb6e08f4c7c32d4f71b54bda02913</code></p>
+  <button type="button" class="btn" id="copy-wallet">Copy public receive address</button>
+  <p id="wallet-status" role="status" class="small" aria-live="polite"></p>
+  <p class="disclaimer"><strong>Important:</strong> Direct USDC transfers are optional tips, not orders. Sending USDC does <strong>not</strong> purchase the x402 API, guarantee a report, establish a contract or entitle you to a refund. Never send tokens on an unsupported network, never share wallet keys, and do not transfer based on this CSV check alone.</p>
+</div></section>
+<section class="block" id="limitations"><div class="wrap">
+  <div class="eyebrow">Limitations and trust</div>
+  <h2>Check the data. Confirm the payment separately.</h2>
+  <p>The program validates address <em>format</em>, not EIP-55 checksum validity or address ownership. It cannot check address sanctions, lost wallets, wrong beneficiaries, chain state, gas, token balances, recipient promises, transaction settlement or contract risk. No automatic payout or financial advice is provided.</p>
+  <p>We deliberately limit input size to 64 KiB and 500 rows. The parser recognizes CSV quotes, escaped quotes and embedded line breaks. Diagnostic export contains only row/column positions and issue types, excluding entered wallet addresses and cell values. No tracking, telemetry, wallet RPC, external scripts or uploads are used.</p>
+  <p>For larger or regulated distributions, obtain independent checks, legal/compliance review and an actual sender-wallet transaction simulation before approving any payment. See the <a href="https://github.com/x402-foundation/x402/blob/main/specs/transports-v2/http.md" rel="noopener noreferrer">official x402 HTTP transport</a> for payment-protocol details and <a href="https://www.circle.com/usdc" rel="noopener noreferrer">Circle's USDC information</a>.</p>
+</div></section>
+</main>
+<footer><div class="wrap footer"><span>VM5 Delivery Lab · Original AI-assisted local tool · 20 October 2026</span><span><a href="../">Home</a> · <a href="../privacy.html">Privacy notice</a> · <a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab">Source / issue reports</a></span></div></footer>
+</body>
+</html>

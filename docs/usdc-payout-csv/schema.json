@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Base USDC Payout CSV Checker — Local Only",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any modern browser",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "url": "https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/",
+  "description": "Independent original browser-only Base USDC recipient payout CSV syntax checker with no uploads, wallets, signing or transfer capability. Detects duplicate addresses, invalid decimal amounts, chain/token mismatches, CSV structural errors and spreadsheet formula-like cells. Not a blockchain verifier.",
+  "featureList": [
+    "Local CSV reader without upload",
+    "Base ERC20 address format",
+    "Duplicate payee detection",
+    "Exact six-decimal USDC integer math",
+    "No wallet or transfers",
+    "Only safe report metadata"
+  ],
+  "codeRepository": "https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab"
+}
