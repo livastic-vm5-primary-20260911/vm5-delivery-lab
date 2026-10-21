@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0d1020">
+<meta name="description" content="Mobile-first SFW creator email opt-in and social-link bridge portfolio demo. No email is collected, transmitted or stored.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
+<title>Nova Studio — mobile email opt-in demo | VM5 Delivery Lab</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar" aria-label="Portfolio demo banner">
+    <a class="wordmark" href="#join" id="home" aria-label="Back to opt-in page"><span class="brand-dot" aria-hidden="true"></span><span>nova <b>studio</b></span></a>
+    <span class="demo-tag">SFW · INTERACTIVE PORTFOLIO DEMO</span>
+  </header>
+  <main id="main">
+    <section id="join" class="screen" aria-labelledby="join-title">
+      <div class="hero-copy">
+        <div class="label"><span class="spark" aria-hidden="true">✳</span> MORE THAN THE FEED</div>
+        <h1 id="join-title">A little closer.<br><span class="gradient-type">A lot more you.</span></h1>
+        <p class="lead">One thoughtful note in your inbox. Fresh ideas, exclusive updates and a first look at what’s next, shared on your terms.</p>
+        <div class="optin-card">
+          <form id="optin-form">
+            <label for="email">Your email address</label>
+            <div class="input-wrap"><input id="email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" aria-describedby="email-detail" spellcheck="false" autocapitalize="off"><button type="submit">Preview opt-in <span aria-hidden="true">↗</span></button></div>
+            <p id="email-detail" class="detail">Demo mode: no emails are saved, sent or subscribed. A production version would require confirmed consent and a provider that accepts the client’s content.</p>
+            <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+          </form>
+          <div class="or-row" aria-hidden="true"><span></span>or just explore<span></span></div>
+          <a class="skip" href="#links" id="skip">No thanks, show me the links <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="promise"><span class="shield" aria-hidden="true">◎</span> No tracking in this demo. No spam. Unsubscribe is a production requirement.</div>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <div class="orb orb-a"></div><div class="orb orb-b"></div>
+        <div class="featured-card"><div class="mini-label">NOVA / ARCHIVE 001</div><div class="graphic-orbit"><span class="center-star">✦</span></div><div class="card-bottom"><span>Good things<br><em>arrive quietly.</em></span><span class="card-number">01 / 03</span></div></div>
+        <div class="floating-caption">a calmer corner<br>of the internet <span>↘</span></div>
+      </div>
+    </section>
+    <section id="links" class="screen" hidden aria-labelledby="links-title">
+      <div class="links-panel">
+        <div class="label"><span class="spark" aria-hidden="true">✳</span> PICK YOUR WAY IN</div>
+        <h2 id="links-title">Find me<br><span class="gradient-type">around the web.</span></h2>
+        <p class="lead">No signup required. Choose what you want to explore. In this demonstration these buttons intentionally have no external accounts attached.</p>
+        <div id="social-links" class="social-links" aria-label="Sample creator social links"></div>
+        <p id="links-feedback" class="feedback" role="status" aria-live="polite"></p>
+        <a class="return" href="#join">← Back to the opt-in screen</a>
+      </div>
+      <aside class="links-art" aria-hidden="true"><div class="planet"><div class="planet-ring"></div><span>✳</span></div><p>YOU'RE<br>ALWAYS<br>WELCOME.</p></aside>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>Independent fictional concept / no buyer brand assets / AI-assisted engineering.</p>
+    <a href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/" rel="noopener noreferrer">Built by VM5 Delivery Lab ↗</a>
+  </footer>
+</div>
+</body>
+</html>
