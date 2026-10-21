@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "x402_unsigned_request_example",
+  "title": "Original VM5 paid CSV quality preflight — POST your own authorized nonsecret CSV",
+  "owner": "VM5 Delivery Lab, an independent AI-assisted project owned by one human",
+  "updatedUTCDate": "2026-10-21",
+  "resource": {
+    "method": "POST",
+    "url": "https://vm5-openapi-x402.onrender.com/v1/csv-preflight",
+    "contentType": "application/json",
+    "requestBodyExampleUrl": "https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/csv-quality/example-body.json",
+    "requestBodyExample": {
+      "csvText": "email,amount,date,note\na@example.com,12.5,2026-10-19,paid\na@example.com,12.5,2026-10-19,paid\nbad-email,not-a-number,2026-13-99,=1+1",
+      "expectedColumns": ["email", "amount", "date", "note"]
+    },
+    "openapiSpecUrl": "https://vm5-openapi-x402.onrender.com/openapi.json",
+    "openapiOperationPointer": "#/paths/~1v1~1csv-preflight/post",
+    "constraints": "Payload is illustrative, invented, UTF-8, within the documented 32 KiB CSV limit and 40 expected columns. Use only nonconfidential authorized CSV cells."
+  },
+  "observedUnsignedQuote": {
+    "httpStatus": 402,
+    "header": "PAYMENT-REQUIRED",
+    "x402Version": 2,
+    "scheme": "exact",
+    "network": "eip155:8453",
+    "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "payTo": "0x6b01efA0705E91a7aca54271510bf9e594717f34",
+    "amountAtomic": "5000",
+    "amountHuman": "0.005 native Circle USDC",
+    "quoteIsPayment": false,
+    "source": "An independent, unsigned quote against the publicly deployed original VM5 merchant on 2026-10-21 UTC. Check a fresh server header before signing; do not trust stale embedded price or recipient."
+  },
+  "behavior": {
+    "validBodyNoPaymentHeader": "HTTP 402 with PAYMENT-REQUIRED; zero funds transferred by this test",
+    "emptyJsonNoPaymentHeader": "HTTP 400 before the payment middleware; not evidence of a broken paid path",
+    "paidTimeout": "Indeterminate payment/delivery. Do not silently sign a fresh authorization or claim refunded funds; reconcile original transaction and delivery evidence.",
+    "fulfilledDelivery": "A 402 is only a quote; it is not a response delivered, a customer, a settled payment or a guarantee."
+  },
+  "freePreviewUrl": "https://vm5-openapi-x402.onrender.com/v1/csv-sample",
+  "buyersGuideUrl": "https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/csv-quality/",
+  "privacy": "No secrets, wallet seed, real customer data, payment signature, or signing authority in this discovery file or synthetic fixture. The paid server might have its own hosting logs. This file makes no network requests.",
+  "salesEvidence": "No independent new paid POST buyer or recurring human customer is claimed by this catalogue document."
+}
