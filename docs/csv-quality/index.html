@@ -95,6 +95,21 @@
     <h3>Unpaid quote: static report</h3>
     <pre><code>curl -i 'https://vm5-openapi-x402.onrender.com/v1/csv-report'
 # Expect: 402 + PAYMENT-REQUIRED (no funds sent)</code></pre>
+    <div class="notice" id="agent-input-discovery">
+      <strong>Exact example body for machine buyers (public, invented; no payment):</strong>
+      <p>Responding to technical buyer/operator feedback, this same paid POST API now has a stable,
+      directly fetchable <a href="example-body.json" type="application/json">example-body.json</a>
+      and an accompanying <a href="discovery.json" type="application/json">discovery.json</a>
+      with method, URL, content type, real input shape, OpenAPI operation pointer, and previously observed unsigned x402 v2 quote.
+      Discovery metadata is not an independently paid transaction, a reservation or permission to use confidential CSV files.</p>
+      <pre><code>curl -fsSL 'https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/csv-quality/example-body.json' -o vm5-synthetic-body.json
+curl -i -X POST 'https://vm5-openapi-x402.onrender.com/v1/csv-preflight' \
+  -H 'Content-Type: application/json' \
+  --data-binary @vm5-synthetic-body.json
+# Expect unsigned HTTP 402, not a token transfer.
+# An empty JSON {} can return 400 before the paywall: classify it as invalid input, not a failed payment.
+# Do not silently sign a second authorization after an ambiguous paid timeout.</code></pre>
+    </div>
     <h3>Unpaid quote: buyer-owned CSV</h3>
     <pre><code>curl -i -X POST 'https://vm5-openapi-x402.onrender.com/v1/csv-preflight' \
   -H 'Content-Type: application/json' \
