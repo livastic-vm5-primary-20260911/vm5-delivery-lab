@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101c29">
+<meta name="description" content="Reproducible read-only Base USDC x402 HTTP 402 quote preflight with public timestamps. No wallet required, no paid transactions performed.">
+<meta property="og:title" content="x402 Base USDC public checkout status | VM5 Delivery Lab">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/merchant-status/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; object-src 'none'; base-uri 'none'">
+<title>Base USDC x402 checkout status | VM5 Delivery Lab</title>
+<script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<header><a href="../" class="brand">VM5 <b>Delivery Lab</b></a><span class="eyebrow">READ-ONLY PUBLIC PROOF</span></header>
+<main>
+<section class="hero">
+ <div class="flag">BASE MAINNET · NATIVE CIRCLE USDC · NO WALLET REQUIRED</div>
+ <h1>Before you pay an API, <em>inspect its 402.</em></h1>
+ <p>We run a small x402 developer API. This independent-to-the-buyer, but owner-operated, one-time test snapshot shows how our own merchant responds to a <strong>non-paying synthetic caller</strong>. Check actual network, token contract, receiving wallet, exact price and status before deciding to pay.</p>
+ <div class="actions"><a class="main-action" href="https://livastic-vm5-primary-20260911.github.io/base-usdc-csv-checkout/">Try CSV preview for free ↗</a><a href="https://vm5-openapi-x402.onrender.com/v1/docs">Live API contract ↗</a></div>
+</section>
+<section id="results" class="panel" aria-labelledby="results-title">
+ <div class="top"><div><span class="kicker">ONE VERIFIED MOMENT, NOT CONTINUOUS UPTIME</span><h2 id="results-title">Merchant preflight</h2></div><span class="badge">Unsigned · Read only</span></div>
+ <p id="updated" class="muted" role="status" aria-live="polite">Loading one public test snapshot…</p>
+ <div id="summary" class="stats"></div>
+ <div id="checks" class="checks"></div>
+ <p class="small">A correct HTTP 402 is an <strong>unsigned payment quote</strong>, not payment, paid-handler delivery, verification of a customer's signed transaction, an SLA or proof of revenue. Probes can become stale. If a request timed out, the result is inconclusive, not automatically an outage.</p>
+</section>
+<section class="guide" aria-labelledby="guide-title">
+ <div class="kicker">METHOD AND LIMITATIONS</div><h2 id="guide-title">What this test actually checks.</h2>
+ <div class="cards">
+  <article><h3>1 · API health</h3><p>Does the actual public merchant answer an unsigned health request and declare Base as its network?</p></article>
+  <article><h3>2 · Correct input</h3><p>Does a two-row completely invented CSV request return an x402 v2 payment quote? Missing or malformed POST bodies may legitimately return HTTP 400 rather than 402.</p></article>
+  <article><h3>3 · Verify the quote</h3><p>Are chain ID, official Base Circle USDC token, the original payee and each advertised micro-USDC amount consistent? We never sign, pay or test settlement.</p></article>
+ </div>
+ <div class="steps">
+  <div><h3>Reproduce the exact test</h3><p>View our <a href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/blob/main/tools/public-x402-checkout-canary.mjs">auditable original Node.js probe</a>. This one-shot source targets fixed owner-controlled public URLs only, sends an invented CSV body and uses no secrets or arbitrary URL crawling.</p></div>
+  <div><h3>Need your own CSV checked?</h3><p><a href="https://livastic-vm5-primary-20260911.github.io/base-usdc-csv-checkout/">Preview locally, free.</a> Then if you expressly authorize it, a <strong>0.005 native Base Circle USDC</strong> POST can request the separately hosted detailed CSV structure report. Hosted requests may be logged; submit only your own approved nonconfidential CSV.</p></div>
+ </div>
+</section>
+<section class="business"><div><span class="kicker">HUMAN-SCOPED PAID QA</span><h2>Need your own x402 payment integration reviewed?</h2><p>Tell us about one public endpoint, a public unsigned 402 quote, and the failure you want to reproduce. We can scope a separate fixed-price remediation and invoice payable in Base USDC after agreeing on permitted inputs and acceptance criteria. No actual paid client is implied.</p></div>
+<a class="main-action" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform">Request a narrow quote ↗</a></section>
+</main>
+<footer><a href="../">VM5 Delivery Lab</a><span>AI-assisted original engineering. No customer data, no wallet custody, no tracking.</span><a href="../privacy.html">Privacy</a></footer>
+</body></html>

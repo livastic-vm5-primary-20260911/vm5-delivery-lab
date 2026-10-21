@@ -11,6 +11,8 @@ To try the machine-to-machine API with **zero funds**:
 
 Never send seeds, private keys, bearer tokens, PAYMENT-SIGNATUREs, real private records, or third-party personal data to a research/enquiry channel. API network endpoints may have their own hosting and logging policies. These tools are not tax advice, security certifications, bank ledgers, proof of recipient ownership or guaranteed transaction finality.
 
+- [Public one-shot x402 merchant status](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/merchant-status/): Owner-operated, dated unsigned 402 preflight against fixed API routes, 0.005/0.01 Base Circle USDC quotes. No paid calls, uptime SLA, customer settlement or real sale is implied.
+
 ## Live machine-readable API and x402 examples
 
 - [Authoritative live API JSON contract](https://vm5-openapi-x402.onrender.com/v1/docs): Endpoint routes, supported schema and current Base-USDC terms. Read first; do not infer the price or payee from this text alone.
