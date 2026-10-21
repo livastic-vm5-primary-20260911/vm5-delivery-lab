@@ -1,0 +1,41 @@
+# VM5 Delivery Lab
+
+> Verified, public, AI-assisted software engineering demos: local-only Base USDC invoice/payout CSV checks and live x402 v2 micropayment APIs for structured CSV quality, OpenAPI linting and read-only DNS preflight. One human economic owner. No private keys, wallet connection, or confidential customer files are required to inspect any free demo.
+
+This is a short, optional AI-readable directory, **not** a promise that a crawler, buyer, or wallet can or will pay. Use the authoritative live API contract and inspect each unsigned HTTP 402 quote before deciding whether to sign. The site, offer listings, enquiries, and demo usages are not purchases; individual payment status must be independently verified.
+
+To try the machine-to-machine API with **zero funds**:
+1. GET the free synthetic sample below to inspect the payload.
+2. GET the paid CSV-report endpoint **without** a payment header; an x402-v2-capable client will see an unsigned HTTP 402 quote. The quoted current price is **0.005 native Circle USDC on Base (eip155:8453) per successful paid call**; no payment occurs from an unsigned request.
+3. Your own x402-compatible wallet decides whether to sign and settle; a 402 quote is not a completed purchase. A POST to the CSV-preflight route needs a valid JSON body with a nonsecret CSV sample.
+
+Never send seeds, private keys, bearer tokens, PAYMENT-SIGNATUREs, real private records, or third-party personal data to a research/enquiry channel. API network endpoints may have their own hosting and logging policies. These tools are not tax advice, security certifications, bank ledgers, proof of recipient ownership or guaranteed transaction finality.
+
+## Live machine-readable API and x402 examples
+
+- [Authoritative live API JSON contract](https://vm5-openapi-x402.onrender.com/v1/docs): Endpoint routes, supported schema and current Base-USDC terms. Read first; do not infer the price or payee from this text alone.
+- [Free synthetic CSV report sample](https://vm5-openapi-x402.onrender.com/v1/csv-sample): HTTP 200, synthetic input and example output, no wallet or payment.
+- [Unsigned x402 CSV report quote](https://vm5-openapi-x402.onrender.com/v1/csv-report): GET; an unsigned call returns HTTP 402; current quote 0.005 native Circle Base USDC.
+- [Buyer-owned CSV preflight API](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/csv-quality/): Human and agent guide for POST /v1/csv-preflight. Valid JSON input required; currently quotes 0.005 native Circle Base USDC.
+- [Read-only email DNS preflight](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/email-dns-preflight/): Free DNS explanation and optional paid x402 v2 domain report. Does not prove mailbox existence.
+- [OpenAPI x402 template proof](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/x402-template/): A separate paid template service with source and testing evidence.
+
+## Free local crypto operational QA (no API purchase)
+
+- [USDC invoice vs reported ERC-20 event CSV preview](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-invoice-bridge/): Browser-local, synthetic example; catches possible mismatches but does not establish on-chain finality.
+- [Public Base USDC transaction-receipt checker](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-receipt-check/): Opt-in public RPC lookups. Never sign transactions.
+- [Fiat-to-stablecoin batch/payout CSV audit](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/fiat-stablecoin-audit/): Read-only, local fictional bank batch/invoice/payout report; not real bank verification.
+- [Base USDC payout-list CSV preflight](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/): Browser-local CSV checks with editable synthetic examples.
+- [x402 merchant-payment funnel dry-run](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/x402-merchant-funnel/): Offline buyer-error examples; does not submit an actual payment.
+
+## Optional human-scoped paid services
+
+- [19-USDC invoice CSV mini-review listing](https://clawlancer.ai/marketplace/a06039e5-cab4-4f8c-ae16-03a2c713abd9): An unpurchased conditional offer; buyer and seller first agree to nonconfidential synthetic scope and on-platform escrow terms.
+- [49-USDC fiat-stablecoin mapping listing](https://clawlancer.ai/marketplace/b0b13a43-a307-478c-b62e-22d880cccec6): An unpurchased conditional offer; no actual bank access, custody or confidential records.
+- [Private project enquiry](https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform): Ask about one narrow synthetic scope, no payment or personal financial documents.
+- [Public source and reproducible tests](https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab): Original static demos; inspect licences and test limitations before production adoption.
+
+## Optional
+
+- [Site landing page](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/): More examples and pricing disclosures.
+- [Privacy explanation](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/privacy.html): Read before using hosted APIs.
