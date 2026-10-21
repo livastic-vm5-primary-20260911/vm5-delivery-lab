@@ -24,6 +24,7 @@ Never send seeds, private keys, bearer tokens, PAYMENT-SIGNATUREs, real private 
 
 - [USDC invoice vs reported ERC-20 event CSV preview](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-invoice-bridge/): Browser-local, synthetic example; catches possible mismatches but does not establish on-chain finality.
 - [Public Base USDC transaction-receipt checker](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-receipt-check/): Opt-in public RPC lookups. Never sign transactions.
+- [USDC-to-EUR off-ramp reported-chain matcher](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-eur-offramp/): Free browser-local four-CSV exception finder: invoice → reported canonical Base USDC event → reported EUR conversion minus fees → reported bank credit. No RPC, no bank access, no actual settlement verification. Optional custom schema adapter requires separate buyer agreement.
 - [Fiat-to-stablecoin batch/payout CSV audit](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/fiat-stablecoin-audit/): Read-only, local fictional bank batch/invoice/payout report; not real bank verification.
 - [Base USDC payout-list CSV preflight](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-payout-csv/): Browser-local CSV checks with editable synthetic examples.
 - [x402 merchant-payment funnel dry-run](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/x402-merchant-funnel/): Offline buyer-error examples; does not submit an actual payment.

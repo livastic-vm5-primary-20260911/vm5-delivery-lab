@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Free local USDC-to-EUR off-ramp evidence chain preflight: compare invoice, self-reported Base USDC transfer, conversion EUR fees and reported bank credit with explicit IDs. Never uploads records.">
+<meta property="og:title" content="USDC→EUR Bank Reconciliation | Free Local Off-Ramp Exception Report">
+<meta property="og:description" content="Four CSVs, zero upload: invoice → reported Base USDC receipt → EUR conversion → reported bank credit. Find broken links without claiming settlement evidence.">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-eur-offramp/">
+<link rel="describedby" href="../llms.txt" type="text/plain">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; font-src 'none'">
+<script type="module" src="./app.mjs"></script>
+<title>USDC to EUR Off-ramp Exception Checker | VM5 Delivery Lab</title>
+</head>
+<body>
+<header><div class="shell nav"><a class="brand" href="../">VM5 Delivery Lab</a><nav><a href="#tool">Free local checker</a><a href="#limitations">What this cannot prove</a><a href="#pilot">Optional custom pilot</a></nav></div></header>
+<main>
+<section class="shell hero">
+<p class="eyebrow">FREE / BROWSER-LOCAL / ONE HUMAN ECONOMIC OWNER / AI-ASSISTED</p>
+<h1>One client invoice. One USDC receipt.<br><em>How many EUR actually reached the bank?</em></h1>
+<p class="lead">If your team receives USDC from customers and later off-ramps it into EUR, four separate records must reconcile: the invoice, the token-event export, the conversion receipt and the bank deposit. This free checker flags missing references, reported shortfalls, FX fee arithmetic, duplicates and pending steps using <strong>only what you paste in your browser</strong>.</p>
+<div class="pills"><span>Invoice → USDC</span><span>USDC → off-ramp</span><span>Gross EUR − fees = net EUR</span><span>Off-ramp → bank</span></div>
+<p><a class="cta" href="#tool">Try invented example ↓</a><a class="cta secondary" href="../fiat-stablecoin-audit/">Reverse: fiat funding → crypto contractor payouts ↗</a></p>
+<p class="notice"><strong>This is NOT settlement verification, accounting software, FX rate evidence, or proof of money received.</strong> All four datasets are visitor-supplied and potentially false. Never submit real personal/regulated records or wallet keys. The example is completely fictional.</p>
+</section>
+<section id="tool" class="panel">
+<div class="shell"><h2>Compare four CSV exports without sending them anywhere</h2>
+<p class="muted">Choose up to 300 rows / 80 kB per file, or paste data. Explicit reference IDs are required. This intentionally does not join records by guessed amount, wallet or timestamp. Only canonical Circle Base USDC is understood in the synthetic example; amounts are decimal-exact.</p>
+<div class="grid">
+<article><span class="step">01</span><h3>Invoice</h3><p><code>invoice_id,expected_usdc</code></p><label for="file-invoices">Local invoice CSV</label><input id="file-invoices" type="file" accept=".csv,text/csv"><label for="invoices">Or paste invoice CSV</label><textarea id="invoices" rows="7" spellcheck="false"></textarea></article>
+<article><span class="step">02</span><h3>Reported token receipt</h3><p><code>invoice_id,receipt_id,amount_usdc,chain,token,status</code></p><label for="file-transfers">Local transfer export CSV</label><input id="file-transfers" type="file" accept=".csv,text/csv"><label for="transfers">Or paste transfer CSV</label><textarea id="transfers" rows="7" spellcheck="false"></textarea></article>
+<article><span class="step">03</span><h3>Reported EUR conversion</h3><p><code>receipt_id,conversion_id,source_usdc,gross_eur,fee_eur,net_eur,executed_at_utc</code></p><label for="file-conversions">Local conversion CSV</label><input id="file-conversions" type="file" accept=".csv,text/csv"><label for="conversions">Or paste conversion CSV</label><textarea id="conversions" rows="7" spellcheck="false"></textarea></article>
+<article><span class="step">04</span><h3>Reported bank credit</h3><p><code>conversion_id,net_eur,status,posted_at_utc</code></p><label for="file-bank">Local bank ledger CSV</label><input id="file-bank" type="file" accept=".csv,text/csv"><label for="bank">Or paste bank CSV</label><textarea id="bank" rows="7" spellcheck="false"></textarea></article>
+</div>
+<div class="actions"><button id="compare" type="button">Compare locally (free)</button><button id="sample" type="button" class="outline">Restore invented example</button><button id="download" type="button" class="outline" disabled>Export row-only exception codes</button></div>
+<p id="message" role="status" aria-live="polite"></p>
+<p id="summary" class="muted" aria-live="polite"></p>
+<div class="table"><table><thead><tr><th>CSV</th><th>Row</th><th>Issue</th><th>Meaning (illustrative only)</th></tr></thead><tbody id="issues"></tbody></table></div>
+<p class="muted">The optional export contains only input category, row number and issue code; it intentionally omits invoice IDs, amounts and addresses. A zero-issue result only means that the four imported statements align syntactically.</p>
+</div></section>
+<section id="limitations" class="shell block"><h2>Deliberate limits protect your accounting judgement</h2>
+<div class="two"><div><h3>Token explorer ≠ invoice</h3><p>The receipt CSV can be forged. We do not make RPC requests, inspect signatures, confirm token ownership, reconcile internal wallet transfers, or verify that an event settled on the chain. The Base token address field is compared with the canonical Circle contract string only.</p><h3>Conversion quote ≠ historical FX source</h3><p>Arithmetic checks are on *reported* gross EUR, fees, and net EUR; no implied ECB/interbank rate, fair value, spread benchmark, custody treatment or P&amp;L is invented. Original exchange confirmations and accounting policy remain necessary.</p></div>
+<div><h3>EUR credit ≠ bank confirmation</h3><p><code>reported_posted</code> is merely an input label, not bank access. Pooled exchange credits, partial offramps, unrelated wallet receipts, chargebacks, netting and multiple conversions per transaction require explicit allocation and manual review.</p><h3>Privacy-first by design</h3><p>All parsing happens in this page after static assets load; Content-Security-Policy forbids network connections. No account, cookie, analytics, token, wallet, address capture, upload or payment is required. Do not paste client-confidential records into unapproved devices.</p></div></div>
+</section>
+<section id="pilot" class="shell pilot"><h2>Need one source-format adapter instead of another spreadsheet?</h2>
+<p>The checker is completely free. For a concrete processor/exchange whose <em>fictional or client-authorized redacted</em> columns differ, we can discuss a <strong>conditional 49 native Base Circle USDC pilot</strong>: two nonsecret synthetic schema variations, offline source mapper, exact match/exception rules, deterministic tests, short handoff guide and one scoped correction. This is a proposal, not a checkout, customer order, price guarantee or accounting service.</p>
+<p>Work begins only after one independent buyer and the lawful human payee agree in writing on precise fields, data rights, AI assistance, delivery, acceptance, IP, tax/KYC as applicable, chain/payment terms and cancellation/refund provisions. **No sale or customer is claimed.**</p>
+<p><a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform" target="_blank" rel="noopener noreferrer">Request a free scoped quote ↗</a> <a class="cta secondary" href="https://github.com/livastic-vm5-primary-20260911/vm5-delivery-lab/issues/new?template=usdc-invoice-recon-paid-pilot.yml" target="_blank" rel="noopener noreferrer">Give nonconfidential field-only feedback ↗</a></p>
+</section>
+</main>
+<footer><div class="shell">VM5 Delivery Lab · AI-assisted original test utility · one human owner · <a href="../privacy.html">Privacy explanation</a> · <a href="../">Home</a>. No wallet interaction or payouts were performed by this page.</div></footer>
+</body></html>
