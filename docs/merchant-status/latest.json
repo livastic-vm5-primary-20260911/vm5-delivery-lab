@@ -1,0 +1,100 @@
+{
+  "schema": "vm5-original-merchant-public-checkout-canary-v1",
+  "checkedAtUTC": "2026-10-21T01:47:01.028Z",
+  "scope": "VM5-owned public URLs only; synthetic CSV; no wallet or private data",
+  "noPayment": true,
+  "paidDeliveryVerified": false,
+  "noBuyerCountClaim": true,
+  "statement": "Unsigned HTTP 402 preflights do not prove customer payment, signing, settlement or paid handler delivery.",
+  "target": "https://vm5-openapi-x402.onrender.com",
+  "network": "eip155:8453",
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "recipient": "0x6b01efA0705E91a7aca54271510bf9e594717f34",
+  "summary": {
+    "pass": 5,
+    "degraded": 0,
+    "unknown": 0,
+    "total": 5
+  },
+  "checks": [
+    {
+      "id": "health",
+      "title": "Service health",
+      "method": "GET",
+      "route": "/health",
+      "category": "read_only",
+      "expectedHttp": 200,
+      "actualHttp": 200,
+      "status": "pass",
+      "explanation": "Public HTTP 200; this does not verify a paid API response."
+    },
+    {
+      "id": "csv",
+      "title": "Buyer-input CSV preflight (synthetic sample)",
+      "method": "POST",
+      "route": "/v1/csv-preflight",
+      "category": "read_only",
+      "expectedHttp": 402,
+      "actualHttp": 402,
+      "status": "pass",
+      "quote": {
+        "x402Version": 2,
+        "network": "eip155:8453",
+        "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "recipient": "0x6b01efA0705E91a7aca54271510bf9e594717f34",
+        "amountMicroUSDC": "5000",
+        "priceUSDC": "0.005"
+      },
+      "explanation": "Correct unsigned HTTP 402 quote only; signature, settlement and delivery NOT tested."
+    },
+    {
+      "id": "template",
+      "title": "x402 developer OpenAPI template",
+      "method": "GET",
+      "route": "/v1/x402-template",
+      "category": "read_only",
+      "expectedHttp": 402,
+      "actualHttp": 402,
+      "status": "pass",
+      "quote": {
+        "x402Version": 2,
+        "network": "eip155:8453",
+        "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "recipient": "0x6b01efA0705E91a7aca54271510bf9e594717f34",
+        "amountMicroUSDC": "10000",
+        "priceUSDC": "0.010"
+      },
+      "explanation": "Correct unsigned HTTP 402 quote only; signature, settlement and delivery NOT tested."
+    },
+    {
+      "id": "receipt",
+      "title": "Public historical Base USDC receipt preflight",
+      "method": "GET",
+      "route": "/v1/base-usdc-receipt",
+      "category": "read_only",
+      "expectedHttp": 402,
+      "actualHttp": 402,
+      "status": "pass",
+      "quote": {
+        "x402Version": 2,
+        "network": "eip155:8453",
+        "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "recipient": "0x6b01efA0705E91a7aca54271510bf9e594717f34",
+        "amountMicroUSDC": "5000",
+        "priceUSDC": "0.005"
+      },
+      "explanation": "Correct unsigned HTTP 402 quote only; signature, settlement and delivery NOT tested."
+    },
+    {
+      "id": "checkout",
+      "title": "Public free-first CSV checkout page",
+      "method": "GET",
+      "route": "/base-usdc-csv-checkout/",
+      "category": "read_only",
+      "expectedHttp": 200,
+      "actualHttp": 200,
+      "status": "pass",
+      "explanation": "Public HTTP 200; this does not verify a paid API response."
+    }
+  ]
+}
