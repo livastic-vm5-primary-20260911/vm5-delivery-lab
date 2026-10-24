@@ -225,3 +225,7 @@ endorsement, held Nano funds, safety certification or any new token payment.
 ### ERC-20 unsigned calldata buyer guide (24 October 2026)
 
 The original published buyer-facing page at https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/erc20-calldata/ offers a free synthetic demonstration of the strict offline ERC-20 calldata parser, documentation for its real x402 v2 HTTP 402 route, and a separate voluntary scoped-client inquiry. The real 0.01 native Circle Base USDC route pays only the user's original VM1 public receive address; no new customer purchase is asserted, and no seller pays a listing fee. The page is static HTML without wallet keys, collection scripts or token-signing logic.
+
+### Separate ERC-20 event-log x402 developer service
+
+Existing same-owner canonical ERC-20 buyer page now documents two **different** actually deployed services: the public unsigned call-data preflight and a new event-log topic/data preflight. The latter has a completely free fictional GET `/v1/erc20-event-sample`, a paid `GET /v1/erc20-event-preflight` 0.01 native Circle Base USDC directly to the original VM1 public wallet, independent original [402 Index listing](https://402index.io/api/v1/services/cd9425ff-a546-428f-a082-55c77a7f8a0d), and original PayAPI one-time application pending vendor paid review. No verified independent event API customers or organic profit may be inferred from this static buyer guide.
