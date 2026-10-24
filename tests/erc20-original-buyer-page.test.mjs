@@ -51,3 +51,15 @@ test("One discoverable canonical indexed page, not duplicate seller/account",()=
   assert.equal(new Set(ids).size,ids.length,"No duplicate section IDs");
   assert.ok(page.includes('href="../privacy.html"'));
 });
+
+test("New original distinct paid ERC-20 event-log SKU is linked with explicit separate free sample and no sales claims",()=>{
+ assert.ok(page.includes("ERC-20 Transfer / Approval event-log decoder"));
+ assert.ok(page.includes("https://vm5-openapi-x402.onrender.com/v1/erc20-event-sample"));
+ assert.ok(page.includes("https://vm5-openapi-x402.onrender.com/v1/erc20-event-preflight"));
+ assert.ok(page.includes("https://402index.io/api/v1/services/cd9425ff-a546-428f-a082-55c77a7f8a0d"));
+ assert.ok(page.includes("topic0")&&page.includes("topic1")&&page.includes("topic2"));
+ assert.ok(page.includes("zero independent purchases of this new event product"));
+ assert.ok(page.includes("same original VM1 public receive-only address"));
+ assert.ok(llms.includes("ERC-20 separate EVENT-LOG API:"));
+ assert.ok(!page.includes("window.ethereum.request"));
+});
