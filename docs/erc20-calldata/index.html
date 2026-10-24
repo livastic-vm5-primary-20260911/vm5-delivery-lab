@@ -118,6 +118,30 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</code></pre>
 </div>
 <p class="small">This distinct event product uses exact x402 v2 payment of 10,000 atomic native Circle USDC (0.01 USDC) on Base mainnet to the <strong>same original VM1 public receive-only address</strong>. Bad, partial or unsupported input fails without payment. A no-input paid request uses a transparently fictional Approval event; the free sample may already meet your needs. As of 24 October 2026 the PayAPI seller application is pending, and <strong>zero independent purchases of this new event product are verified</strong>. A successful HTTP 402 quote or public listing is not proof of a paid sale, token legitimacy or transaction safety.</p>
 </section>
+<section aria-labelledby="live-usdc-allowance" class="proof">
+<h2 id="live-usdc-allowance">Need the <em>actual current</em> Base USDC approval, not unsigned calldata?</h2>
+<p>Our distinct new <strong>native Circle USDC allowance snapshot</strong> performs genuine read-only Base mainnet JSON-RPC calls to the fixed official Circle USD Coin address <code>0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913</code>. It samples <code>allowance(owner, spender)</code> and <code>balanceOf(owner)</code> at the <strong>same current block</strong>, returns exact six-decimal USDC amounts, and highlights maximum-uint256 approvals and allowances larger than the owner's currently observed balance. Neither value proves that a contract or spender is safe, nor that future balances will stay the same.</p>
+<div class="grid">
+<div><strong>Real Base 8453 state</strong><p>Fixed public RPC endpoints, contract and chain. No arbitrary token, RPC URL, account login or private key input.</p></div>
+<div><strong>0.010000 native Circle USDC</strong><p>One buyer-authorized x402 v2 GET, paid to the existing original VM1 public MetaMask address. No subscription and no wallet connection to inspect a quote.</p></div>
+<div><strong>400/429/503 before payment</strong><p>Malformed address pairs, rate limits or unavailable/partial public RPC return an unpaid error rather than an incomplete paid report.</p></div>
+</div>
+<div class="cta">
+<a href="https://vm5-openapi-x402.onrender.com/v1/base-usdc-allowance-sample">Open the free <em>fictional</em> example ↗</a>
+<a href="https://vm5-openapi-x402.onrender.com/v1/base-usdc-allowance">Read a real block and its unpaid 0.01-USDC quote ↗</a>
+<a href="https://402index.io/api/v1/services/4cf7d0c9-9504-43d0-9b12-a2bd1388c4f8">See 402 Index availability ↗</a>
+<a href="https://github.com/livastic-vm5-primary-20260911/x402-openapi-lint/blob/main/base-usdc-allowance.mjs">Inspect the source ↗</a>
+</div>
+<p>To examine a specific public address pair, supply <code>owner</code> and <code>spender</code> together as two regular 0x-prefixed 40-hex-character EVM addresses; omit both for one known public original VM1 owner and an illustrative dead-address spender. The free example does <strong>not</strong> call a blockchain and is explicitly invented; the actual paid route <em>does</em> fetch live state before requesting the buyer's authorization. No user signs or changes token approvals on the hosted API.</p>
+<pre><code>curl -i 'https://vm5-openapi-x402.onrender.com/v1/base-usdc-allowance?owner=0x1111111111111111111111111111111111111111&amp;spender=0x2222222222222222222222222222222222222222'
+
+# After a complete successful Base read, HTTP 402 unpaid:
+# network: eip155:8453
+# native Circle USDC amount: 10000 atomic = 0.010000 USDC
+# payTo: 0x4e3106520E40af30870caFE78da1B1e7110eD98E
+# All paid JSON reports require a real buyer-authorized x402 settlement.</code></pre>
+<p class="small">The seller's PayAPI Market review was <strong>pending as of 24 October 2026</strong>. The valid 402 quote and healthy public 402 Index page are <strong>not evidence of outside purchases</strong>; zero independent purchases are verified for this new snapshot SKU. Reports are not a smart-contract audit, phishing/spender validation, authenticated wallet-owner confirmation, light-client state proof, risk guarantee or investment advice. The blockchain can change immediately after the quoted block.</p>
+</section>
 <section aria-labelledby="client">
 <h2 id="client">Need a larger EVM or x402 QA job?</h2>
 <p>VM5 Delivery Lab offers AI-assisted, human-owned fixed-scope API contract tests, unsigned payment-preflight checks and reproducible regression fixtures. For a real customer project, first agree in writing on scope, acceptance tests, code rights, edits, payout rail, eligibility and cancellation/refund rules. No charge for an initial sanitized inquiry; do not upload client secrets.</p>

@@ -63,3 +63,22 @@ test("New original distinct paid ERC-20 event-log SKU is linked with explicit se
  assert.ok(llms.includes("ERC-20 separate EVENT-LOG API:"));
  assert.ok(!page.includes("window.ethereum.request"));
 });
+
+test("Live Base native Circle USDC allowance guide actually distinguishes chain reads, false previews and 402 payment",()=>{
+ const live="https://vm5-openapi-x402.onrender.com/v1/base-usdc-allowance";
+ const free="https://vm5-openapi-x402.onrender.com/v1/base-usdc-allowance-sample";
+ assert.ok(page.includes(live));
+ assert.ok(page.includes(free));
+ assert.ok(page.includes("allowance(owner, spender)"));
+ assert.ok(page.includes("balanceOf(owner)"));
+ assert.ok(page.includes("same current block"));
+ assert.ok(page.includes("fixed official Circle USD Coin address"));
+ assert.ok(page.toLowerCase().includes("0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"));
+ assert.ok(page.includes("0.010000 native Circle USDC"));
+ assert.ok(page.includes("https://402index.io/api/v1/services/4cf7d0c9-9504-43d0-9b12-a2bd1388c4f8"));
+ assert.ok(page.includes("zero independent purchases are verified"));
+ assert.ok(page.includes("does <strong>not</strong> call a blockchain"));
+ assert.ok(page.includes("400/429/503 before payment"));
+ assert.ok(llms.includes("Base live native Circle USDC allowance and owner balance buyer API"));
+ assert.ok(!page.includes("window.ethereum.request"));
+});
