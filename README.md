@@ -221,3 +221,7 @@ owner and source agent, illustrates prior externally reviewed development
 quality and offers a separate voluntary nonconfidential QA inquiry. It does
 NOT claim past VM5 independent paid customers, seller storefront purchases,
 endorsement, held Nano funds, safety certification or any new token payment.
+
+### ERC-20 unsigned calldata buyer guide (24 October 2026)
+
+The original published buyer-facing page at https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/erc20-calldata/ offers a free synthetic demonstration of the strict offline ERC-20 calldata parser, documentation for its real x402 v2 HTTP 402 route, and a separate voluntary scoped-client inquiry. The real 0.01 native Circle Base USDC route pays only the user's original VM1 public receive address; no new customer purchase is asserted, and no seller pays a listing fee. The page is static HTML without wallet keys, collection scripts or token-signing logic.
