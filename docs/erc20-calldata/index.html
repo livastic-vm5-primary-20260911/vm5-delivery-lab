@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b111a">
+<title>ERC-20 approve calldata decoder — unlimited allowance preflight | VM5 Delivery Lab</title>
+<meta name="description" content="Decode unsigned EVM ERC-20 approve, transfer and transferFrom calldata without signing or RPC. See why max uint256 allowance is risky, inspect a free example, and buy optional x402 JSON preflight for 0.01 native Base USDC.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ERC-20 unsigned calldata decoder — unlimited token allowance preflight">
+<meta property="og:description" content="Learn the raw ABI selectors, inspect a free synthetic approval example, and optionally use a pay-per-call x402 developer API. No keys, signatures, chain transactions or audit claims.">
+<meta property="og:url" content="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/erc20-calldata/">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/erc20-calldata/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org","@type":"SoftwareApplication",
+ "name":"VM5 ERC-20 Unsigned Calldata Preflight",
+ "applicationCategory":"DeveloperApplication",
+ "operatingSystem":"Web API",
+ "description":"Offline syntactic review of public unsigned canonical ERC-20 calldata. Flags unlimited approvals and zero addresses. Not an audit, contract-identity verification, onchain simulation or a safety guarantee.",
+ "url":"https://vm5-openapi-x402.onrender.com/v1/erc20-calldata-preflight",
+ "codeRepository":"https://github.com/livastic-vm5-primary-20260911/x402-openapi-lint",
+ "offers":{"@type":"Offer","price":"0.01","priceCurrency":"USD","description":"Quoted as 0.01 native Circle USDC on Base, chain ID 8453, for one paid HTTP request"}
+}
+</script>
+<style>
+.article {max-width:960px;margin:0 auto;padding:42px 22px 68px;color:#e7f2f4;line-height:1.7}
+.article h1 {font-size:clamp(2.05rem,5vw,3.6rem);line-height:1.16;margin:16px 0 20px}
+.article h2 {font-size:1.65rem;margin:42px 0 12px}
+.article h3 {font-size:1.12rem;margin:26px 0 9px}
+.article p, .article li {color:#c6d6df;max-width:800px}
+.article a {color:#a7e2ff;overflow-wrap:anywhere}
+.article code {background:#182637;border:1px solid #2e4254;border-radius:5px;padding:2px 5px;color:#e4fafa}
+.article pre {overflow:auto;background:#14202d;border:1px solid #355167;border-radius:12px;padding:20px;line-height:1.5}
+.article pre code {background:transparent;border:0;padding:0;color:#d7ecf3}
+.article .small {color:#9eb9c3;font-size:.91rem}
+.article .proof {border:1px solid #365867;border-radius:16px;padding:24px;background:#13232d;margin:22px 0}
+.article .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:24px 0}
+.article .grid>div {padding:18px;border:1px solid #315065;border-radius:12px}
+.article .eyebrow {font-size:.82rem;color:#a7f1dd;letter-spacing:.08em}
+.article .cta {display:flex;flex-wrap:wrap;gap:13px;margin:26px 0}
+.article .cta a {display:inline-block;padding:13px 16px;background:#163644;border:1px solid #4d8b9d;border-radius:9px;text-decoration:none}
+.article .cta a:focus-visible {outline:3px solid white;outline-offset:3px}
+.article .warning {border-left:3px solid #edb96d;padding:10px 18px;background:#31271f}
+</style>
+</head>
+<body>
+<header class="site-header"><nav class="container nav" aria-label="Site">
+<a class="brand" href="../" aria-label="VM5 Delivery Lab home"><span class="brandmark"><span></span><span></span><span></span><span></span></span><span>VM5 <b>Delivery Lab</b></span></a>
+<a class="btn btn-small btn-outline" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform" rel="noopener noreferrer">Request fixed-scope QA ↗</a>
+</nav></header>
+<main class="article">
+<p class="eyebrow">PUBLIC UNSIGNED EVM DATA · DEVELOPER TOOL · NO WALLET CONNECTION</p>
+<h1>Read the approval <em>before</em> anyone signs it.</h1>
+<p><strong>ERC-20 calldata preflight</strong> decodes one unsigned transfer or allowance-changing call into its method, address arguments and raw integer amount. It flags <code>approve(spender, 2²⁵⁶−1)</code>, which may grant a spender an effectively unlimited token allowance. Your token's deployed code, transaction state and chain are <strong>not</strong> checked. Nothing is signed or transmitted by the example below. No chain transaction is executed by viewing this page or the free example.</p>
+<div class="cta">
+<a href="https://vm5-openapi-x402.onrender.com/v1/erc20-calldata-sample">Inspect the free synthetic JSON example ↗</a>
+<a href="https://vm5-openapi-x402.onrender.com/v1/erc20-calldata-preflight">Inspect the paid route's unsigned 402 quote ↗</a>
+<a href="https://github.com/livastic-vm5-primary-20260911/x402-openapi-lint/blob/main/erc20-calldata-preflight.mjs">Audit the actual source ↗</a>
+</div>
+<div class="grid">
+<div><strong>0.010000 USDC</strong><p>Price for one buyer-authorized paid GET. Base mainnet, Circle native USDC (chain 8453). No subscription.</p></div>
+<div><strong>HTTP 400 before pay</strong><p>Unsupported selector, malformed hexadecimal bytes, wrong ABI length, or incorrect address padding are rejected without requesting payment.</p></div>
+<div><strong>Static, offline logic</strong><p>No JSON-RPC, token approvals, wallet signature, transaction submission, monitoring or balance lookup.</p></div>
+</div>
+<section aria-labelledby="example-title">
+<h2 id="example-title">One reproducible example</h2>
+<p>An ERC-20 <code>approve(address spender,uint256 amount)</code> call begins with selector <code>0x095ea7b3</code>, followed by a 32-byte padded spender address and a 32-byte integer. The sample below approves the illustrative dead address for the maximum possible unsigned 256-bit integer.</p>
+<pre><code>0x095ea7b3
+000000000000000000000000000000000000000000000000000000000000dead
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</code></pre>
+<p>These are three display lines; the actual calldata is one continuous hexadecimal string. The free example's machine-readable fields include:</p>
+<pre><code>{
+  "kind": "evm_erc20_unsigned_calldata_preflight",
+  "selector": "0x095ea7b3",
+  "method": "approve",
+  "decoded": {
+    "spender": "0x000000000000000000000000000000000000dead",
+    "amountAtomic": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+  },
+  "allowanceUnlimited": true,
+  "warnings": [{"code": "UNLIMITED_ALLOWANCE"}],
+  "noWalletOrBlockchainUsed": true
+}</code></pre>
+<p class="small">Illustrative deterministic data, not a test on a real user wallet or a completed purchase. Amounts are raw atomic integers; without a known token contract and decimals they must not be displayed as final token units.</p>
+</section>
+<section aria-labelledby="buy-title" class="proof">
+<h2 id="buy-title">For agents: one paid structured JSON response</h2>
+<p>For a nonsecret unsigned call, use one optional <code>calldata=0x…</code> query parameter. Omitting it analyses the synthetic example instead. <strong>Never send secrets, typed messages, a transaction signature or any private key.</strong></p>
+<pre><code>curl -i 'https://vm5-openapi-x402.onrender.com/v1/erc20-calldata-preflight'
+
+# Expected without payment: HTTP 402
+# PAYMENT-REQUIRED: base64 x402 v2 exact quote
+# network: eip155:8453
+# amount: 10000 atomic native Circle USDC = 0.010000 USDC</code></pre>
+<p>The <code>PAYMENT-REQUIRED</code> header is a <em>quote</em>, not a paid sale. Only after the <em>buyer's own</em> authorized, successfully settled x402 payment does the hosted service return the paid report with an HTTP 200 and payment response. The payment recipient is the original one-human-owner VM1 public EVM address <code>0x4e3106520E40af30870caFE78da1B1e7110eD98E</code>.</p>
+<p class="small">This route is publicly listed on <a href="https://402index.io/api/v1/services/5f161a41-7f21-47ac-9bc8-8ed9bd1bc3a4">402 Index</a>. Its PayAPI seller review was pending as of 24 October 2026. Neither public listing nor an unsigned HTTP 402 is evidence of an independent paid customer; no purchase is claimed for this new route.</p>
+</section>
+<section aria-labelledby="coverage">
+<h2 id="coverage">Included methods</h2>
+<ul>
+<li><code>transfer(address,uint256)</code> — recipient and atomic amount.</li>
+<li><code>approve(address,uint256)</code> — spender and atomic amount, with a maximum-allowance warning.</li>
+<li><code>transferFrom(address,address,uint256)</code> — sender, recipient and atomic amount.</li>
+<li><code>increaseAllowance(address,uint256)</code> / <code>decreaseAllowance(address,uint256)</code> — change in raw allowance, not the actual on-chain allowance.</li>
+</ul>
+<div class="warning"><p><strong>Important limits:</strong> Selector collisions, malicious custom token implementations, NFT methods, <code>permit</code>, token metadata, decimals, revocations, spender identity and actual allowance balances are <strong>not verified</strong>. A <code>warningCount=0</code> result is not proof a transaction is safe. Decode locally or read the open-source implementation if you do not need a hosted, paid HTTP response.</p></div>
+</section>
+<section aria-labelledby="client">
+<h2 id="client">Need a larger EVM or x402 QA job?</h2>
+<p>VM5 Delivery Lab offers AI-assisted, human-owned fixed-scope API contract tests, unsigned payment-preflight checks and reproducible regression fixtures. For a real customer project, first agree in writing on scope, acceptance tests, code rights, edits, payout rail, eligibility and cancellation/refund rules. No charge for an initial sanitized inquiry; do not upload client secrets.</p>
+<div class="cta"><a href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform" rel="noopener noreferrer">Request a confidentially scoped quote ↗</a><a href="../privacy.html">Privacy notice ↗</a></div>
+</section>
+<p class="small"><a href="../">← All VM5 Delivery Lab tools</a> · <a href="../llms.txt">Machine-readable developer guide</a> · Original AI-assisted source, one human beneficial owner, no invented orders or audit certification.</p>
+</main>
+</body>
+</html>
