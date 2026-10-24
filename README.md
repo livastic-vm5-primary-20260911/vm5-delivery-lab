@@ -229,3 +229,7 @@ The original published buyer-facing page at https://livastic-vm5-primary-2026091
 ### Separate ERC-20 event-log x402 developer service
 
 Existing same-owner canonical ERC-20 buyer page now documents two **different** actually deployed services: the public unsigned call-data preflight and a new event-log topic/data preflight. The latter has a completely free fictional GET `/v1/erc20-event-sample`, a paid `GET /v1/erc20-event-preflight` 0.01 native Circle Base USDC directly to the original VM1 public wallet, independent original [402 Index listing](https://402index.io/api/v1/services/cd9425ff-a546-428f-a082-55c77a7f8a0d), and original PayAPI one-time application pending vendor paid review. No verified independent event API customers or organic profit may be inferred from this static buyer guide.
+
+### Original live Base native Circle USDC allowance buyer route
+
+We extended the original, already indexed ERC-20 developer buyer page at https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/erc20-calldata/ with the distinct actual Base RPC read-only Circle USDC allowance and balance service (0.01 buyer-paid native Circle USDC to original VM1 MetaMask). The fully fictional free example is /v1/base-usdc-allowance-sample; the actual hosted paid route is /v1/base-usdc-allowance; its first-party 402 Index URL is https://402index.io/api/v1/services/4cf7d0c9-9504-43d0-9b12-a2bd1388c4f8. No new outside buyer, revenue, completed contract, fee or spend is implied by this documentation. Seller PayAPI application still pending as of 2026-10-24.
