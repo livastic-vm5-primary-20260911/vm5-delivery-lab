@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b111a">
+<title>Mezo MUSD Mainnet Facts API · 0.01 Base USDC | VM5 Delivery Lab</title>
+<meta name="description" content="A bounded read-only x402 API for Mezo MUSD ERC-20 metadata, code hash, total supply and optional public balance/allowance. 0.01 native Circle USDC on Base per paid request; free synthetic sample first.">
+<meta property="og:title" content="Mezo MUSD Mainnet Facts API · VM5 Delivery Lab">
+<meta property="og:description" content="Read-only mainnet facts for developers and agents. Free synthetic sample; 0.01 Base USDC for the live result. Not a peg, backing or security audit.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/mezo-musd-facts/">
+<link rel="canonical" href="https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/mezo-musd-facts/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<style>
+.product{max-width:940px;margin:0 auto;padding:52px 22px 80px;color:#e6f2f6;line-height:1.7}.product h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.13;letter-spacing:-.035em;margin:14px 0}.product h2{font-size:1.2rem;margin:28px 0 10px}.product p,.product li{color:#c9dce4}.product a{color:#9be9ff;overflow-wrap:anywhere}.product .lead{font-size:1.12rem;max-width:780px}.product .panel{border:1px solid #355365;background:#111f2a;border-radius:16px;padding:22px;margin:22px 0}.product .status{color:#ffdda1;font-weight:700;font-size:.86rem;letter-spacing:.04em}.product .price{font-size:2rem;font-weight:750;color:#e6fbff}.product .actions{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0}.product .actions a{padding:11px 15px;border:1px solid #65bdbd;border-radius:9px;text-decoration:none}.product code{font-family:ui-monospace,Consolas,monospace;background:#182a37;padding:2px 5px;border-radius:5px;overflow-wrap:anywhere}.product .fine{font-size:.88rem;color:#aac4cc}.product .caution{border-left:3px solid #e1b86d;background:#2d261f;padding:15px 18px;border-radius:5px}
+</style>
+</head>
+<body>
+<header class="site-header"><nav class="container nav" aria-label="Page navigation"><a class="brand" href="../" aria-label="VM5 Delivery Lab homepage"><span class="brandmark"><span></span><span></span><span></span><span></span></span><span>VM5 <b>Delivery Lab</b></span></a><a class="btn btn-small btn-outline" href="https://vm5-openapi-x402.onrender.com/v1/docs" rel="noopener noreferrer">Live API docs ↗</a></nav></header>
+<main class="product">
+<p class="eyebrow">READ-ONLY DEFI DEVELOPER DATA · x402 V2 · BASE USDC</p>
+<h1>Mezo MUSD Mainnet Facts</h1>
+<p class="lead">A bounded, machine-readable lookup for builders who need specific public ERC-20 facts from Mezo mainnet without connecting a wallet or executing a transaction.</p>
+<div class="panel"><div class="status">PAYAPI MARKET REVIEW PENDING · NOT YET VERIFIED</div><p class="price">0.01 USDC <span style="font-size:1rem;font-weight:500">per successful paid request</span></p><p>Native Circle USDC on Base (EIP-155 network <code>eip155:8453</code>). An unpaid request returns an HTTP 402 quote; nothing is paid unless a buyer deliberately authorizes and settles it through an x402-compatible client.</p><div class="actions"><a href="https://vm5-openapi-x402.onrender.com/v1/mezo-musd-sample" rel="noopener noreferrer">Try the free synthetic sample ↗</a><a href="https://vm5-openapi-x402.onrender.com/v1/mezo-musd-facts" rel="noopener noreferrer">Inspect the unpaid 402 quote ↗</a><a href="https://vm5-openapi-x402.onrender.com/v1/docs" rel="noopener noreferrer">Read API docs ↗</a></div><p class="fine">The PayAPI listing was submitted on 26 October 2026; the operator has acknowledged receipt and says it will make one verification call. It is not live or payment-verified yet. We will update this page only when that check is confirmed.</p></div>
+<h2>What the paid result contains</h2><ul><li>Fixed Mezo mainnet token contract metadata: symbol, decimals, total supply and runtime code hash.</li><li>A pinned-block public RPC read, with optional bounded public owner balance and spender allowance data where supported.</li><li>Structured JSON for scripts and agent workflows; no credentials or private client records are required.</li></ul>
+<h2>Free sample first</h2><p>The sample endpoint is fully synthetic and makes no Mezo RPC call. It exists to let you inspect the schema before considering a paid request. The paid endpoint is read-only and may return a pre-payment error if a required public read is unavailable; never pay blindly or retry an ambiguous signed payment.</p>
+<div class="caution"><strong>Scope and limitations.</strong><p>This is not an audit, token-safety verdict, dollar-peg proof, collateral/backing analysis, bridge-solvency review, liquidity/yield forecast, investment advice, or proof that a wallet controls an address. No funds are moved and no transaction is signed. Public RPC providers and hosting infrastructure have their own availability and logging policies.</p></div>
+<h2>For x402 buyers and agents</h2><p>Read the <a href="https://vm5-openapi-x402.onrender.com/openapi.json" rel="noopener noreferrer">authoritative OpenAPI contract</a> and the live unpaid 402 challenge immediately before any purchase. Current challenge fields (network, token, recipient, amount, and method) are authoritative over this page. This URL has not yet received the marketplace's paid verification badge and no independent buyer purchase is claimed.</p>
+<p class="fine"><a href="../verified-x402-apis/">See the separate catalogue of previously PayAPI-tested APIs ↗</a> · <a href="../">VM5 Delivery Lab homepage</a></p>
+</main>
+<footer class="site-footer"><div class="container"><p>VM5 Delivery Lab · One human economic owner · No wallet keys or funds required to inspect the free sample.</p></div></footer>
+</body></html>
