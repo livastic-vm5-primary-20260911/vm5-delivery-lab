@@ -34,11 +34,13 @@ test("Eight honest fixed distinct original VM5 PayAPI listings; no other seller'
  assert.deepEqual(new Set(challenges.map(s=>new URL(s).pathname)),new Set(soldRoutes));
  assert(!document.includes("https://payapi.market/provider/login?token="));
 });
-test("Exactly eight unique x402 Base canary source transactions, all distinct",()=>{
+test("Eight historical route canaries plus one later separately verified Mezo operator receipt, distinct",()=>{
  const tx=matches(/href="(https:\/\/basescan\.org\/tx\/0x[0-9a-f]{64})"/g);
- assert.equal(tx.length,8);
- assert.equal(new Set(tx).size,8);
+ assert.equal(tx.length,9);
+ assert.equal(new Set(tx).size,9);
  assert(document.includes("0.075 USDC"));
+ assert(tx.includes("https://basescan.org/tx/0xe4106d414e5627e159b67e4556f1c6805cc19997e529cd2d832ea0136be1301a"));
+ assert.match(document,/not an organic buyer/i);
  assert.equal(matches(/PAYAPI VENDOR CANARY VERIFIED/g).length,8);
  assert.equal(matches(/0\.005 Base USDC \/ call/g).length,1);
  assert.equal(matches(/0\.01 Base USDC \/ call/g).length,7);
@@ -55,7 +57,7 @@ test("Cannot misrepresent platform-paid tests as 2026-10-25 new retail revenue",
 });
 test("No unfunded onchain write or secrets hidden inside optional Mezo paid resource",()=>{
  assert.match(document,/Mezo MUSD pinned public ERC-20 state report/);
- assert.match(document,/This newer Mezo endpoint is <em>not<\/em> one of the eight PayAPI-tested SKUs/);
+ assert.match(document,/This newer Mezo endpoint is <em>not<\/em> one of the eight historical PayAPI-tested SKUs/);
  assert.match(document,/https:\/\/vm5-openapi-x402\.onrender\.com\/v1\/mezo-musd-sample/);
  assert.match(document,/https:\/\/vm5-openapi-x402\.onrender\.com\/v1\/mezo-musd-facts/);
  assert.match(document,/Never enter wallet recovery phrases/);

@@ -15,7 +15,7 @@ Never send seeds, private keys, bearer tokens, PAYMENT-SIGNATUREs, real private 
 
 - [Free x402 Quote Guard GitHub Action](https://github.com/livastic-vm5-primary-20260911/x402-checkout-guard-action): Standalone original MIT-licensed offline CI validator for signed-free/public x402 v2 Base native Circle USDC quotes. One owner-operated local sample and eight offline tests; no payment signing, settlement, buyer installation claim or revenue. Optional entirely separate paid developer QA requires explicit buyer contract.
 
-- [Mezo MUSD Mainnet Facts API](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/mezo-musd-facts/): read-only Mezo ERC-20 public facts, 0.01 native Circle Base USDC per successful paid GET; free synthetic sample first. PayAPI listing submitted 2026-10-26 and still pending; NOT yet payment-verified and zero independent buyers are claimed.
+- [Mezo MUSD Mainnet Facts API](https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/mezo-musd-facts/): read-only Mezo ERC-20 public facts, 0.01 native Circle Base USDC per successful paid GET; free synthetic sample first. PayAPI first-party [live payment-verified card](https://payapi.market/api/mezo-musd-mainnet-facts): one 0.010000 native Circle Base USDC operator-funded paid check received by original VM1 public payee on 2026-10-27 KST, [unique Base tx](https://basescan.org/tx/0xe4106d414e5627e159b67e4556f1c6805cc19997e529cd2d832ea0136be1301a) logIndex46. Paid operator test is NOT an organic repeat buyer, fiat withdrawal or proven net profit.
 
 ## Live machine-readable API and x402 examples
 
